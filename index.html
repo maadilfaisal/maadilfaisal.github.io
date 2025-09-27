@@ -28,8 +28,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         :root {
-            --bg-start: #f5f3ff;
-            --bg-end: #faf5ff;
+            --bg-start: #f0f9ff;
+            --bg-end: #e0f2fe;
         }
 
 body {
@@ -92,7 +92,7 @@ body::-webkit-scrollbar {
 
 .social-icon:hover {
     transform: translateY(-4px) scale(1.1);
-    color: #c026d3; /* Fuchsia color on hover */
+    color: #14b8a6; /* Teal color on hover */
 }
 
 .skills-card:hover, .education-card:hover, .contact-card:hover {
@@ -122,7 +122,7 @@ body::-webkit-scrollbar {
     font-weight: 700;
     font-size: clamp(2.5rem, 15vw, 8rem);
     text-align: center;
-    color: #a855f7;
+    color: #0d9488;
     display: flex;
     justify-content: center;
 }
@@ -152,7 +152,7 @@ body::-webkit-scrollbar {
 
 /* Styles for the slow loading message */
 #slow-load-message {
-    color: #9333ea; /* Purple color from the theme */
+    color: #0d9488; /* Teal color from the theme */
     font-size: 0.875rem; /* 14px */
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
@@ -185,7 +185,7 @@ body::-webkit-scrollbar {
     bottom: 2rem;
     right: 2rem;
     z-index: 1000;
-    background-image: linear-gradient(to right, #a855f7, #d946ef);
+    background-image: linear-gradient(to right, #0d9488, #2dd4bf);
     color: white;
     width: 60px;
     height: 60px;
@@ -234,7 +234,7 @@ body::-webkit-scrollbar {
 }
 
 .chat-header {
-    background-image: linear-gradient(to right, #a855f7, #d946ef);
+    background-image: linear-gradient(to right, #0d9488, #2dd4bf);
     color: white;
     padding: 1rem;
     border-top-left-radius: 16px;
@@ -258,8 +258,8 @@ body::-webkit-scrollbar {
     line-height: 1.5;
 }
 .user-message {
-    background-color: #f3e8ff;
-    color: #581c87;
+    background-color: #ccfbf1;
+    color: #115e59;
     align-self: flex-end;
 }
 .gemini-message {
@@ -296,7 +296,7 @@ body::-webkit-scrollbar {
 </head>
 <body class="text-slate-700 loading">
     <!-- Opening Animation / Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#f5f3ff] w-full p-4">
+    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#f0f9ff] w-full p-4">
         <div class="welcome-container">
             <span>W</span>
             <span>E</span>
@@ -324,27 +324,27 @@ body::-webkit-scrollbar {
         
         <h1 class="text-4xl md:text-6xl font-bold text-slate-800 mb-2" style="font-family: 'Nunito', sans-serif; font-weight: 800; text-shadow: 0px 2px 4px rgba(0,0,0,0.2);">Aadil Faisal</h1>
         <br>
-        <p class="text-lg md:text-xl text-purple-600 font-semibold mb-6">CS Undergrad @ FAST NUCES Multan</p>
+        <p class="text-lg md:text-xl text-teal-600 font-semibold mb-6">CS Undergrad @ FAST NUCES Multan</p>
 
         <div id="socials-container" class="flex justify-center space-x-6">
   <a
     href="https://www.linkedin.com/in/aadil-faisal/"
     target="_blank"
-    class="text-purple-500 text-4xl hover:text-purple-600 transition-colors social-icon"
+    class="text-teal-500 text-4xl hover:text-teal-600 transition-colors social-icon"
   >
     <i class="ri-linkedin-box-line"></i>
   </a>
   <a
     href="https://github.com/aadil-1"
     target="_blank"
-    class="text-purple-500 text-4xl hover:text-purple-600 transition-colors social-icon"
+    class="text-teal-500 text-4xl hover:text-teal-600 transition-colors social-icon"
   >
     <i class="ri-github-line"></i>
   </a>
   <a
     href="https://www.instagram.com/a4dil.f/"
     target="_blank"
-    class="text-purple-500 text-4xl hover:text-purple-600 transition-colors social-icon"
+    class="text-teal-500 text-4xl hover:text-teal-600 transition-colors social-icon"
   >
     <i class="ri-instagram-line"></i>
   </a>
@@ -360,7 +360,7 @@ body::-webkit-scrollbar {
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold text-slate-800 mb-12 section-title">About Me</h2>
                 <br>
-            <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 about-card relative z-10 about-description">
+            <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 about-card relative z-10 about-description">
             <div class="text-left">
                 <p id="about-text" class="text-slate-600 leading-relaxed">
                     As a passionate Computer Science undergraduate, I am deeply fascinated by the power of code to solve real-world problems. My journey is fueled by a constant curiosity and a drive to build efficient, scalable, and elegant software solutions.
@@ -380,37 +380,37 @@ body::-webkit-scrollbar {
         <h2 class="text-3xl font-bold text-slate-800 mb-12 section-title">Education</h2>
 
         <!-- BS CS -->
-        <div class="max-w-4xl mx-auto bg-white p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
+        <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
             <img src="assets/img/fast.png" alt="FAST Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
                  onerror="this.onerror=null;this.src='https://placehold.co/100x100/e0e7ff/4f46e5?text=FAST';">
             <div class="text-center md:text-left w-full">
                 <h3 class="text-xl md:text-2xl font-bold text-slate-800">Bachelor's - Computer Science</h3>
-                <p class="text-md md:text-lg text-purple-600 font-medium">National University of Computer & Emerging Sciences, Multan</p>
+                <p class="text-md md:text-lg text-teal-600 font-medium">National University of Computer & Emerging Sciences, Multan</p>
                 <p class="text-slate-500 mt-1">2025 - 2029</p>
             </div>
         </div>
 
         <!-- Intermediate -->
-        <div class="max-w-4xl mx-auto bg-white p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
+        <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
             <img src="assets/img/ack.jpg" alt="ACK Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
                  onerror="this.onerror=null;this.src='https://placehold.co/100x100/e0e7ff/4f46e5?text=ACK';">
             <div class="text-center md:text-left w-full">
                 <h3 class="text-xl md:text-2xl font-bold text-slate-800">Intermediate - Computer Science</h3>
-                <p class="text-md md:text-lg text-purple-600 font-medium">Akhuwat College University Kasur</p>
+                <p class="text-md md:text-lg text-teal-600 font-medium">Akhuwat College University Kasur</p>
                 <p class="text-slate-500 mt-1">2023 - 2025</p>
             </div>
         </div>
 
         <!-- Matric -->
-        <div class="max-w-4xl mx-auto bg-white p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 education-card">
+        <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 education-card">
             <img src="assets/img/ncmithi.jpg" alt="NC Mithi Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
                  onerror="this.onerror=null;this.src='https://placehold.co/100x100/e0e7ff/4f46e5?text=NC Mithi';">
             <div class="text-center md:text-left w-full">
                 <h3 class="text-xl md:text-2xl font-bold text-slate-800">Matriculation - Computer Science</h3>
-                <p class="text-md md:text-lg text-purple-600 font-medium">Jinnah Public Higher secondary School Mana ahmadani</p>
+                <p class="text-md md:text-lg text-teal-600 font-medium">Jinnah Public Higher secondary School Mana ahmadani</p>
                 <p class="text-slate-500 mt-1">2018 - 2023</p>
             </div>
         </div>
@@ -423,18 +423,18 @@ body::-webkit-scrollbar {
         <h2 class="text-3xl font-bold text-slate-800 mb-2 section-title">Skills</h2>
         <br>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div id="languages-card" class="bg-white p-6 rounded-2xl shadow-md skills-card cursor-pointer">
-                <i class="ri-code-s-slash-line text-4xl text-purple-500 mb-4 inline-block"></i>
+            <div id="languages-card" class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md skills-card cursor-pointer">
+                <i class="ri-code-s-slash-line text-4xl text-teal-500 mb-4 inline-block"></i>
                 <h3 class="text-xl font-semibold mb-3">Languages</h3>
                 <p class="text-slate-500 skill-item">C, C++, Python (Basic)</p>
             </div>
-            <div id="tools-card" class="bg-white p-6 rounded-2xl shadow-md skills-card cursor-pointer">
-                <i class="ri-tools-line text-4xl text-purple-500 mb-4 inline-block"></i>
+            <div id="tools-card" class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md skills-card cursor-pointer">
+                <i class="ri-tools-line text-4xl text-teal-500 mb-4 inline-block"></i>
                 <h3 class="text-xl font-semibold mb-3">Tools</h3>
                 <p class="text-slate-500 skill-item">Git, GitHub, Linux</p>
             </div>
-            <a href="https://www.chess.com/member/aadilbaloch0" target="_blank" rel="noopener noreferrer" class="bg-white p-6 rounded-2xl shadow-md skills-card block">
-                <i class="ri-gamepad-line text-4xl text-purple-500 mb-4 inline-block"></i>
+            <a href="https://www.chess.com/member/aadilbaloch0" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md skills-card block">
+                <i class="ri-gamepad-line text-4xl text-teal-500 mb-4 inline-block"></i>
                 <h3 class="text-xl font-semibold mb-3">Hobbies</h3>
                 <p class="text-slate-500 skill-item">Chess</p>
             </a>
@@ -446,28 +446,28 @@ body::-webkit-scrollbar {
     <div class="container mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold text-slate-800 mb-6 section-title">Contact Me</h2>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <a href="https://mail.google.com/mail/?view=cm&to=aadilfaisal1068@gmail.com" class="contact-card bg-white p-6 rounded-2xl shadow-md flex flex-col items-center" target="_blank">
-                <i class="ri-mail-send-line text-5xl text-purple-500 mb-4"></i>
+            <a href="https://mail.google.com/mail/?view=cm&to=aadilfaisal1068@gmail.com" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center" target="_blank">
+                <i class="ri-mail-send-line text-5xl text-teal-500 mb-4"></i>
                 <h3 class="text-xl font-semibold mb-2">Email</h3>
             </a>
-            <a href="https://wa.me/923006786550" target="_blank" class="contact-card bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-whatsapp-line text-5xl text-purple-500 mb-4"></i>
+            <a href="https://wa.me/923006786550" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
+                <i class="ri-whatsapp-line text-5xl text-teal-500 mb-4"></i>
                 <h3 class="text-xl font-semibold mb-2">WhatsApp</h3>
             </a>
-            <a href="https://www.linkedin.com/in/aadil-faisal" target="_blank" class="contact-card bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-linkedin-box-line text-5xl text-purple-500 mb-4"></i>
+            <a href="https://www.linkedin.com/in/aadil-faisal" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
+                <i class="ri-linkedin-box-line text-5xl text-teal-500 mb-4"></i>
                 <h3 class="text-xl font-semibold mb-2">LinkedIn</h3>
             </a>
-            <a href="https://github.com/aadil-1" target="_blank" class="contact-card bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-github-fill text-5xl text-purple-500 mb-4"></i>
+            <a href="https://github.com/aadil-1" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
+                <i class="ri-github-fill text-5xl text-teal-500 mb-4"></i>
                 <h3 class="text-xl font-semibold mb-2">GitHub</h3>
             </a>
-            <a href="https://www.instagram.com/a4dil.f" target="_blank" class="contact-card bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-instagram-fill text-5xl text-purple-500 mb-4"></i>
+            <a href="https://www.instagram.com/a4dil.f" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
+                <i class="ri-instagram-fill text-5xl text-teal-500 mb-4"></i>
                 <h3 class="text-xl font-semibold mb-2">Instagram</h3>
             </a>
-            <a href="https://www.facebook.com/aadil.baloch.1068" target="_blank" class="contact-card bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-facebook-fill text-5xl text-purple-500 mb-4"></i>
+            <a href="https://www.facebook.com/aadil.baloch.1068" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
+                <i class="ri-facebook-fill text-5xl text-teal-500 mb-4"></i>
                 <h3 class="text-xl font-semibold mb-2">Facebook</h3>
             </a>
         </div>
@@ -480,7 +480,7 @@ body::-webkit-scrollbar {
 <div id="humor-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
     <div class="bg-white p-8 rounded-2xl shadow-2xl text-center max-w-sm mx-auto">
         <p id="humor-text" class="text-slate-700 text-lg mb-6"></p>
-        <button id="close-humor-modal" class="bg-purple-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-purple-600 transition-colors">Got it!</button>
+        <button id="close-humor-modal" class="bg-teal-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-teal-600 transition-colors">Got it!</button>
     </div>
 </div>
 
@@ -497,12 +497,12 @@ body::-webkit-scrollbar {
     <div class="chat-messages" id="chat-messages">
         <!-- New Message for Live Site -->
         <div class="chat-message gemini-message">
-            Hi there! I am Aadil's personal assistance. I am currently being trained and will soon available to help you in exploring this website,about Aadil.
+            Hi there! This AI assistant is a demo. Due to security policies on this hosting platform, it cannot make live API calls.
         </div>
     </div>
     <form class="chat-form" id="chat-form">
-        <input type="text" id="chat-input" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Ask a question..." disabled>
-        <button type="submit" class="bg-purple-500 text-white rounded-lg ml-2 px-4 py-2 hover:bg-purple-600 transition-colors" disabled>Send</button>
+        <input type="text" id="chat-input" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Ask a question..." disabled>
+        <button type="submit" class="bg-teal-500 text-white rounded-lg ml-2 px-4 py-2 hover:bg-teal-600 transition-colors" disabled>Send</button>
     </form>
 </div>
 
@@ -520,7 +520,6 @@ body::-webkit-scrollbar {
         document.addEventListener('DOMContentLoaded', () => {
             // --- PRELOADER AND ANIMATION LOGIC ---
             const preloader = document.getElementById('preloader');
-            const slowLoadMessageContainer = document.getElementById('slow-load-message');
             const body = document.body;
 
             body.classList.add('loading');
@@ -533,15 +532,13 @@ body::-webkit-scrollbar {
                     // Use a timeout that matches the CSS transition to ensure it's removed
                     setTimeout(() => {
                         body.classList.remove('loading');
-                        preloader.style.display = 'none';
+                        if(preloader) preloader.style.display = 'none';
                     }, 600); // Matches the 0.6s transition in CSS
                 }
             };
 
-            // Hide preloader after a minimum time (for animation) + when the page is ready
-            // This handles both fast and slow connections better.
             let minTimePassed = false;
-            setTimeout(() => { minTimePassed = true; }, 1500); // Minimum time for WELCOME animation
+            setTimeout(() => { minTimePassed = true; }, 1500);
 
             window.addEventListener('load', () => {
                 const check = setInterval(() => {
@@ -552,7 +549,6 @@ body::-webkit-scrollbar {
                 }, 100);
             });
             
-            // Fallback for very slow devices
              setTimeout(hidePreloader, 5000);
 
 
@@ -575,11 +571,11 @@ body::-webkit-scrollbar {
             particlesJS('particles-js', {
                 "particles": {
                     "number": { "value": 150, "density": { "enable": true, "value_area": 800 } },
-                     "color": { "value": ["#a855f7", "#d946ef", "#ec4899", "#fda4af"] },
+                     "color": { "value": ["#14b8a6", "#2dd4bf", "#5eead4", "#a7f3d0"] },
                     "shape": { "type": "circle" },
                     "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
                     "size": { "value": 3, "random": true, "anim": { "enable": false } },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#d8b4fe", "opacity": 0.2, "width": 1 },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#99f6e4", "opacity": 0.2, "width": 1 },
                     "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
                 },
                 "interactivity": {
@@ -617,36 +613,33 @@ body::-webkit-scrollbar {
                 if (e.target === humorModal) hideHumorModal();
             });
             
-            const sections = [
-                { id: 'home', colors: ['#f5f3ff', '#faf5ff'] },
-                { id: 'about', colors: ['#fdf4ff', '#fce7f3'] },
-                { id: 'education', colors: ['#fff1f2', '#ffe4e6'] },
-                { id: 'skills', colors: ['#faf5ff', '#f3e8ff'] },
-                { id: 'contact', colors: ['#fdf2f8', '#fce7f3'] }
-            ];
-
-            let currentSection = 'home';
+            // --- MORE PERFORMANT BACKGROUND CHANGE ---
+            const sections = document.querySelectorAll('section');
             const root = document.documentElement;
+            const colorMap = {
+                'home': ['#f0f9ff', '#e0f2fe'],      // Sky Blue
+                'about': ['#f0fdfa', '#ccfbf1'],     // Teal/Mint
+                'education': ['#ecfdf5', '#d1fae5'], // Green/Mint
+                'skills': ['#f0fdfa', '#ccfbf1'],    // Teal/Mint again
+                'contact': ['#f0f9ff', '#e0f2fe']     // Back to Sky Blue
+            };
 
-            window.addEventListener('scroll', () => {
-                let newSection = 'home';
-                sections.forEach(section => {
-                    const el = document.getElementById(section.id);
-                    if (el) {
-                        const rect = el.getBoundingClientRect();
-                        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-                            newSection = section.id;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const newColors = colorMap[entry.target.id];
+                        if (newColors) {
+                            root.style.setProperty('--bg-start', newColors[0]);
+                            root.style.setProperty('--bg-end', newColors[1]);
                         }
                     }
                 });
+            }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
 
-                if (newSection !== currentSection) {
-                    currentSection = newSection;
-                    const newColors = sections.find(s => s.id === currentSection).colors;
-                    root.style.setProperty('--bg-start', newColors[0]);
-                    root.style.setProperty('--bg-end', newColors[1]);
-                }
+            sections.forEach(section => {
+                observer.observe(section);
             });
+
 
             // --- Gemini Chat UI Logic ---
             const geminiFab = document.getElementById('gemini-fab');
