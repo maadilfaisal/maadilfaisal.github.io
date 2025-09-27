@@ -495,13 +495,14 @@ body::-webkit-scrollbar {
         <button id="close-gemini-chat" class="text-2xl">&times;</button>
     </div>
     <div class="chat-messages" id="chat-messages">
+        <!-- New Message for Live Site -->
         <div class="chat-message gemini-message">
-            Hi there! I'm Aadil's AI assistant. Ask me anything about his skills, education, or hobbies.
+            Hi there! This AI assistant is a demo. Due to security policies on this hosting platform, it cannot make live API calls.
         </div>
     </div>
     <form class="chat-form" id="chat-form">
-        <input type="text" id="chat-input" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Ask a question...">
-        <button type="submit" class="bg-purple-500 text-white rounded-lg ml-2 px-4 py-2 hover:bg-purple-600 transition-colors">Send</button>
+        <input type="text" id="chat-input" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Ask a question..." disabled>
+        <button type="submit" class="bg-purple-500 text-white rounded-lg ml-2 px-4 py-2 hover:bg-purple-600 transition-colors" disabled>Send</button>
     </form>
 </div>
 
@@ -516,30 +517,44 @@ body::-webkit-scrollbar {
     <!-- Main JavaScript Logic -->
     <script>
         
-        // --- PRELOADER AND ANIMATION LOGIC (RUNS IMMEDIATELY) ---
-        const preloader = document.getElementById('preloader');
-        const slowLoadMessageContainer = document.getElementById('slow-load-message');
-        window.scrollTo(0, 0);
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- PRELOADER AND ANIMATION LOGIC ---
+            const preloader = document.getElementById('preloader');
+            const slowLoadMessageContainer = document.getElementById('slow-load-message');
+            const body = document.body;
 
-        const slowLoadTimeout = setTimeout(() => {
-            if (slowLoadMessageContainer) {
-                slowLoadMessageContainer.innerHTML = '<p>The animations are taking a moment to load on your device. Please be patient!</p>';
-                slowLoadMessageContainer.classList.add('visible');
-            }
-        }, 3000);
+            body.classList.add('loading');
+            window.scrollTo(0, 0);
 
-        window.addEventListener('load', () => {
-            clearTimeout(slowLoadTimeout);
+            // --- Robust preloader removal ---
+            const hidePreloader = () => {
+                if (preloader) {
+                    preloader.classList.add('preloader-hidden');
+                    // Use a timeout that matches the CSS transition to ensure it's removed
+                    setTimeout(() => {
+                        body.classList.remove('loading');
+                        preloader.style.display = 'none';
+                    }, 600); // Matches the 0.6s transition in CSS
+                }
+            };
 
-            if (preloader) {
-                preloader.classList.add('preloader-hidden');
-                preloader.addEventListener('transitionend', () => {
-                    document.body.classList.remove('loading');
-                    preloader.style.display = 'none';
-                }, { once: true });
-            } else {
-                document.body.classList.remove('loading');
-            }
+            // Hide preloader after a minimum time (for animation) + when the page is ready
+            // This handles both fast and slow connections better.
+            let minTimePassed = false;
+            setTimeout(() => { minTimePassed = true; }, 1500); // Minimum time for WELCOME animation
+
+            window.addEventListener('load', () => {
+                const check = setInterval(() => {
+                    if (minTimePassed) {
+                        clearInterval(check);
+                        hidePreloader();
+                    }
+                }, 100);
+            });
+            
+            // Fallback for very slow devices
+             setTimeout(hidePreloader, 5000);
+
 
             const sr = ScrollReveal({
                 origin: 'top',
@@ -595,29 +610,12 @@ body::-webkit-scrollbar {
             const languagesMessage = "You clicked the 'Languages' card! While this card doesn't speak C++ or Python, it does speak the language of 'You're Awesome!' ✨";
             const toolsMessage = "Ah, the 'Tools' card! This one isn't a hammer or a wrench, but it's here to build up your confidence. Keep being amazing! 🚀";
 
-            if (languagesCard) {
-                languagesCard.addEventListener('click', () => {
-                    showHumorModal(languagesMessage);
-                });
-            }
-
-            if (toolsCard) {
-                toolsCard.addEventListener('click', () => {
-                    showHumorModal(toolsMessage);
-                });
-            }
-
-            if (closeHumorModalBtn) {
-                closeHumorModalBtn.addEventListener('click', hideHumorModal);
-            }
-            
-            if (humorModal) {
-                humorModal.addEventListener('click', (e) => {
-                    if (e.target === humorModal) {
-                        hideHumorModal();
-                    }
-                });
-            }
+            if (languagesCard) languagesCard.addEventListener('click', () => showHumorModal(languagesMessage));
+            if (toolsCard) toolsCard.addEventListener('click', () => showHumorModal(toolsMessage));
+            if (closeHumorModalBtn) closeHumorModalBtn.addEventListener('click', hideHumorModal);
+            if (humorModal) humorModal.addEventListener('click', (e) => {
+                if (e.target === humorModal) hideHumorModal();
+            });
             
             const sections = [
                 { id: 'home', colors: ['#f5f3ff', '#faf5ff'] },
@@ -650,114 +648,16 @@ body::-webkit-scrollbar {
                 }
             });
 
-            // --- Gemini Chat Logic ---
+            // --- Gemini Chat UI Logic ---
             const geminiFab = document.getElementById('gemini-fab');
             const geminiChatModal = document.getElementById('gemini-chat-modal');
             const closeGeminiChatBtn = document.getElementById('close-gemini-chat');
-            const chatForm = document.getElementById('chat-form');
-            const chatInput = document.getElementById('chat-input');
-            const chatMessages = document.getElementById('chat-messages');
-
-            geminiFab.addEventListener('click', () => {
-                geminiChatModal.classList.toggle('visible');
-            });
-            closeGeminiChatBtn.addEventListener('click', () => {
-                geminiChatModal.classList.remove('visible');
-            });
-
-            // Get portfolio context
-            const aboutText = document.getElementById('about-text').innerText;
-            const educationElements = document.querySelectorAll('.education-card');
-            let educationText = "Education History: ";
-            educationElements.forEach(card => {
-                educationText += card.innerText.replace(/\n/g, ', ') + '; ';
-            });
-            const skillsElements = document.querySelectorAll('.skills-card');
-            let skillsText = "Skills and Hobbies: ";
-            skillsElements.forEach(card => {
-                skillsText += card.innerText.replace(/\n/g, ', ') + '; ';
-            });
-
-            const portfolioContext = `About Aadil: ${aboutText}. ${educationText}. ${skillsText}`;
-
-            chatForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const userInput = chatInput.value.trim();
-                if (!userInput) return;
-
-                appendMessage(userInput, 'user');
-                chatInput.value = '';
-                showTypingIndicator();
-
-                await askGemini(userInput);
-            });
-
-            function appendMessage(text, sender) {
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('chat-message', `${sender}-message`);
-                messageDiv.textContent = text;
-                chatMessages.appendChild(messageDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            function showTypingIndicator() {
-                const typingDiv = document.createElement('div');
-                typingDiv.classList.add('chat-message', 'typing-indicator');
-                typingDiv.innerHTML = '<span></span><span></span><span></span>';
-                typingDiv.id = 'typing-indicator';
-                chatMessages.appendChild(typingDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            function removeTypingIndicator() {
-                const indicator = document.getElementById('typing-indicator');
-                if(indicator) {
-                    indicator.remove();
-                }
-            }
-
-            async function askGemini(userInput) {
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                const systemPrompt = `You are a helpful and friendly AI assistant for Aadil Faisal's personal portfolio website. Your goal is to answer questions from visitors based ONLY on the information provided here. Do not make up information. Be concise and professional. Here is the information about Aadil: ${portfolioContext}`;
-
-                const payload = {
-                    systemInstruction: {
-                        parts: [{ text: systemPrompt }]
-                    },
-                    contents: [{
-                        parts: [{ text: userInput }]
-                    }]
-                };
-
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const result = await response.json();
-                    
-                    removeTypingIndicator();
-
-                    if (result.candidates && result.candidates.length > 0) {
-                        const geminiResponse = result.candidates[0].content.parts[0].text;
-                        appendMessage(geminiResponse, 'gemini');
-                    } else {
-                        appendMessage("Sorry, I couldn't get a response. Please try again.", 'gemini');
-                    }
-                } catch (error) {
-                    removeTypingIndicator();
-                    console.error("Error calling Gemini API:", error);
-                    appendMessage("Sorry, something went wrong. Please check the console for details.", 'gemini');
-                }
-            }
+            
+            geminiFab.addEventListener('click', () => geminiChatModal.classList.toggle('visible'));
+            closeGeminiChatBtn.addEventListener('click', () => geminiChatModal.classList.remove('visible'));
         });
-
     </script>
     
 </body>
 </html>
-
 
