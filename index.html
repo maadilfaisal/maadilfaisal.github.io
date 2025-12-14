@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Website Title -->
     <title>Aadil Faisal | CS @ FAST-NUCES</title>
-    <!-- SEO Meta Description -->
     <meta name="description" content="I am a Computer Science Undergrad at FAST NUCES Multan. Explore my portfolio on my personal website.">
-    <!-- Favicon -->
     <link rel="icon" href="assets/img/circle-logo.png" type="image/png">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Remixicon for Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">
 
 
-    <!-- Custom Styles -->
     <style>
          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -32,35 +25,23 @@
             --bg-end: #e0f2fe;
         } 
         
-<!-- Start of OpenWidget (www.openwidget.com) code -->
-<script>
-  window.__ow = window.__ow || {};
-  window.__ow.organizationId = "641d672c-cad8-4de6-8ed3-075986f5fee5";
-  window.__ow.integration_name = "manual_settings";
-  window.__ow.product_name = "openwidget";   
-  ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[OpenWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.openwidget.com/openwidget.js",t.head.appendChild(n)}};!n.__ow.asyncInit&&e.init(),n.OpenWidget=n.OpenWidget||e}(window,document,[].slice))
-</script>
-<noscript>You need to <a href="https://www.openwidget.com/enable-javascript" rel="noopener nofollow">enable JavaScript</a> to use the communication tool powered by <a href="https://www.openwidget.com/" rel="noopener nofollow" target="_blank">OpenWidget</a></noscript>
-<!-- End of OpenWidget code -->
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Dynamic background gradient */
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            transition: background 0.8s ease-out;
+            /* Hide scrollbar but keep scrolling */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;     /* Firefox */
+        }
+        body::-webkit-scrollbar {
+            display: none;              /* Chrome, Safari, Opera */
+        }
 
-
-body {
-    font-family: 'Inter', sans-serif;
-    /* Dynamic background gradient */
-    background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-    transition: background 0.8s ease-out;
-    /* Hide scrollbar but keep scrolling */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
-}
-body::-webkit-scrollbar {
-    display: none;              /* Chrome, Safari, Opera */
-}
-
-/* Prevent scrolling while preloader is active */
-body.loading {
-    overflow: hidden;
-}
+        /* Prevent scrolling while preloader is active */
+        body.loading {
+            overflow: hidden;
+        }
 
         /* Style for the particles.js container */
         #particles-js {
@@ -85,229 +66,113 @@ body.loading {
         }
 
        html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    overflow-y: auto; /* allow vertical scrolling */
-}
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-y: auto; /* allow vertical scrolling */
+        }
 
-/* Hide scrollbar but keep scrolling */
-html::-webkit-scrollbar, 
-body::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari, Opera */
-}
+        /* Hide scrollbar but keep scrolling */
+        html::-webkit-scrollbar, 
+        body::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari, Opera */
+        }
 
-/* Smooth transitions for interactive elements */
-.social-icon, .skills-card, .education-card, .contact-card {
-    transition: all 0.3s ease-in-out;
-}
+        /* Smooth transitions for interactive elements */
+        .social-icon, .skills-card, .education-card, .contact-card {
+            transition: all 0.3s ease-in-out;
+        }
 
-.social-icon:hover {
-    transform: translateY(-4px) scale(1.1);
-    color: #14b8a6; /* Teal color on hover */
-}
+        .social-icon:hover {
+            transform: translateY(-4px) scale(1.1);
+            color: #14b8a6; /* Teal color on hover */
+        }
 
-.skills-card:hover, .education-card:hover, .contact-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-}
+        .skills-card:hover, .education-card:hover, .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
 
-#humor-modal {
-    transition: opacity 0.3s ease;
-}
+        #humor-modal {
+            transition: opacity 0.3s ease;
+        }
 
-/* Preloader Styles */
-#preloader {
-    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
-    visibility: visible;
-    opacity: 1;
-}
+        /* Preloader Styles */
+        #preloader {
+            transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+            visibility: visible;
+            opacity: 1;
+        }
 
-#preloader.preloader-hidden {
-    opacity: 0;
-    visibility: hidden;
-}
+        #preloader.preloader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
 
-/* Letter Reveal Animation */
-.welcome-container {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: clamp(2.5rem, 15vw, 8rem);
-    text-align: center;
-    color: #0d9488;
-    display: flex;
-    justify-content: center;
-}
+        /* Letter Reveal Animation */
+        .welcome-container {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 15vw, 8rem);
+            text-align: center;
+            color: #0d9488;
+            display: flex;
+            justify-content: center;
+        }
 
-.welcome-container span {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(30px) scale(0.9);
-    animation: revealLetter 0.6s forwards;
-}
+        .welcome-container span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            animation: revealLetter 0.6s forwards;
+        }
 
-.welcome-container span:nth-child(1) { animation-delay: 0.1s; }
-.welcome-container span:nth-child(2) { animation-delay: 0.2s; }
-.welcome-container span:nth-child(3) { animation-delay: 0.3s; }
-.welcome-container span:nth-child(4) { animation-delay: 0.4s; }
-.welcome-container span:nth-child(5) { animation-delay: 0.5s; }
-.welcome-container span:nth-child(6) { animation-delay: 0.6s; }
-.welcome-container span:nth-child(7) { animation-delay: 0.7s; }
-
-
-@keyframes revealLetter {
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* Styles for the slow loading message */
-#slow-load-message {
-    color: #0d9488; /* Teal color from the theme */
-    font-size: 0.875rem; /* 14px */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    font-family: 'Inter', sans-serif;
-}
-#slow-load-message.visible {
-    opacity: 1;
-}
-
-/* --- New styles for text interactivity --- */
-#home h1, #home p {
-    user-select: none; /* Prevents the I-beam cursor from showing on click */
-    cursor: default;
-}
-#home h1, #home p.font-semibold {
-    transition: transform 0.3s ease, text-shadow 0.3s ease;
-}
-#home h1:hover {
-    transform: scale(1.02);
-    text-shadow: 0px 4px 8px rgba(0,0,0,0.25); /* Enhance shadow on hover for a lift effect */
-}
-#home p.font-semibold:hover {
-    transform: scale(1.02);
-}
+        .welcome-container span:nth-child(1) { animation-delay: 0.1s; }
+        .welcome-container span:nth-child(2) { animation-delay: 0.2s; }
+        .welcome-container span:nth-child(3) { animation-delay: 0.3s; }
+        .welcome-container span:nth-child(4) { animation-delay: 0.4s; }
+        .welcome-container span:nth-child(5) { animation-delay: 0.5s; }
+        .welcome-container span:nth-child(6) { animation-delay: 0.6s; }
+        .welcome-container span:nth-child(7) { animation-delay: 0.7s; }
 
 
-/* --- Gemini Chat Feature Styles --- */
-/* #gemini-fab {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 1000;
-    background-image: linear-gradient(to right, #0d9488, #2dd4bf);
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 9999px;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-#gemini-fab:hover {
-    transform: scale(1.1);
-}
-#gemini-fab svg {
-    width: 32px;
-    height: 32px;
-}
+        @keyframes revealLetter {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
 
-#gemini-chat-modal {
-    position: fixed;
-    bottom: calc(2rem + 70px);
-    right: 2rem;
-    z-index: 1000;
-    width: 90%;
-    max-width: 400px;
-    height: 60vh;
-    max-height: 500px;
-    background-color: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    transform: translateY(20px);
-    visibility: hidden;
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    pointer-events: none;
-}
-#gemini-chat-modal.visible {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-    pointer-events: auto;
-}
+        /* Styles for the slow loading message */
+        #slow-load-message {
+            color: #0d9488; /* Teal color from the theme */
+            font-size: 0.875rem; /* 14px */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            font-family: 'Inter', sans-serif;
+        }
+        #slow-load-message.visible {
+            opacity: 1;
+        }
 
-.chat-header {
-    background-image: linear-gradient(to right, #0d9488, #2dd4bf);
-    color: white;
-    padding: 1rem;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.chat-messages {
-    flex-grow: 1;
-    padding: 1rem;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-.chat-message {
-    padding: 0.75rem 1rem;
-    border-radius: 12px;
-    max-width: 80%;
-    line-height: 1.5;
-}
-.user-message {
-    background-color: #ccfbf1;
-    color: #115e59;
-    align-self: flex-end;
-}
-.gemini-message {
-    background-color: #f5f5f5;
-    color: #333;
-    align-self: flex-start;
-}
-.typing-indicator {
-    align-self: flex-start;
-}
-.typing-indicator span {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #ccc;
-    animation: typing 1s infinite;
-}
-.typing-indicator span:nth-child(2) { animation-delay: 0.1s; }
-.typing-indicator span:nth-child(3) { animation-delay: 0.2s; }
-
-@keyframes typing {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-}
-
-.chat-form {
-    display: flex;
-    padding: 1rem;
-    border-top: 1px solid #e5e7eb;
-}*/
-
+        /* --- New styles for text interactivity --- */
+        #home h1, #home p {
+            user-select: none; /* Prevents the I-beam cursor from showing on click */
+            cursor: default;
+        }
+        #home h1, #home p.font-semibold {
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+        #home h1:hover {
+            transform: scale(1.02);
+            text-shadow: 0px 4px 8px rgba(0,0,0,0.25); /* Enhance shadow on hover for a lift effect */
+        }
+        #home p.font-semibold:hover {
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body class="text-slate-700 loading">
-    <!-- Opening Animation / Preloader -->
     <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#f0f9ff] w-full p-4">
         <div class="welcome-container">
             <span>W</span>
@@ -319,14 +184,12 @@ body::-webkit-scrollbar {
             <span>E</span>
         </div>
         <div id="slow-load-message" class="absolute bottom-10 text-center w-full">
-            <!-- This container will be filled by JavaScript if loading is slow -->
-        </div>
+            </div>
     </div>
     
     <div id="particles-js"></div>
 
-        <!-- Home/Profile Section -->
-<section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
+        <section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
     <div class="content-container max-w-4xl mx-auto px-6">
         <img src="./assests/img/profile.jpg" 
         alt="Aadil Faisal Profile Picture" 
@@ -367,7 +230,6 @@ body::-webkit-scrollbar {
 </section>
 
 
-        <!-- About Section -->
         <section id="about" class="py-20">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold text-slate-800 mb-12 section-title">About Me</h2>
@@ -386,12 +248,10 @@ body::-webkit-scrollbar {
 
                 </div>
             </section>
-        <!-- Education Section -->
-<section id="education" class="py-20">
+        <section id="education" class="py-20">
     <div class="container mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold text-slate-800 mb-12 section-title">Education</h2>
 
-        <!-- BS CS -->
         <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
             <img src="./assests/img/fast.png" alt="FAST Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
@@ -403,7 +263,6 @@ body::-webkit-scrollbar {
             </div>
         </div>
 
-        <!-- Intermediate -->
         <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
             <img src="./assests/img/ack.jpg" alt="ACK Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
@@ -415,7 +274,6 @@ body::-webkit-scrollbar {
             </div>
         </div>
 
-        <!-- Matric -->
         <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 education-card">
             <img src="./assests/img/school.jpg" alt="NC Mithi Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
@@ -429,7 +287,6 @@ body::-webkit-scrollbar {
     </div>
 </section>
 
-<!-- Skills Section -->
 <section id="skills" class="py-20">
     <div class="container mx-auto px-6 text-center">
         <h2 class="text-3xl font-bold text-slate-800 mb-2 section-title">Skills</h2>
@@ -488,7 +345,6 @@ body::-webkit-scrollbar {
     </div>
 </section>
 
-<!-- Humorous Message Modal -->
 <div id="humor-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
     <div class="bg-white p-8 rounded-2xl shadow-2xl text-center max-w-sm mx-auto">
         <p id="humor-text" class="text-slate-700 text-lg mb-6"></p>
@@ -496,37 +352,18 @@ body::-webkit-scrollbar {
     </div>
 </div>
 
-<!-- Gemini AI Chat Feature -->
-<button id="gemini-fab">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12.968,3.282,10.933,7.353l-4.07,2.035a.75.75,0,0,0,0,1.341l4.07,2.035,2.035,4.07a.75.75,0,0,0,1.341,0l2.035-4.07,4.07-2.035a.75.75,0,0,0,0-1.341l-4.07-2.035-2.035-4.07a.75.75,0,0,0-1.341,0ZM4.46,3.921A.75.75,0,0,0,3.32,5.062L4.062,7,2,7.741a.75.75,0,0,0,0,1.412L4.062,9.9,3.32,11.832a.75.75,0,0,0,1.141,1.141L6.4,10.933l1.938.741a.75.75,0,0,0,0-1.412L6.4,9.521,4.46,7.583a.75.75,0,0,0-1.141-1.141L4.46,3.921Z"></path></svg>
-</button>
-
-<div id="gemini-chat-modal">
-    <div class="chat-header">
-        <h3 class="text-lg font-bold">Ask me about Aadil!</h3>
-        <button id="close-gemini-chat" class="text-2xl">&times;</button>
-    </div>
-    <div class="chat-messages" id="chat-messages">
-        <!-- New Message for Live Site -->
-        <div class="chat-message gemini-message">
-            Hi there! This AI assistant is a demo. Due to security policies on this hosting platform, it cannot make live API calls.
-        </div>
-    </div>
-    <form class="chat-form" id="chat-form">
-        <input type="text" id="chat-input" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Ask a question..." disabled>
-        <button type="submit" class="bg-teal-500 text-white rounded-lg ml-2 px-4 py-2 hover:bg-teal-600 transition-colors" disabled>Send</button>
-    </form>
-</div>
-
-
-    <!-- External Libraries -->
-    <!-- Particles.js for animated background -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- ScrollReveal.js for scroll animations -->
+<script>
+  window.__ow = window.__ow || {};
+  window.__ow.organizationId = "641d672c-cad8-4de6-8ed3-075986f5fee5";
+  window.__ow.integration_name = "manual_settings";
+  window.__ow.product_name = "openwidget";   
+  ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[OpenWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.openwidget.com/openwidget.js",t.head.appendChild(n)}};!n.__ow.asyncInit&&e.init(),n.OpenWidget=n.OpenWidget||e}(window,document,[].slice))
+</script>
+<noscript>You need to <a href="https://www.openwidget.com/enable-javascript" rel="noopener nofollow">enable JavaScript</a> to use the communication tool powered by <a href="https://www.openwidget.com/" rel="noopener nofollow" target="_blank">OpenWidget</a></noscript>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     
 
-    <!-- Main JavaScript Logic -->
     <script>
         
         document.addEventListener('DOMContentLoaded', () => {
@@ -629,10 +466,10 @@ body::-webkit-scrollbar {
             const sections = document.querySelectorAll('section');
             const root = document.documentElement;
             const colorMap = {
-                'home': ['#f0f9ff', '#e0f2fe'],      // Sky Blue
-                'about': ['#f0fdfa', '#ccfbf1'],     // Teal/Mint
+                'home': ['#f0f9ff', '#e0f2fe'],       // Sky Blue
+                'about': ['#f0fdfa', '#ccfbf1'],      // Teal/Mint
                 'education': ['#ecfdf5', '#d1fae5'], // Green/Mint
-                'skills': ['#f0fdfa', '#ccfbf1'],    // Teal/Mint again
+                'skills': ['#f0fdfa', '#ccfbf1'],     // Teal/Mint again
                 'contact': ['#f0f9ff', '#e0f2fe']     // Back to Sky Blue
             };
 
@@ -651,18 +488,8 @@ body::-webkit-scrollbar {
             sections.forEach(section => {
                 observer.observe(section);
             });
-
-
-            // --- Gemini Chat UI Logic ---
-            const geminiFab = document.getElementById('gemini-fab');
-            const geminiChatModal = document.getElementById('gemini-chat-modal');
-            const closeGeminiChatBtn = document.getElementById('close-gemini-chat');
-            
-            geminiFab.addEventListener('click', () => geminiChatModal.classList.toggle('visible'));
-            closeGeminiChatBtn.addEventListener('click', () => geminiChatModal.classList.remove('visible'));
         });
     </script>
     
 </body>
 </html>
-
