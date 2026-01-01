@@ -701,30 +701,10 @@
             }
 
             // Gemini API Call
+           // New Secure Vercel Call
             async function callGemini(userMessage) {
-                // ---------------------------------------------------------
-                // ⚠️ IMPORTANT: PASTE YOUR API KEY BELOW
-                // ---------------------------------------------------------
-                const apiKey = "AIzaSyCqFaRh2vPkfx1P8iY5_OW0JJGyrepgHW0"; 
-                
-                if (!apiKey || apiKey === "") {
-                    return "⚠️ Error: API Key is missing. Please open index.html and paste your key in line 1062.";
-                }
-
-                // Switched to 'gemini-flash-latest' which maps to the stable Flash model with better quotas
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`;
-                
-                // System context based on the website content
-                const systemPrompt = `You are an AI assistant for Aadil Faisal's portfolio website. 
-                Be polite, concise, and helpful. Answer questions based on this context:
-                - Name: Aadil Faisal
-                - Role: Computer Science Undergraduate
-                - Institution: FAST NUCES Multan (2025-2029)
-                - Previous Education: Akhuwat College University Kasur (Intermediate 2023-2025), Jinnah Public High School (Matric).
-                - Skills: C, C++, Python (Basic), Git, GitHub, Linux.
-                - Hobbies: Chess.
-                - Contact: Email (aadilfaisal1068@gmail.com), LinkedIn, GitHub, Instagram.
-                If asked something outside this scope, politely say you only know about Aadil's professional profile.`;
+                // Notice: NO API KEY HERE! It's safe.
+                const url = '/api/chat'; 
 
                 try {
                     const response = await fetch(url, {
@@ -732,61 +712,41 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: userMessage }] }],
-                            systemInstruction: { parts: [{ text: systemPrompt }] }
-                        })
+                        // We only send the message. The system prompt is hidden on the server.
+                        body: JSON.stringify({ message: userMessage })
                     });
 
                     const data = await response.json();
 
-                    // Check if Google returned an error (like 400 or 403)
                     if (data.error) {
-                        console.error("Gemini API Error:", data.error);
-                        
-                        // Quota error handling
-                        if (data.error.code === 429) {
-                            return "⏳ I'm overwhelmed right now (Quota Exceeded). Please try again in a minute!";
-                        }
-                        
-                        // Model not found handling
-                        if (data.error.message.includes("not found") || data.error.code === 404) {
-                             return `⚠️ Configuration Error: The model 'gemini-flash-latest' is not enabled for your key.`;
-                        }
-
-                        return `⚠️ API Error: ${data.error.message}`;
+                        return "⚠️ Error: " + data.error;
                     }
 
                     if (!data.candidates || !data.candidates[0].content) {
-                        return "⚠️ Error: No response from AI. Please try again.";
+                        return "⚠️ Error: No response from AI.";
                     }
 
                     return data.candidates[0].content.parts[0].text;
                 } catch (error) {
-                    console.error('Network Error:', error);
-                    return "⚠️ Network Error: Could not connect to Google AI. Check your internet or API key restrictions.";
+                    console.error('Error:', error);
+                    return "⚠️ Connection Error. Ensure you are running on Vercel.";
                 }
             }
 
-            // Handle Send
-            async function handleSend() {
-                const text = chatInput.value.trim();
-                if (!text) return;
+#### 3. Deploy to Vercel (The Magic Step)
+1.  Push your code (with the `api` folder) to **GitHub**.
+2.  Go to **[Vercel.com](https://vercel.com)** and sign up (free).
+3.  Click **"Add New..."** -> **"Project"**.
+4.  Import your GitHub repository.
+5.  **Crucial Step:** On the "Configure Project" screen, find **"Environment Variables"**.
+    * **Key:** `GEMINI_API_KEY`
+    * **Value:** `AIzaSy...` (Your actual Google API Key).
+6.  Click **Deploy**.
 
-                addMessage(text, 'user');
-                chatInput.value = '';
-                addTypingIndicator();
-
-                const reply = await callGemini(text);
-                removeTypingIndicator();
-                addMessage(reply, 'bot');
-            }
-
-            sendBtn.addEventListener('click', handleSend);
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') handleSend();
-            });
-        });
+**Result:**
+* Your API key is stored safely in Vercel's vault.
+* Your HTML code has **zero** secrets in it.
+* It is completely free (Vercel Hobby Tier).
     </script>
     
 </body>
