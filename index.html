@@ -677,15 +677,15 @@
 
             // Gemini API Call
             async function callGemini(userMessage) {
-           
+               
                 const apiKey = "AIzaSyC62PWcHHvAlG0l87P1Yg2De66Fg-BcDpA"; 
                 
                 if (!apiKey || apiKey === "") {
                     return "⚠️ Error: API Key is missing. Please open index.html and paste your key in line 1062.";
                 }
 
-                // Switched to 'gemini-1.5-flash-latest' 
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+                // Switched to 'gemini-1.5-flash-001' to resolve "model not found" errors
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-001:generateContent?key=${apiKey}`;
                 
                 // System context based on the website content
                 const systemPrompt = `You are an AI assistant for Aadil Faisal's portfolio website. 
