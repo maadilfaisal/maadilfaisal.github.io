@@ -3,549 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Website Title -->
-    <title>Aadil Faisal - Computer Science Student & Developer</title>
-    <!-- SEO Meta Description -->
-    <meta name="description" content="I am a Computer Science Undergrad at FAST NUCES Multan. Explore my portfolio on my personal website.">
-    <meta name="keywords" content="Aadil Faisal, Aadil Baloch, FAST NUCES, Computer Science, Portfolio, Software Developer, Multan">
-    <!-- Favicon -->
-    <link rel="icon" href="assets/img/circle-logo.png" type="image/png">
-    
-    <!-- Tailwind CSS -->
+    <title>Streamline - Clean Landing Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Remixicon for Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">
-
-
-    <!-- Custom Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        dark: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-        :root {
-            --bg-start: #f0f9ff;
-            --bg-end: #e0f2fe;
-        } 
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
-            /* Dynamic background gradient */
-            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
-            transition: background 0.8s ease-out;
-            /* Hide scrollbar but keep scrolling */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;     /* Firefox */
-        }
-        body::-webkit-scrollbar {
-            display: none;              /* Chrome, Safari, Opera */
-        }
-
-        /* Prevent scrolling while preloader is active */
-        body.loading {
-            overflow: hidden;
-        }
-
-        /* Style for the particles.js container */
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+            scroll-behavior: smooth;
         }
         
-        /* Ensure content is above the particles background but allow pointer events to pass through */
-        section {
-            position: relative;
-            z-index: 1;
-            pointer-events: none; /* Allows mouse to interact with canvas behind */
-        }
-
-        /* Re-enable pointer events for the content that needs to be interactive */
-        .content-container, .container {
-             pointer-events: auto;
-        }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            overflow-y: auto; /* allow vertical scrolling */
-        }
-
-        /* Hide scrollbar but keep scrolling */
-        html::-webkit-scrollbar, 
-        body::-webkit-scrollbar {
-            display: none;  /* Chrome, Safari, Opera */
-        }
-
-        /* Smooth transitions for interactive elements */
-        .social-icon, .skills-card, .education-card, .contact-card {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-4px) scale(1.1);
-            color: #14b8a6; /* Teal color on hover */
-        }
-
-        .skills-card:hover, .education-card:hover, .contact-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-        }
-
-        #humor-modal {
-            transition: opacity 0.3s ease;
-        }
-
-        /* Preloader Styles */
-        #preloader {
-            transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
-            visibility: visible;
-            opacity: 1;
-        }
-
-        #preloader.preloader-hidden {
+        /* Smooth fade in animation */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
             opacity: 0;
-            visibility: hidden;
+            transform: translateY(20px);
         }
-
-        /* Letter Reveal Animation */
-        .welcome-container {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2.5rem, 15vw, 8rem);
-            text-align: center;
-            color: #0d9488;
-            display: flex;
-            justify-content: center;
-        }
-
-        .welcome-container span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(30px) scale(0.9);
-            animation: revealLetter 0.6s forwards;
-        }
-
-        .welcome-container span:nth-child(1) { animation-delay: 0.1s; }
-        .welcome-container span:nth-child(2) { animation-delay: 0.2s; }
-        .welcome-container span:nth-child(3) { animation-delay: 0.3s; }
-        .welcome-container span:nth-child(4) { animation-delay: 0.4s; }
-        .welcome-container span:nth-child(5) { animation-delay: 0.5s; }
-        .welcome-container span:nth-child(6) { animation-delay: 0.6s; }
-        .welcome-container span:nth-child(7) { animation-delay: 0.7s; }
-
-
-        @keyframes revealLetter {
+        
+        @keyframes fadeIn {
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
 
-        /* Styles for the slow loading message */
-        #slow-load-message {
-            color: #0d9488; /* Teal color from the theme */
-            font-size: 0.875rem; /* 14px */
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            font-family: 'Inter', sans-serif;
-        }
-        #slow-load-message.visible {
-            opacity: 1;
-        }
-
-        /* --- New styles for text interactivity --- */
-        #home h1, #home p {
-            user-select: none; /* Prevents the I-beam cursor from showing on click */
-            cursor: default;
-        }
-        #home h1, #home p.font-semibold {
-            transition: transform 0.3s ease, text-shadow 0.3s ease;
-        }
-        #home h1:hover {
-            transform: scale(1.02);
-            text-shadow: 0px 4px 8px rgba(0,0,0,0.25); /* Enhance shadow on hover for a lift effect */
-        }
-        #home p.font-semibold:hover {
-            transform: scale(1.02);
-        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
     </style>
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "name": "Aadil Faisal",
-  "url": "https://maadilfaisal.github.io",
-  "sameAs": [
-    "https://www.linkedin.com/in/aadil-f-6b43632b6/",
-    "https://github.com/maadilfaisal",
-    "https://www.instagram.com/a4dil.f",
-    "https://www.facebook.com/aadil.baloch.1068"
-  ],
-  "jobTitle": "Computer Science Undergraduate",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "FAST NUCES Multan"
-  },
-  "alumniOf": [
-    {
-      "@type": "EducationalOrganization",
-      "name": "Akhuwat College University Kasur"
-    }
-  ]
-}
-</script>
 </head>
-<body class="text-slate-700 loading">
-    <!-- Opening Animation / Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#f0f9ff] w-full p-4">
-        <div class="welcome-container">
-            <span>W</span>
-            <span>E</span>
-            <span>L</span>
-            <span>C</span>
-            <span>O</span>
-            <span>M</span>
-            <span>E</span>
-        </div>
-        <div id="slow-load-message" class="absolute bottom-10 text-center w-full">
-            <!-- This container will be filled by JavaScript if loading is slow -->
-        </div>
-    </div>
-    
-    <div id="particles-js"></div>
+<body class="bg-slate-50 text-slate-800">
 
-        <!-- Home/Profile Section -->
-<section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
-    <div class="content-container max-w-4xl mx-auto px-6">
-        <!-- FIXED: Updated path from 'assests' to 'assets' -->
-        <img src="./assets/img/profile.jpg" 
-        alt="Aadil Faisal Profile Picture" 
-        class="w-60 h-60 rounded-full mx-auto mb-6 border-4 border-white shadow-lg" 
-        onerror="this.onerror=null;this.src='https://placehold.co/240x240/e0e7ff/4f46e5?text=Aadil';">
-
-        
-        <h1 class="text-4xl md:text-6xl font-bold text-slate-800 mb-2" style="font-family: 'Nunito', sans-serif; font-weight: 800; text-shadow: 0px 2px 4px rgba(0,0,0,0.2);">Aadil Faisal</h1>
-        <br>
-        <p class="text-lg md:text-xl text-teal-600 font-semibold mb-6">CS Undergrad @ FAST NUCES Multan</p>
-
-        <div id="socials-container" class="flex justify-center space-x-6">
-  <a
-    href="https://www.linkedin.com/in/aadil-f-6b43632b6/"
-    target="_blank"
-    class="text-teal-500 text-4xl hover:text-teal-600 transition-colors social-icon"
-  >
-    <i class="ri-linkedin-box-line"></i>
-  </a>
-  <a
-    href="https://github.com/maadilfaisal"
-    target="_blank"
-    class="text-teal-500 text-4xl hover:text-teal-600 transition-colors social-icon"
-  >
-    <i class="ri-github-line"></i>
-  </a>
-  <a
-    href="https://www.instagram.com/a4dil.f/"
-    target="_blank"
-    class="text-teal-500 text-4xl hover:text-teal-600 transition-colors social-icon"
-  >
-    <i class="ri-instagram-line"></i>
-  </a>
-</div>
-
-
-    </div>
-</section>
-
-
-        <!-- About Section -->
-        <section id="about" class="py-20">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold text-slate-800 mb-12 section-title">About Me</h2>
-                <br>
-            <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 about-card relative z-10 about-description">
-            <div class="text-left">
-                <p id="about-text" class="text-slate-600 leading-relaxed">
-                    As a passionate Computer Science undergraduate, I am deeply fascinated by the power of code to solve real-world problems. My journey is fueled by a constant curiosity and a drive to build efficient, scalable, and elegant software solutions.
-                    <br><br>
-                    I am currently honing my foundational skills in C++ and exploring the vast landscape of web technologies. My goal is to leverage my technical abilities to contribute to innovative projects and collaborate with like-minded individuals. I believe in the importance of clean code, continuous learning, and methodical problem-solving.
-                    <br><br>
-                    When I'm not coding, I enjoy strategic thinking through a game of chess. I'm excited to continue growing as a developer and to see where this path takes me next.
-                </p>
-            </div>
-            </div>
-
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md fixed w-full z-50 border-b border-slate-200 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-dark">Streamline</span>
                 </div>
-            </section>
-        <!-- Education Section -->
-<section id="education" class="py-20">
-    <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold text-slate-800 mb-12 section-title">Education</h2>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#features" class="text-slate-600 hover:text-primary transition-colors font-medium">Features</a>
+                    <a href="#how-it-works" class="text-slate-600 hover:text-primary transition-colors font-medium">How it Works</a>
+                    <a href="#testimonials" class="text-slate-600 hover:text-primary transition-colors font-medium">Stories</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-dark text-white rounded-full hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 font-medium">Get Started</a>
+                </div>
 
-        <!-- BS CS -->
-        <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
-            <!-- FIXED: Updated path from 'assests' to 'assets' -->
-            <img src="./assets/img/fast.png" alt="FAST Logo"
-                 class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
-                 onerror="this.onerror=null;this.src='https://placehold.co/128x128/e0e7ff/4f46e5?text=FAST';">
-            <div class="text-center md:text-left w-full">
-                <h3 class="text-xl md:text-2xl font-bold text-slate-800">Bachelor's - Computer Science</h3>
-                <p class="text-md md:text-lg text-teal-600 font-medium">National University of Computer & Emerging Sciences, Multan</p>
-                <p class="text-slate-500 mt-1">2025 - 2029</p>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Intermediate -->
-        <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
-            <!-- FIXED: Updated path from 'assests' to 'assets' -->
-            <img src="./assets/img/ack.jpg" alt="ACK Logo"
-                 class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
-                 onerror="this.onerror=null;this.src='https://placehold.co/128x128/e0e7ff/4f46e5?text=ACK';">
-            <div class="text-center md:text-left w-full">
-                <h3 class="text-xl md:text-2xl font-bold text-slate-800">Intermediate - Computer Science</h3>
-                <p class="text-md md:text-lg text-teal-600 font-medium">Akhuwat College University Kasur</p>
-                <p class="text-slate-500 mt-1">2023 - 2025</p>
+        <!-- Mobile Menu Panel -->
+        <div class="md:hidden hidden bg-white border-t border-slate-100 absolute w-full" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
+                <a href="#features" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Features</a>
+                <a href="#how-it-works" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">How it Works</a>
+                <a href="#testimonials" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Stories</a>
+                <a href="#contact" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-bold bg-primary text-white hover:bg-blue-700">Get Started</a>
             </div>
         </div>
+    </nav>
 
-        <!-- Matric -->
-        <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 education-card">
-            <!-- FIXED: Updated path from 'assests' to 'assets' -->
-            <img src="./assets/img/school.jpg" alt="NC Mithi Logo"
-                 class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
-                 onerror="this.onerror=null;this.src='https://placehold.co/128x128/e0e7ff/4f46e5?text=SCHOOL';">
-            <div class="text-center md:text-left w-full">
-                <h3 class="text-xl md:text-2xl font-bold text-slate-800">Matriculation - Computer Science</h3>
-                <p class="text-md md:text-lg text-teal-600 font-medium">Jinnah Public High School Mana Ahmadani</p>
-                <p class="text-slate-500 mt-1">2014 - 2023</p>
-            </div>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden relative">
+        <div class="absolute top-0 right-0 -z-10 opacity-30">
+            <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#2563EB" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-4.9C93.5,9.3,82.2,22.9,71.1,34.3C60,45.7,49.1,54.9,37.3,62.1C25.5,69.3,12.7,74.5,-0.7,75.7C-14.1,76.9,-28.2,74.1,-41.2,67.3C-54.2,60.5,-66.1,49.7,-74.6,36.5C-83.1,23.3,-88.2,7.7,-86.6,-7.1C-85,-21.9,-76.7,-35.9,-66.1,-47.5C-55.5,-59.1,-42.6,-68.3,-29.4,-76.1C-16.2,-83.9,-2.7,-90.3,11.3,-90.8C25.3,-91.3,42.5,-85.8,51.7,-76.4L44.7,-76.4Z" transform="translate(100 100)" />
+            </svg>
         </div>
-    </div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="py-20">
-    <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold text-slate-800 mb-2 section-title">Skills</h2>
-        <br>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div id="languages-card" class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md skills-card cursor-pointer">
-                <i class="ri-code-s-slash-line text-4xl text-teal-500 mb-4 inline-block"></i>
-                <h3 class="text-xl font-semibold mb-3">Languages</h3>
-                <p class="text-slate-500 skill-item">C, C++, Python (Basic)</p>
-            </div>
-            <div id="tools-card" class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md skills-card cursor-pointer">
-                <i class="ri-tools-line text-4xl text-teal-500 mb-4 inline-block"></i>
-                <h3 class="text-xl font-semibold mb-3">Tools</h3>
-                <p class="text-slate-500 skill-item">Git, GitHub, Linux</p>
-            </div>
-            <a href="https://www.chess.com/member/aadilbaloch0" target="_blank" rel="noopener noreferrer" class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md skills-card block">
-                <i class="ri-gamepad-line text-4xl text-teal-500 mb-4 inline-block"></i>
-                <h3 class="text-xl font-semibold mb-3">Hobbies</h3>
-                <p class="text-slate-500 skill-item">Chess</p>
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="py-20 pb-2">
-    <div class="container mx-auto px-6 text-center">
-        <h2 class="text-3xl font-bold text-slate-800 mb-6 section-title">Contact Me</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <a href="https://mail.google.com/mail/?view=cm&to=aadilfaisal1068@gmail.com" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center" target="_blank">
-                <i class="ri-mail-send-line text-5xl text-teal-500 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">Email</h3>
-            </a>
-            <a href="https://wa.me/923006786550" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-whatsapp-line text-5xl text-teal-500 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">WhatsApp</h3>
-            </a>
-            <a href="https://www.linkedin.com/in/aadil-f-6b43632b6/" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-linkedin-box-line text-5xl text-teal-500 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">LinkedIn</h3>
-            </a>
-            <a href="https://github.com/maadilfaisal" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-github-fill text-5xl text-teal-500 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">GitHub</h3>
-            </a>
-            <a href="https://www.instagram.com/a4dil.f" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-instagram-fill text-5xl text-teal-500 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">Instagram</h3>
-            </a>
-            <a href="https://www.facebook.com/aadil.baloch.1068" target="_blank" class="contact-card bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-md flex flex-col items-center">
-                <i class="ri-facebook-fill text-5xl text-teal-500 mb-4"></i>
-                <h3 class="text-xl font-semibold mb-2">Facebook</h3>
-            </a>
-        </div>
-        <br><br><br>
-        <p class="text-sm text-slate-400 mt-2 mb-0">&copy; 2025 Aadil Faisal. All Rights Reserved.</p>
-    </div>
-</section>
-
-<!-- Humorous Message Modal -->
-<div id="humor-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
-    <div class="bg-white p-8 rounded-2xl shadow-2xl text-center max-w-sm mx-auto">
-        <p id="humor-text" class="text-slate-700 text-lg mb-6"></p>
-        <button id="close-humor-modal" class="bg-teal-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-teal-600 transition-colors">Got it!</button>
-    </div>
-</div>
-
-    <!-- External Libraries -->
-    <!-- Particles.js for animated background -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- ScrollReveal.js for scroll animations -->
-    <script src="https://unpkg.com/scrollreveal"></script>
-    
-
-    <!-- Main JavaScript Logic -->
-    <script>
         
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- PRELOADER AND ANIMATION LOGIC ---
-            const preloader = document.getElementById('preloader');
-            const body = document.body;
-
-            body.classList.add('loading');
-            window.scrollTo(0, 0);
-
-            // --- Robust preloader removal ---
-            const hidePreloader = () => {
-                if (preloader) {
-                    preloader.classList.add('preloader-hidden');
-                    // Use a timeout that matches the CSS transition to ensure it's removed
-                    setTimeout(() => {
-                        body.classList.remove('loading');
-                        if(preloader) preloader.style.display = 'none';
-                    }, 600); // Matches the 0.6s transition in CSS
-                }
-            };
-
-            let minTimePassed = false;
-            setTimeout(() => { minTimePassed = true; }, 1500);
-
-            window.addEventListener('load', () => {
-                const check = setInterval(() => {
-                    if (minTimePassed) {
-                        clearInterval(check);
-                        hidePreloader();
-                    }
-                }, 100);
-            });
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center max-w-3xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-primary text-sm font-semibold mb-6 fade-in">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    New Version 2.0 Available
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-dark tracking-tight mb-6 leading-tight fade-in delay-100">
+                    Simplify your workflow <br>
+                    <span class="text-primary bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">without the clutter.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-10 fade-in delay-200">
+                    Focus on what matters most. Our platform helps you organize, track, and complete projects efficiently. No distractions, just results.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in delay-300">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-blue-700 text-white rounded-xl font-semibold shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-1">
+                        Start Free Trial
+                    </a>
+                    <a href="#features" class="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl font-semibold transition-all flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-circle-play"></i> Watch Demo
+                    </a>
+                </div>
+            </div>
             
-             setTimeout(hidePreloader, 5000);
+            <!-- Hero Image / Dashboard Preview -->
+            <div class="mt-16 md:mt-20 relative fade-in delay-300">
+                <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 p-2 md:p-4 max-w-5xl mx-auto transform rotate-1 hover:rotate-0 transition-transform duration-700">
+                    <div class="bg-slate-50 rounded-xl overflow-hidden aspect-video relative flex items-center justify-center border border-slate-100">
+                         <!-- Abstract UI Representation -->
+                         <div class="absolute inset-0 bg-gradient-to-br from-slate-50 to-blue-50"></div>
+                         <div class="w-3/4 h-3/4 bg-white rounded-lg shadow-sm border border-slate-200 p-6 flex flex-col gap-4 relative z-10">
+                            <div class="flex gap-4 mb-4">
+                                <div class="w-1/3 h-32 bg-slate-100 rounded animate-pulse"></div>
+                                <div class="w-1/3 h-32 bg-slate-100 rounded animate-pulse delay-100"></div>
+                                <div class="w-1/3 h-32 bg-slate-100 rounded animate-pulse delay-200"></div>
+                            </div>
+                            <div class="h-4 bg-slate-100 rounded w-full"></div>
+                            <div class="h-4 bg-slate-100 rounded w-5/6"></div>
+                            <div class="h-4 bg-slate-100 rounded w-4/6"></div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-dark mb-4">Everything you need, nothing you don't</h2>
+                <p class="text-slate-600 text-lg">We stripped away the complexity to provide a tool that feels intuitive from day one.</p>
+            </div>
 
-            const sr = ScrollReveal({
-                origin: 'top',
-                distance: '60px',
-                duration: 2000,
-                delay: 200,
-                reset: false
-            });
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-chart-pie text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Clear Analytics</h3>
+                    <p class="text-slate-600 leading-relaxed">Visualize your progress with dashboards that make sense instantly. No data science degree required.</p>
+                </div>
 
-            sr.reveal('#home h1, #home p, #home div a', { interval: 100 });
-            sr.reveal('#home img', { origin: 'bottom' });
-            sr.reveal('.section-title, .about-description', { origin: 'left' });
-            sr.reveal('.skills-card', { interval: 100 });
-            sr.reveal('.education-card', { origin: 'bottom' });
-            sr.reveal('.contact-card', { interval: 100, origin: 'bottom' });
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bolt text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Lightning Fast</h3>
+                    <p class="text-slate-600 leading-relaxed">Built for speed. Pages load in milliseconds so you never break your flow state.</p>
+                </div>
 
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center text-teal-600 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">Secure by Design</h3>
+                    <p class="text-slate-600 leading-relaxed">Enterprise-grade security without the enterprise-grade headaches. Your data is safe with us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stat/Social Proof -->
+    <section class="py-16 bg-dark text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-slate-700">
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-blue-400 mb-2">10k+</div>
+                    <div class="text-slate-400">Active Users</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-blue-400 mb-2">99.9%</div>
+                    <div class="text-slate-400">Uptime</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-blue-400 mb-2">24/7</div>
+                    <div class="text-slate-400">Support</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-blue-400 mb-2">4.9/5</div>
+                    <div class="text-slate-400">User Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Static Contact Section (No Chat Widget) -->
+    <section id="contact" class="py-20 bg-slate-50 relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-slate-100">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-dark mb-4">Get in Touch</h2>
+                    <p class="text-slate-600">Have questions? Fill out the form below and we'll send you an email. No bots, just humans.</p>
+                </div>
+
+                <form class="space-y-6" onsubmit="event.preventDefault(); showSuccess();">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">First Name</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="John">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Doe">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Email Address</label>
+                        <input type="email" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="john@example.com">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-primary hover:bg-blue-700 text-white font-bold rounded-lg shadow-lg shadow-blue-500/20 transition-all transform active:scale-95">
+                        Send Message
+                    </button>
+                    
+                    <p class="text-center text-xs text-slate-400 mt-4">
+                        By clicking send, you agree to our Terms of Service and Privacy Policy.
+                    </p>
+                </form>
+
+                <!-- Success Message (Hidden by default) -->
+                <div id="success-message" class="hidden mt-6 p-4 bg-green-50 text-green-700 rounded-lg text-center border border-green-200">
+                    <i class="fa-solid fa-check-circle mr-2"></i> Message sent successfully! We'll get back to you soon.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 bg-primary rounded flex items-center justify-center text-white text-xs">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <span class="font-bold text-lg text-dark">Streamline</span>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Making workflow management simple, effective, and beautiful.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-dark mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-primary">Features</a></li>
+                        <li><a href="#" class="hover:text-primary">Pricing</a></li>
+                        <li><a href="#" class="hover:text-primary">Integrations</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-dark mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-primary">About Us</a></li>
+                        <li><a href="#" class="hover:text-primary">Careers</a></li>
+                        <li><a href="#" class="hover:text-primary">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-dark mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-primary">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-primary">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
             
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": { "value": 150, "density": { "enable": true, "value_area": 800 } },
-                     "color": { "value": ["#14b8a6", "#2dd4bf", "#5eead4", "#a7f3d0"] },
-                    "shape": { "type": "circle" },
-                    "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                    "size": { "value": 3, "random": true, "anim": { "enable": false } },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#99f6e4", "opacity": 0.2, "width": 1 },
-                    "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true  },
-                    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } }, "bubble": {}, "repulse": {}, "push": {}, "remove": {} }
-                },
-                "retina_detect": true
-            });
+            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-slate-400">&copy; 2024 Streamline Inc. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-slate-400 hover:text-slate-600"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-slate-600"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-slate-600"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-            const languagesCard = document.getElementById('languages-card');
-            const toolsCard = document.getElementById('tools-card');
-            const humorModal = document.getElementById('humor-modal');
-            const humorText = document.getElementById('humor-text');
-            const closeHumorModalBtn = document.getElementById('close-humor-modal');
+    <script>
+        // Mobile menu toggle logic
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
 
-            const showHumorModal = (message) => {
-                humorText.textContent = message;
-                humorModal.classList.remove('hidden');
-                humorModal.classList.add('flex');
-            };
-
-            const hideHumorModal = () => {
-                humorModal.classList.add('hidden');
-                humorModal.classList.remove('flex');
-            };
-
-            const languagesMessage = "You clicked the 'Languages' card! While this card doesn't speak C++ or Python, it does speak the language of 'You're Awesome!' ✨";
-            const toolsMessage = "Ah, the 'Tools' card! This one isn't a hammer or a wrench, but it's here to build up your confidence. Keep being amazing! 🚀";
-
-            if (languagesCard) languagesCard.addEventListener('click', () => showHumorModal(languagesMessage));
-            if (toolsCard) toolsCard.addEventListener('click', () => showHumorModal(toolsMessage));
-            if (closeHumorModalBtn) closeHumorModalBtn.addEventListener('click', hideHumorModal);
-            if (humorModal) humorModal.addEventListener('click', (e) => {
-                if (e.target === humorModal) hideHumorModal();
-            });
-            
-            // --- MORE PERFORMANT BACKGROUND CHANGE ---
-            const sections = document.querySelectorAll('section');
-            const root = document.documentElement;
-            const colorMap = {
-                'home': ['#f0f9ff', '#e0f2fe'],        // Sky Blue
-                'about': ['#f0fdfa', '#ccfbf1'],       // Teal/Mint
-                'education': ['#ecfdf5', '#d1fae5'], // Green/Mint
-                'skills': ['#f0fdfa', '#ccfbf1'],      // Teal/Mint again
-                'contact': ['#f0f9ff', '#e0f2fe']      // Back to Sky Blue
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const newColors = colorMap[entry.target.id];
-                        if (newColors) {
-                            root.style.setProperty('--bg-start', newColors[0]);
-                            root.style.setProperty('--bg-end', newColors[1]);
-                        }
-                    }
-                });
-            }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
         });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-sm');
+            }
+        });
+
+        // Simple form success simulation
+        function showSuccess() {
+            const form = document.querySelector('form');
+            const msg = document.getElementById('success-message');
+            form.style.display = 'none';
+            msg.classList.remove('hidden');
+        }
     </script>
-    
-    <!-- Start of Tawk.to Script -->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/6956984e25fb2b197f082ef1/1jdt45tsf';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!-- End of Tawk.to Script -->
-    
 </body>
 </html>
