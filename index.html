@@ -237,6 +237,15 @@
             border-bottom-left-radius: 2px;
         }
 
+        .message.system {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            align-self: center;
+            text-align: center;
+            font-size: 0.8rem;
+            max-width: 90%;
+        }
+
         .typing-indicator span {
             display: inline-block;
             width: 6px;
@@ -675,16 +684,35 @@
                 if (typing) typing.remove();
             }
 
+            // Function to list models if standard fetch fails
+            async function listAvailableModels(apiKey) {
+                const listUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`;
+                try {
+                    const response = await fetch(listUrl);
+                    const data = await response.json();
+                    if (data.models) {
+                        const modelNames = data.models.map(m => m.name.replace('models/', ''));
+                        return `I found these models available for your key: ${modelNames.join(', ')}. Please update line 1070 in the code with one of these.`;
+                    }
+                    return "Could not retrieve model list. Please check your API key permissions.";
+                } catch (e) {
+                    return "Diagnostic failed. Check network connection.";
+                }
+            }
+
             // Gemini API Call
             async function callGemini(userMessage) {
+                // ---------------------------------------------------------
+                // ⚠️ IMPORTANT: PASTE YOUR API KEY BELOW
+                // ---------------------------------------------------------
                 const apiKey = "AIzaSyC62PWcHHvAlG0l87P1Yg2De66Fg-BcDpA"; 
                 
                 if (!apiKey || apiKey === "") {
                     return "⚠️ Error: API Key is missing. Please open index.html and paste your key in line 1062.";
                 }
 
-                // Switched to 'gemini-pro' (1.0 Stable) which is extremely reliable if 1.5 is giving Not Found errors
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`;
+                // Using standard gemini-1.5-flash for v1beta
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
                 
                 // System context based on the website content
                 const systemPrompt = `You are an AI assistant for Aadil Faisal's portfolio website. 
@@ -705,11 +733,8 @@
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            // gemini-pro (1.0) works best when system instructions are part of the prompt history
-                            contents: [{ 
-                                role: "user",
-                                parts: [{ text: systemPrompt + "\n\nUser Question: " + userMessage }] 
-                            }]
+                            contents: [{ parts: [{ text: userMessage }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] }
                         })
                     });
 
@@ -718,6 +743,13 @@
                     // Check if Google returned an error (like 400 or 403)
                     if (data.error) {
                         console.error("Gemini API Error:", data.error);
+                        
+                        // If model not found, run diagnostic
+                        if (data.error.message.includes("not found") || data.error.code === 404) {
+                             const diagnosticMsg = await listAvailableModels(apiKey);
+                             return `⚠️ Model Error: The model 'gemini-1.5-flash' was not found. \n\n${diagnosticMsg}`;
+                        }
+
                         // Enhanced error handling for quota issues
                         if (data.error.code === 429) {
                             return "⏳ Traffic is high! I'm taking a quick breather. Please ask me again in 60 seconds.";
