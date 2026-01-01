@@ -708,32 +708,64 @@
                 if (typing) typing.remove();
             }
 
-            // Gemini API Call (Now via Vercel Backend)
+            // Gemini API Call (Hybrid Approach for Testing & Production)
             async function callGemini(userMessage) {
-                // Notice: NO API KEY HERE! It's safe. The key is in Vercel env variables.
-                const url = '/api/chat'; 
+                // -------------------------------------------------------------
+                // 🛑 FOR LOCAL TESTING ONLY: Paste your API key below.
+                // ⚠️ IMPORTANT: Remove this key before deploying to Vercel/GitHub!
+                // -------------------------------------------------------------
+                const TEST_API_KEY = ""; 
 
+                // 1. Direct Client-Side Call (For Preview/Testing)
+                if (TEST_API_KEY) {
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key=${TEST_API_KEY}`;
+                    
+                    const systemPrompt = `You are an AI assistant for Aadil Faisal's portfolio website. 
+                    Be polite, concise, and helpful. Answer questions based on this context:
+                    - Name: Aadil Faisal
+                    - Role: Computer Science Undergraduate
+                    - Institution: FAST NUCES Multan (2025-2029)
+                    - Previous Education: Akhuwat College University Kasur (Intermediate 2023-2025), Jinnah Public High School (Matric).
+                    - Skills: C, C++, Python (Basic), Git, GitHub, Linux.
+                    - Hobbies: Chess.
+                    - Contact: Email (aadilfaisal1068@gmail.com), LinkedIn, GitHub, Instagram.
+                    If asked something outside this scope, politely say you only know about Aadil's professional profile.`;
+
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                contents: [{ parts: [{ text: userMessage }] }],
+                                systemInstruction: { parts: [{ text: systemPrompt }] }
+                            })
+                        });
+                        const data = await response.json();
+                        if (data.error) return `⚠️ API Error: ${data.error.message}`;
+                        return data.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No response.";
+                    } catch (error) {
+                        return "⚠️ Connection Error (Test Mode).";
+                    }
+                }
+
+                // 2. Safety Check for Preview Environment
+                // The error "Failed to parse URL" happens because fetch('/api/chat') 
+                // fails in blob/preview environments without a base domain.
+                if (window.location.protocol === 'blob:' || window.location.href.includes('googleusercontent')) {
+                     return "⚠️ Setup Required: To use the bot in this preview, please open the code and paste your API Key into the TEST_API_KEY variable (around line 1060).";
+                }
+
+                // 3. Secure Vercel Backend Call (For Production)
+                const url = '/api/chat'; 
                 try {
                     const response = await fetch(url, {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        // We only send the message. The system prompt is hidden on the server.
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ message: userMessage })
                     });
-
                     const data = await response.json();
-
-                    if (data.error) {
-                        return "⚠️ Error: " + data.error;
-                    }
-
-                    if (!data.candidates || !data.candidates[0].content) {
-                        return "⚠️ Error: No response from AI.";
-                    }
-
-                    return data.candidates[0].content.parts[0].text;
+                    if (data.error) return "⚠️ Error: " + data.error;
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No response from AI.";
                 } catch (error) {
                     console.error('Error:', error);
                     return "⚠️ Connection Error. Ensure you are running on Vercel.";
