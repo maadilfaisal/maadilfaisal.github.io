@@ -14,8 +14,8 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error: API Key missing' });
   }
 
-  // Switched to gemini-2.5-pro as requested
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key=${apiKey}`;
+  // Switched to gemini-2.5-flash-lite as requested
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
 
   // 4. Define the System Prompt here (So users can't see/change it)
   const systemPrompt = `You are an AI assistant for Aadil Faisal's portfolio website. 
