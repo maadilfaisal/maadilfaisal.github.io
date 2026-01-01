@@ -714,7 +714,7 @@
                 // 🛑 FOR LOCAL TESTING ONLY: Paste your API key below.
                 // ⚠️ IMPORTANT: Remove this key before deploying to Vercel/GitHub!
                 // -------------------------------------------------------------
-                const TEST_API_KEY = ""; 
+                const TEST_API_KEY = "AIzaSyAoP6knAqmVUsyuBiYaAjqE11LGsBtXX70"; 
 
                 // 1. Direct Client-Side Call (For Preview/Testing)
                 if (TEST_API_KEY) {
@@ -764,7 +764,22 @@
                         body: JSON.stringify({ message: userMessage })
                     });
                     const data = await response.json();
-                    if (data.error) return "⚠️ Error: " + data.error;
+                    if (data.error) {
+                        // Check if error is a string (custom backend error) or object (Google API error)
+                        let errorMessage = "";
+                        if (typeof data.error === 'string') {
+                            errorMessage = data.error;
+                        } else if (data.error.message) {
+                            errorMessage = data.error.message;
+                        } else {
+                            errorMessage = JSON.stringify(data.error);
+                        }
+
+                        if (errorMessage.includes("API Key missing")) {
+                            return "⚠️ Deployment Issue: Vercel environment variable 'GEMINI_API_KEY' is missing. Go to Vercel Settings > Environment Variables, add the key, and then Redeploy.";
+                        }
+                        return "⚠️ Error: " + errorMessage;
+                    }
                     return data.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No response from AI.";
                 } catch (error) {
                     console.error('Error:', error);
