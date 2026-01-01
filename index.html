@@ -16,7 +16,6 @@
     
     <!-- Remixicon for Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Google Fonts -->
@@ -227,10 +226,11 @@
         <!-- Home/Profile Section -->
 <section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden">
     <div class="content-container max-w-4xl mx-auto px-6">
-        <img src="./assests/img/profile.jpg" 
+        <!-- FIXED: Updated path from 'assests' to 'assets' -->
+        <img src="./assets/img/profile.jpg" 
         alt="Aadil Faisal Profile Picture" 
         class="w-60 h-60 rounded-full mx-auto mb-6 border-4 border-white shadow-lg" 
-        onerror="this.onerror=null;this.src='https://placehold.co/150x150/e0e7ff/4f46e5?text=Aadil';">
+        onerror="this.onerror=null;this.src='https://placehold.co/240x240/e0e7ff/4f46e5?text=Aadil';">
 
         
         <h1 class="text-4xl md:text-6xl font-bold text-slate-800 mb-2" style="font-family: 'Nunito', sans-serif; font-weight: 800; text-shadow: 0px 2px 4px rgba(0,0,0,0.2);">Aadil Faisal</h1>
@@ -292,9 +292,10 @@
 
         <!-- BS CS -->
         <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
-            <img src="./assests/img/fast.png" alt="FAST Logo"
+            <!-- FIXED: Updated path from 'assests' to 'assets' -->
+            <img src="./assets/img/fast.png" alt="FAST Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
-                 onerror="this.onerror=null;this.src='https://placehold.co/100x100/e0e7ff/4f46e5?text=FAST';">
+                 onerror="this.onerror=null;this.src='https://placehold.co/128x128/e0e7ff/4f46e5?text=FAST';">
             <div class="text-center md:text-left w-full">
                 <h3 class="text-xl md:text-2xl font-bold text-slate-800">Bachelor's - Computer Science</h3>
                 <p class="text-md md:text-lg text-teal-600 font-medium">National University of Computer & Emerging Sciences, Multan</p>
@@ -304,9 +305,10 @@
 
         <!-- Intermediate -->
         <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 mb-8 education-card">
-            <img src="./assests/img/ack.jpg" alt="ACK Logo"
+            <!-- FIXED: Updated path from 'assests' to 'assets' -->
+            <img src="./assets/img/ack.jpg" alt="ACK Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
-                 onerror="this.onerror=null;this.src='https://placehold.co/100x100/e0e7ff/4f46e5?text=ACK';">
+                 onerror="this.onerror=null;this.src='https://placehold.co/128x128/e0e7ff/4f46e5?text=ACK';">
             <div class="text-center md:text-left w-full">
                 <h3 class="text-xl md:text-2xl font-bold text-slate-800">Intermediate - Computer Science</h3>
                 <p class="text-md md:text-lg text-teal-600 font-medium">Akhuwat College University Kasur</p>
@@ -316,9 +318,10 @@
 
         <!-- Matric -->
         <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm p-4 md:p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-4 md:gap-6 education-card">
-            <img src="./assests/img/school.jpg" alt="NC Mithi Logo"
+            <!-- FIXED: Updated path from 'assests' to 'assets' -->
+            <img src="./assets/img/school.jpg" alt="NC Mithi Logo"
                  class="w-24 h-24 md:w-32 md:h-32 rounded-full mb-4 md:mb-0"
-                 onerror="this.onerror=null;this.src='https://placehold.co/100x100/e0e7ff/4f46e5?text=SCHOOL';">
+                 onerror="this.onerror=null;this.src='https://placehold.co/128x128/e0e7ff/4f46e5?text=SCHOOL';">
             <div class="text-center md:text-left w-full">
                 <h3 class="text-xl md:text-2xl font-bold text-slate-800">Matriculation - Computer Science</h3>
                 <p class="text-md md:text-lg text-teal-600 font-medium">Jinnah Public High School Mana Ahmadani</p>
@@ -505,11 +508,11 @@
             const sections = document.querySelectorAll('section');
             const root = document.documentElement;
             const colorMap = {
-                'home': ['#f0f9ff', '#e0f2fe'],       // Sky Blue
-                'about': ['#f0fdfa', '#ccfbf1'],      // Teal/Mint
+                'home': ['#f0f9ff', '#e0f2fe'],        // Sky Blue
+                'about': ['#f0fdfa', '#ccfbf1'],       // Teal/Mint
                 'education': ['#ecfdf5', '#d1fae5'], // Green/Mint
-                'skills': ['#f0fdfa', '#ccfbf1'],     // Teal/Mint again
-                'contact': ['#f0f9ff', '#e0f2fe']     // Back to Sky Blue
+                'skills': ['#f0fdfa', '#ccfbf1'],      // Teal/Mint again
+                'contact': ['#f0f9ff', '#e0f2fe']      // Back to Sky Blue
             };
 
             const observer = new IntersectionObserver((entries) => {
@@ -530,19 +533,19 @@
         });
     </script>
     
-  <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6956984e25fb2b197f082ef1/1jdt45tsf';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+    <!-- Start of Tawk.to Script -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6956984e25fb2b197f082ef1/1jdt45tsf';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!-- End of Tawk.to Script -->
     
 </body>
 </html>
