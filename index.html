@@ -178,6 +178,82 @@
         #home p.font-semibold:hover {
             transform: scale(1.02);
         }
+
+        /* Chat Widget Styles */
+        #chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        #chat-window {
+            display: none;
+            flex-direction: column;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #chat-messages {
+            flex-grow: 1;
+            padding: 16px;
+            overflow-y: auto;
+            background-color: #f9fafb;
+        }
+
+        .message {
+            margin-bottom: 12px;
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .message.user {
+            background-color: #0d9488;
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+            border-bottom-right-radius: 2px;
+        }
+
+        .message.bot {
+            background-color: #e5e7eb;
+            color: #1f2937;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+            margin: 0 1px;
+        }
+        
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
     </style>
     <script type="application/ld+json">
 {
@@ -395,6 +471,34 @@
     </div>
 </div>
 
+<!-- Gemini Chat Widget Structure -->
+<div id="chat-widget-container">
+    <div id="chat-window">
+        <div class="bg-teal-600 text-white p-4 flex justify-between items-center shadow-sm">
+            <div class="flex items-center gap-2">
+                <i class="ri-robot-2-line text-xl"></i>
+                <h3 class="font-semibold">Aadil's AI Assistant</h3>
+            </div>
+            <button id="close-chat" class="hover:bg-teal-700 p-1 rounded transition-colors"><i class="ri-close-line text-xl"></i></button>
+        </div>
+        <div id="chat-messages">
+            <div class="message bot">
+                Hi there! I'm Aadil's AI assistant. Ask me anything about his skills, education, or experience! 🤖
+            </div>
+        </div>
+        <div class="p-4 bg-white border-t border-gray-100 flex gap-2">
+            <input type="text" id="chat-input" placeholder="Type your message..." class="flex-grow px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 text-sm">
+            <button id="send-message" class="bg-teal-600 text-white p-2 rounded-full hover:bg-teal-700 transition-colors w-10 h-10 flex items-center justify-center shadow-md">
+                <i class="ri-send-plane-fill"></i>
+            </button>
+        </div>
+    </div>
+    
+    <button id="chat-toggle" class="bg-teal-600 text-white w-14 h-14 rounded-full shadow-lg hover:bg-teal-700 transition-all hover:scale-110 flex items-center justify-center mt-4 ml-auto pointer-events-auto">
+        <i class="ri-chat-smile-2-fill text-2xl"></i>
+    </button>
+</div>
+
     <!-- External Libraries -->
     <!-- Particles.js for animated background -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -526,6 +630,109 @@
 
             sections.forEach(section => {
                 observer.observe(section);
+            });
+            
+            // --- GEMINI CHATBOT LOGIC ---
+            const chatToggle = document.getElementById('chat-toggle');
+            const chatWindow = document.getElementById('chat-window');
+            const closeChat = document.getElementById('close-chat');
+            const chatInput = document.getElementById('chat-input');
+            const sendBtn = document.getElementById('send-message');
+            const messagesContainer = document.getElementById('chat-messages');
+
+            // Toggle Chat
+            chatToggle.addEventListener('click', () => {
+                chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+                chatToggle.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+                if(chatWindow.style.display === 'flex') chatInput.focus();
+            });
+
+            closeChat.addEventListener('click', () => {
+                chatWindow.style.display = 'none';
+                chatToggle.style.display = 'flex';
+            });
+
+            // Add Message Function
+            function addMessage(text, sender) {
+                const div = document.createElement('div');
+                div.className = `message ${sender}`;
+                div.textContent = text;
+                messagesContainer.appendChild(div);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            function addTypingIndicator() {
+                const div = document.createElement('div');
+                div.className = `message bot typing-indicator`;
+                div.id = 'typing';
+                div.innerHTML = '<span></span><span></span><span></span>';
+                messagesContainer.appendChild(div);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            function removeTypingIndicator() {
+                const typing = document.getElementById('typing');
+                if (typing) typing.remove();
+            }
+
+            // Gemini API Call
+            async function callGemini(userMessage) {
+                // NOTE: For security in production, do not expose API keys in frontend code.
+                // This is for demonstration in the preview environment.
+                const apiKey = ""; 
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                
+                // System context based on the website content
+                const systemPrompt = `You are an AI assistant for Aadil Faisal's portfolio website. 
+                Be polite, concise, and helpful. Answer questions based on this context:
+                - Name: Aadil Faisal
+                - Role: Computer Science Undergraduate
+                - Institution: FAST NUCES Multan (2025-2029)
+                - Previous Education: Akhuwat College University Kasur (Intermediate 2023-2025), Jinnah Public High School (Matric).
+                - Skills: C, C++, Python (Basic), Git, GitHub, Linux.
+                - Hobbies: Chess.
+                - Contact: Email (aadilfaisal1068@gmail.com), LinkedIn, GitHub, Instagram.
+                If asked something outside this scope, politely say you only know about Aadil's professional profile.`;
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: userMessage }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] }
+                        })
+                    });
+
+                    if (!response.ok) throw new Error('API Error');
+
+                    const data = await response.json();
+                    return data.candidates[0].content.parts[0].text;
+                } catch (error) {
+                    console.error('Error:', error);
+                    return "Sorry, I'm having trouble connecting to the brain right now. Please try again later!";
+                }
+            }
+
+            // Handle Send
+            async function handleSend() {
+                const text = chatInput.value.trim();
+                if (!text) return;
+
+                addMessage(text, 'user');
+                chatInput.value = '';
+                addTypingIndicator();
+
+                const reply = await callGemini(text);
+                removeTypingIndicator();
+                addMessage(reply, 'bot');
+            }
+
+            sendBtn.addEventListener('click', handleSend);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') handleSend();
             });
         });
     </script>
