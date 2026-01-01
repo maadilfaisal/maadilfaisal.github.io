@@ -714,12 +714,11 @@
                 // 🛑 FOR LOCAL TESTING ONLY: Paste your API key below.
                 // ⚠️ IMPORTANT: Remove this key before deploying to Vercel/GitHub!
                 // -------------------------------------------------------------
-                const TEST_API_KEY = "AIzaSyAoP6knAqmVUsyuBiYaAjqE11LGsBtXX70"; 
+                const TEST_API_KEY = ""; 
 
                 // 1. Direct Client-Side Call (For Preview/Testing)
                 if (TEST_API_KEY) {
-                    // Switched to 'gemini-2.0-flash' which is in your available list and has a free tier
-                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${TEST_API_KEY}`;
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${TEST_API_KEY}`;
                     
                     const systemPrompt = `You are an AI assistant for Aadil Faisal's portfolio website. 
                     Be polite, concise, and helpful. Answer questions based on this context:
