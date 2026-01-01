@@ -692,11 +692,11 @@
                     const data = await response.json();
                     if (data.models) {
                         const modelNames = data.models.map(m => m.name.replace('models/', ''));
-                        return `I found these models available for your key: ${modelNames.join(', ')}. Please update line 1070 in the code with one of these.`;
+                        return `Available models: ${modelNames.join(', ')}`;
                     }
-                    return "Could not retrieve model list. Please check your API key permissions.";
+                    return "Could not retrieve model list.";
                 } catch (e) {
-                    return "Diagnostic failed. Check network connection.";
+                    return "Diagnostic failed.";
                 }
             }
 
@@ -711,8 +711,8 @@
                     return "⚠️ Error: API Key is missing. Please open index.html and paste your key in line 1062.";
                 }
 
-                // Using standard gemini-1.5-flash for v1beta
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+                // Switched to 'gemini-2.0-flash' which is in your available list and more stable than 2.5
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
                 
                 // System context based on the website content
                 const systemPrompt = `You are an AI assistant for Aadil Faisal's portfolio website. 
@@ -744,16 +744,16 @@
                     if (data.error) {
                         console.error("Gemini API Error:", data.error);
                         
-                        // If model not found, run diagnostic
+                        // Quota error handling
+                        if (data.error.code === 429) {
+                            return "⏳ I'm overwhelmed right now (Quota Exceeded). Please try again in a minute!";
+                        }
+                        
+                        // Model not found handling
                         if (data.error.message.includes("not found") || data.error.code === 404) {
-                             const diagnosticMsg = await listAvailableModels(apiKey);
-                             return `⚠️ Model Error: The model 'gemini-1.5-flash' was not found. \n\n${diagnosticMsg}`;
+                             return `⚠️ Configuration Error: The model 'gemini-2.0-flash' is not enabled for your key.`;
                         }
 
-                        // Enhanced error handling for quota issues
-                        if (data.error.code === 429) {
-                            return "⏳ Traffic is high! I'm taking a quick breather. Please ask me again in 60 seconds.";
-                        }
                         return `⚠️ API Error: ${data.error.message}`;
                     }
 
