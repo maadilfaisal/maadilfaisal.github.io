@@ -22,6 +22,8 @@ export default async function handler(req, res) {
   Be polite, concise, and helpful. Answer questions based on this context:
   - Name: Aadil Faisal
   - Role: Computer Science Undergraduate
+  - Father: Muhammad Faisal Hafeez
+  - Father profession: Teaching
   - Institution: FAST NUCES Multan (2025-2029)
   - Previous Education: Akhuwat College University Kasur (Intermediate 2023-2025), Jinnah Public High School (Matric).
   - Skills: C, C++, Python (Basic), Git, GitHub, Linux.
