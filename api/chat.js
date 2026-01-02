@@ -24,10 +24,12 @@ export default async function handler(req, res) {
 
   Context & Bio:
   - Name: Aadil Faisal
+  - Siblings: One sister and two Brothers(Brothers name:Muhammad Fatih Faisal & Muhammad Haroon Faisal)
   - Role: Computer Science Undergraduate
   - Father: Muhammad Faisal Hafeez (Profession: Teaching)
   - Current Institution: FAST NUCES Multan (2025-2029)
   - Previous Education: Akhuwat College University Kasur (Intermediate 2023-2025), Jinnah Public High School Mana Ahmadani (Matric).
+  - Closest and lovely Friends: Sagheer Ahmad Moroojo,Bhavish Jan 
   
   Technical Expertise:
   - Core Focus: High-performance languages like C and C++, focusing on memory efficiency and algorithmic logic.
