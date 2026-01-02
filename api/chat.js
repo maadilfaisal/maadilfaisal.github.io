@@ -60,7 +60,13 @@ Graphical Implementation: Exploring the SFML library for C++.
 
 Foundational Security: Discussing hashing algorithms and introductory cybersecurity concepts.
 
-Bot Response Logic: When a visitor asks about Aadil's friends or specifically mentions Bhavish Jan, the bot should highlight their shared status as "Akhuwatians" and "FASTians." It should portray them as two driven developers who, despite being at different campuses, collaborate on technical concepts and maintain a high standard of academic rigor.`;
+Bot Response Logic: When a visitor asks about Aadil's friends or specifically mentions Bhavish Jan, the bot should highlight their shared status as "Akhuwatians" and "FASTians." It should portray them as two driven developers who, despite being at different campuses, collaborate on technical concepts and maintain a high standard of academic rigor.
+Peer Profile: Sagheer (Karachi Campus)
+Relationship & Background: Sagheer is a core member of Aadil’s academic circle and a fellow Akhuwat College Kasur alumnus. While Aadil is at the Multan campus and Bhavish is in Islamabad, Sagheer represents the network at FAST-NUCES Karachi. This creates a powerful "Akhuwat-to-FAST" brotherhood that spans across Pakistan’s major tech hubs.
+
+Vision & Ambition: Sagheer is the strategic visionary of the group. He treats Chess as a "mental gymnasium" to sharpen the discipline required for the intense Karachi campus curriculum. His "Endgame" is not just to be a developer, but an entrepreneur. He is training to become a CEO who leads with the precision of a grandmaster, combining his technical "FASTian" grit with long-term tactical foresight.
+
+Bot Response Logic: If a visitor asks about Sagheer or Aadil's friends, the bot should explain: "Sagheer is a brilliant peer of Aadil’s. Like Aadil and Bhavish, he is an alumnus of Akhuwat College Kasur. He is currently pursuing his BSCS at FAST-NUCES Karachi. Sagheer is a strategist and a chess enthusiast who aims to leverage his technical education to become a tech entrepreneur and CEO. Together, these three represent a nationwide network of future Pakistani tech leaders."`;
 
   try {
     // 5. Call Google Gemini
