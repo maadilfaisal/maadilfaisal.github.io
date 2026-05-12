@@ -1,791 +1,281 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO -->
+    <!-- Website Title -->
     <title>Aadil Faisal - Computer Science Student & Developer</title>
-
-    <meta name="description"
-        content="I am a Computer Science Undergraduate at FAST NUCES Multan. Explore my portfolio, skills, projects, and professional journey.">
-
-    <meta name="keywords"
-        content="Aadil Faisal, Aadil Baloch, FAST NUCES, Computer Science, Portfolio, Software Developer, Multan">
-
+    <!-- SEO Meta Description -->
+    <meta name="description" content="I am a Computer Science Undergrad at FAST NUCES Multan. Explore my portfolio on my personal website.">
+    <meta name="keywords" content="Aadil Faisal, Aadil Baloch, FAST NUCES, Computer Science, Portfolio, Software Developer, Multan">
+    <!-- Favicon -->
     <link rel="icon" href="assests/img/profile.jpg" type="image/png">
-
-    <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Tailwind -->
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <!-- Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Schema -->
-    <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "Person",
-  "name": "Aadil Faisal",
-  "url": "https://maadilfaisal.github.io",
-  "sameAs": [
-    "https://www.linkedin.com/in/aadil-f-6b43632b6/",
-    "https://github.com/maadilfaisal",
-    "https://www.instagram.com/a4dil.f",
-    "https://www.facebook.com/aadil.baloch.1068"
-  ],
-  "jobTitle": "Computer Science Undergraduate",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "FAST NUCES Multan"
-  }
-}
-</script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            scroll-behavior: smooth;
-            box-sizing: border-box;
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --slate-900: #0f172a;
         }
-
+        
         body {
             font-family: 'Inter', sans-serif;
-            background:
-                radial-gradient(circle at top left, rgba(20, 184, 166, 0.08), transparent 25%),
-                radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.06), transparent 25%),
-                #f8fafc;
-            color: #0f172a;
-            overflow-x: hidden;
+            background-color: #f8fafc;
+            color: #334155;
+            scroll-behavior: smooth;
         }
 
-        body::-webkit-scrollbar {
-            display: none;
+        h1, h2, h3, .nav-logo {
+            font-family: 'Outfit', sans-serif;
         }
 
-        /* Navbar */
-
-        nav {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: #64748b;
-            font-weight: 600;
-            text-decoration: none;
-            transition: .2s ease;
-        }
-
-        .nav-links a:hover {
-            color: #0f766e;
-        }
-
-        /* Particles */
-
+        /* Particles Layer Fix */
         #particles-js {
             position: fixed;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
-            opacity: .35;
+            pointer-events: none;
         }
 
+        /* Professional Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Section Spacing */
         section {
             position: relative;
             z-index: 1;
-            padding: 100px 24px;
+            padding: 100px 0;
         }
 
-        /* Hero */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 10px; }
 
-        #home {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .hero-img {
-            width: 180px;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 999px;
-            border: 6px solid white;
-            box-shadow:
-                0 10px 30px rgba(15, 23, 42, .08),
-                0 2px 8px rgba(15, 23, 42, .05);
-            margin: auto;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            margin-top: 24px;
-        }
-
-        .hero-subtitle {
-            color: #64748b;
-            font-size: 1.1rem;
-            margin-top: 12px;
-        }
-
-        /* Social */
-
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-            margin-top: 30px;
-        }
-
-        .social-icon {
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: #0f766e;
-            border: 1px solid #e2e8f0;
-            transition: .25s ease;
-            box-shadow: 0 2px 10px rgba(15, 23, 42, .04);
-        }
-
-        .social-icon:hover {
-            background: #0f766e;
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Sections */
-
-        .section-title {
-            text-align: center;
-            font-size: 2.4rem;
-            font-weight: 800;
-            margin-bottom: 50px;
-            letter-spacing: -0.03em;
-        }
-
-        /* Cards */
-
-        .card {
-            background: rgba(255, 255, 255, .85);
-            border: 1px solid rgba(226, 232, 240, .8);
-            border-radius: 24px;
-            padding: 32px;
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            transition: .25s ease;
-            box-shadow:
-                0 4px 20px rgba(15, 23, 42, .04);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow:
-                0 12px 40px rgba(15, 23, 42, .08);
-        }
-
-        /* About */
-
-        .about-text {
-            line-height: 1.9;
-            color: #475569;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        /* Education */
-
-        .education-grid {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            gap: 24px;
-        }
-
-        .education-card {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .education-card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 999px;
-            object-fit: cover;
-        }
-
-        /* Skills */
-
-        .skills-grid,
-        .contact-grid {
-            max-width: 1000px;
-            margin: auto;
-            display: grid;
-            gap: 24px;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        }
-
-        .skill-icon,
-        .contact-icon {
-            font-size: 3rem;
-            color: #0f766e;
-            margin-bottom: 18px;
-        }
-
-        /* Footer */
-
-        footer {
-            text-align: center;
-            color: #94a3b8;
-            padding: 40px 20px;
-        }
-
-        /* Chat */
-
-        #chat-widget-container {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 9999;
-        }
-
-        #chat-window {
-            width: 360px;
-            height: 520px;
-            background: white;
-            border-radius: 24px;
-            overflow: hidden;
-            display: none;
-            flex-direction: column;
-            border: 1px solid #e2e8f0;
-            box-shadow:
-                0 20px 60px rgba(15, 23, 42, .18);
-        }
-
-        .chat-header {
-            background: #0f172a;
-            color: white;
-            padding: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 18px;
-            background: #f8fafc;
-        }
-
-        .message {
-            padding: 12px 16px;
-            border-radius: 16px;
-            margin-bottom: 14px;
-            max-width: 80%;
-            font-size: .92rem;
-        }
-
-        .bot {
-            background: #e2e8f0;
-            color: #334155;
-        }
-
-        .user {
-            background: #0f172a;
-            color: white;
-            margin-left: auto;
-        }
-
-        .chat-input-area {
-            display: flex;
-            padding: 14px;
-            gap: 10px;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .chat-input-area input {
-            flex: 1;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 12px;
-            outline: none;
-        }
-
-        .chat-input-area button,
-        #chat-toggle {
-            background: #0f172a;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .chat-input-area button {
-            width: 48px;
-            border-radius: 14px;
-        }
-
-        #chat-toggle {
-            width: 60px;
-            height: 60px;
-            border-radius: 18px;
-            font-size: 1.4rem;
-            box-shadow:
-                0 10px 30px rgba(15, 23, 42, .25);
-        }
-
-        /* Mobile */
-
-        @media(max-width:768px) {
-
-            .nav-links {
-                display: none;
-            }
-
-            .education-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            #chat-window {
-                width: 95vw;
-                height: 75vh;
-            }
+        /* Preloader */
+        #preloader {
+            background: #ffffff;
+            transition: opacity 0.8s ease;
         }
     </style>
-</head>
 
+    <!-- Structured Data (SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Aadil Faisal",
+      "url": "https://maadilfaisal.github.io",
+      "jobTitle": "Computer Science Undergraduate",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "FAST NUCES Multan"
+      }
+    }
+    </script>
+</head>
 <body>
 
-    <!-- Navbar -->
-
-    <nav>
-        <div class="nav-container">
-            <h2 class="font-bold text-lg">Aadil Faisal</h2>
-
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#education">Education</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Particles -->
+    <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center">
+        <div class="text-4xl font-bold text-teal-600 animate-pulse">AF</div>
+    </div>
 
     <div id="particles-js"></div>
 
-    <!-- Hero -->
+    <!-- Modern Navigation -->
+    <nav class="fixed top-0 w-full z-[100] py-4 px-6 flex justify-between items-center">
+        <div class="nav-logo text-2xl font-extrabold text-slate-800">AADIL<span class="text-teal-600">.</span></div>
+        <div class="hidden md:flex space-x-8 font-medium text-slate-600">
+            <a href="#home" class="hover:text-teal-600 transition">Home</a>
+            <a href="#about" class="hover:text-teal-600 transition">About</a>
+            <a href="#education" class="hover:text-teal-600 transition">Education</a>
+            <a href="#skills" class="hover:text-teal-600 transition">Skills</a>
+            <a href="#contact" class="hover:text-teal-600 transition">Contact</a>
+        </div>
+    </nav>
 
-    <section id="home">
-
-        <div>
-            <img src="./assests/img/profile.jpg"
-                alt="Aadil Faisal Profile Picture"
-                class="hero-img">
-
-            <h1 class="hero-title">Aadil Faisal</h1>
-
-            <p class="hero-subtitle">
-                Computer Science Undergraduate at FAST NUCES Multan
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="relative inline-block mb-8">
+                <img src="./assests/img/profile.jpg" alt="Aadil Faisal" 
+                class="w-44 h-44 md:w-52 md:h-52 rounded-2xl object-cover shadow-2xl border-4 border-white mx-auto relative z-10"
+                onerror="this.src='https://placehold.co/200x200/0d9488/ffffff?text=AF';">
+                <div class="absolute -bottom-2 -right-2 w-full h-full bg-teal-100 rounded-2xl -z-0"></div>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 mb-4 tracking-tight">
+                Aadil Faisal
+            </h1>
+            <p class="text-xl md:text-2xl text-teal-600 font-medium mb-8">
+                Computer Science Student @ <span class="text-slate-800">FAST NUCES</span>
             </p>
 
-            <div class="socials">
-
-                <a href="https://www.linkedin.com/in/aadil-f-6b43632b6/"
-                    target="_blank"
-                    class="social-icon">
-                    <i class="ri-linkedin-box-line"></i>
-                </a>
-
-                <a href="https://github.com/maadilfaisal"
-                    target="_blank"
-                    class="social-icon">
-                    <i class="ri-github-line"></i>
-                </a>
-
-                <a href="https://www.instagram.com/a4dil.f/"
-                    target="_blank"
-                    class="social-icon">
-                    <i class="ri-instagram-line"></i>
-                </a>
-
+            <div class="flex justify-center space-x-5">
+                <a href="https://linkedin.com" class="text-2xl p-3 bg-white shadow-sm rounded-xl text-slate-700 hover:text-teal-600 hover:shadow-md transition"><i class="ri-linkedin-fill"></i></a>
+                <a href="https://github.com" class="text-2xl p-3 bg-white shadow-sm rounded-xl text-slate-700 hover:text-teal-600 hover:shadow-md transition"><i class="ri-github-line"></i></a>
+                <a href="mailto:aadilfaisal1068@gmail.com" class="text-2xl p-3 bg-white shadow-sm rounded-xl text-slate-700 hover:text-teal-600 hover:shadow-md transition"><i class="ri-mail-line"></i></a>
             </div>
         </div>
-
     </section>
 
-    <!-- About -->
-
-    <section id="about">
-
-        <h2 class="section-title">About Me</h2>
-
-        <div class="card max-w-5xl mx-auto">
-
-            <p class="about-text">
-
-                As a passionate Computer Science undergraduate, I am deeply fascinated by the power of technology to solve real-world problems. My journey is driven by curiosity, continuous learning, and the ambition to build scalable and meaningful software solutions.
-
-                <br><br>
-
-                I am currently strengthening my foundations in programming, algorithms, and modern web technologies while exploring software development and problem-solving methodologies.
-
-                <br><br>
-
-                Beyond coding, I enjoy strategic thinking through chess and continuously improving my analytical mindset. My goal is to contribute to impactful projects and grow into a highly skilled software engineer.
-
-            </p>
-
+    <!-- About Section -->
+    <section id="about" class="bg-slate-50/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">The Journey</h2>
+            <div class="max-w-3xl mx-auto glass-card p-8 md:p-12 rounded-3xl text-lg leading-relaxed text-slate-600">
+                <p class="mb-6">
+                    Deeply fascinated by the intersection of logic and creativity, I specialize in building efficient, scalable software. Currently, I'm mastering <b>C++</b> and modern <b>web architectures</b>.
+                </p>
+                <p>
+                    Beyond the IDE, I'm a strategic thinker who enjoys high-level <b>Chess</b> and constant self-improvement. My goal is to build technology that makes a tangible impact.
+                </p>
+            </div>
         </div>
-
     </section>
 
-    <!-- Education -->
-
+    <!-- Education Section -->
     <section id="education">
-
-        <h2 class="section-title">Education</h2>
-
-        <div class="education-grid">
-
-            <div class="card education-card">
-
-                <img src="./assests/img/fast.png" alt="FAST NUCES">
-
-                <div>
-                    <h3 class="text-2xl font-bold">
-                        Bachelor's in Computer Science
-                    </h3>
-
-                    <p class="text-teal-700 font-medium mt-1">
-                        FAST NUCES Multan
-                    </p>
-
-                    <p class="text-slate-500 mt-2">
-                        2025 - 2029
-                    </p>
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Academic Roadmap</h2>
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-2xl flex items-center gap-6">
+                    <div class="bg-teal-50 p-4 rounded-xl text-teal-600 text-2xl"><i class="ri-graduation-cap-line"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800">BS Computer Science</h3>
+                        <p class="text-teal-600 font-medium">FAST NUCES Multan</p>
+                        <p class="text-sm text-slate-400">2025 - 2029</p>
+                    </div>
                 </div>
-
-            </div>
-
-            <div class="card education-card">
-
-                <img src="./assests/img/ack.jpg" alt="ACK">
-
-                <div>
-                    <h3 class="text-2xl font-bold">
-                        Intermediate - Computer Science
-                    </h3>
-
-                    <p class="text-teal-700 font-medium mt-1">
-                        Akhuwat College University Kasur
-                    </p>
-
-                    <p class="text-slate-500 mt-2">
-                        2023 - 2025
-                    </p>
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-2xl flex items-center gap-6">
+                    <div class="bg-teal-50 p-4 rounded-xl text-teal-600 text-2xl"><i class="ri-book-open-line"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800">Intermediate - CS</h3>
+                        <p class="text-teal-600 font-medium">Akhuwat College University Kasur</p>
+                        <p class="text-sm text-slate-400">2023 - 2025</p>
+                    </div>
                 </div>
-
             </div>
-
-            <div class="card education-card">
-
-                <img src="./assests/img/school.jpg" alt="School">
-
-                <div>
-                    <h3 class="text-2xl font-bold">
-                        Matriculation - Computer Science
-                    </h3>
-
-                    <p class="text-teal-700 font-medium mt-1">
-                        Jinnah Public High School Mana Ahmadani
-                    </p>
-
-                    <p class="text-slate-500 mt-2">
-                        2014 - 2023
-                    </p>
-                </div>
-
-            </div>
-
         </div>
-
     </section>
 
-    <!-- Skills -->
-
-    <section id="skills">
-
-        <h2 class="section-title">Skills</h2>
-
-        <div class="skills-grid">
-
-            <div class="card text-center">
-                <i class="ri-code-s-slash-line skill-icon"></i>
-
-                <h3 class="text-xl font-bold mb-3">
-                    Languages
-                </h3>
-
-                <p class="text-slate-500">
-                    C, C++, Python
-                </p>
+    <!-- Skills Section -->
+    <section id="skills" class="bg-slate-900 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-16 text-center">Technical Stack</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="p-8 border border-slate-800 rounded-3xl hover:bg-slate-800 transition">
+                    <i class="ri-terminal-box-line text-4xl text-teal-400 mb-6 block"></i>
+                    <h3 class="text-xl font-bold mb-4">Core Tech</h3>
+                    <p class="text-slate-400">C, C++, Python, Data Structures</p>
+                </div>
+                <div class="p-8 border border-slate-800 rounded-3xl hover:bg-slate-800 transition">
+                    <i class="ri-stack-line text-4xl text-teal-400 mb-6 block"></i>
+                    <h3 class="text-xl font-bold mb-4">Frameworks</h3>
+                    <p class="text-slate-400">Tailwind CSS, Basic React, Git</p>
+                </div>
+                <div class="p-8 border border-slate-800 rounded-3xl hover:bg-slate-800 transition">
+                    <i class="ri-award-line text-4xl text-teal-400 mb-6 block"></i>
+                    <h3 class="text-xl font-bold mb-4">Interests</h3>
+                    <p class="text-slate-400">Competitive Programming, Chess, Linux</p>
+                </div>
             </div>
-
-            <div class="card text-center">
-                <i class="ri-tools-line skill-icon"></i>
-
-                <h3 class="text-xl font-bold mb-3">
-                    Tools
-                </h3>
-
-                <p class="text-slate-500">
-                    Git, GitHub, Linux
-                </p>
-            </div>
-
-            <a href="https://www.chess.com/member/aadilbaloch0"
-                target="_blank"
-                class="card text-center block">
-
-                <i class="ri-gamepad-line skill-icon"></i>
-
-                <h3 class="text-xl font-bold mb-3">
-                    Hobbies
-                </h3>
-
-                <p class="text-slate-500">
-                    Chess
-                </p>
-
-            </a>
-
         </div>
-
     </section>
 
-    <!-- Contact -->
-
+    <!-- Contact Section -->
     <section id="contact">
-
-        <h2 class="section-title">Contact</h2>
-
-        <div class="contact-grid">
-
-            <a href="mailto:aadilfaisal1068@gmail.com"
-                class="card text-center">
-
-                <i class="ri-mail-send-line contact-icon"></i>
-
-                <h3 class="text-xl font-bold">
-                    Email
-                </h3>
-
-            </a>
-
-            <a href="https://wa.me/923006786550"
-                target="_blank"
-                class="card text-center">
-
-                <i class="ri-whatsapp-line contact-icon"></i>
-
-                <h3 class="text-xl font-bold">
-                    WhatsApp
-                </h3>
-
-            </a>
-
-            <a href="https://github.com/maadilfaisal"
-                target="_blank"
-                class="card text-center">
-
-                <i class="ri-github-fill contact-icon"></i>
-
-                <h3 class="text-xl font-bold">
-                    GitHub
-                </h3>
-
-            </a>
-
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4">Let's Connect</h2>
+            <p class="text-slate-500 mb-12">I'm always open to discussing new projects or opportunities.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <a href="https://wa.me/923006786550" class="glass-card p-6 rounded-2xl">
+                    <i class="ri-whatsapp-line text-3xl text-teal-600"></i>
+                    <p class="mt-2 font-bold">WhatsApp</p>
+                </a>
+                <a href="mailto:aadilfaisal1068@gmail.com" class="glass-card p-6 rounded-2xl">
+                    <i class="ri-mail-line text-3xl text-teal-600"></i>
+                    <p class="mt-2 font-bold">Email</p>
+                </a>
+                <a href="#" class="glass-card p-6 rounded-2xl">
+                    <i class="ri-linkedin-fill text-3xl text-teal-600"></i>
+                    <p class="mt-2 font-bold">LinkedIn</p>
+                </a>
+                <a href="#" class="glass-card p-6 rounded-2xl">
+                    <i class="ri-github-fill text-3xl text-teal-600"></i>
+                    <p class="mt-2 font-bold">GitHub</p>
+                </a>
+            </div>
+            <footer class="mt-20 text-slate-400 text-sm">
+                &copy; 2026 Aadil Faisal. Engineered for performance.
+            </footer>
         </div>
-
     </section>
 
-    <!-- Footer -->
-
-    <footer>
-        © 2025 Aadil Faisal. All Rights Reserved.
-    </footer>
-
-    <!-- Chat -->
-
-    <div id="chat-widget-container">
-
-        <div id="chat-window">
-
-            <div class="chat-header">
-
-                <div class="flex items-center gap-2">
-                    <i class="ri-robot-2-line"></i>
-                    <span>Aadil AI Assistant</span>
-                </div>
-
-                <button id="close-chat">
-                    <i class="ri-close-line"></i>
-                </button>
-
-            </div>
-
-            <div id="chat-messages">
-
-                <div class="message bot">
-                    Hi! Ask me about Aadil's education, skills, or experience.
-                </div>
-
-            </div>
-
-            <div class="chat-input-area">
-
-                <input
-                    type="text"
-                    id="chat-input"
-                    placeholder="Type your message...">
-
-                <button id="send-message">
-                    <i class="ri-send-plane-fill"></i>
-                </button>
-
-            </div>
-
-        </div>
-
-        <button id="chat-toggle">
-            <i class="ri-chat-smile-2-fill"></i>
-        </button>
-
-    </div>
-
-    <!-- Libraries -->
-
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-    <!-- Particles -->
-
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Remove Preloader
+            setTimeout(() => {
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 800);
+            }, 1000);
 
-        particlesJS('particles-js', {
-
-            particles: {
-
-                number: {
-                    value: 45,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
+            // Particles
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": "#0d9488" },
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.2 },
+                    "size": { "value": 3 },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#0d9488", "opacity": 0.1, "width": 1 },
+                    "move": { "enable": true, "speed": 1.5 }
                 },
+                "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } }
+            });
 
-                color: {
-                    value: "#14b8a6"
-                },
-
-                shape: {
-                    type: "circle"
-                },
-
-                opacity: {
-                    value: 0.18
-                },
-
-                size: {
-                    value: 3,
-                    random: true
-                },
-
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#99f6e4",
-                    opacity: 0.2,
-                    width: 1
-                },
-
-                move: {
-                    enable: true,
-                    speed: 0.6
-                }
-            },
-
-            interactivity: {
-                detect_on: "canvas",
-
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "grab"
-                    },
-
-                    resize: true
-                }
-            },
-
-            retina_detect: true
+            // Scroll Reveal
+            const sr = ScrollReveal({ origin: 'bottom', distance: '30px', duration: 1000, delay: 200, reset: false });
+            sr.reveal('.glass-card', { interval: 150 });
+            sr.reveal('h1, h2, #home img', { origin: 'top' });
         });
-
-        // Chat
-
-        const chatToggle = document.getElementById('chat-toggle');
-        const chatWindow = document.getElementById('chat-window');
-        const closeChat = document.getElementById('close-chat');
-
-        chatToggle.addEventListener('click', () => {
-            chatWindow.style.display = 'flex';
-            chatToggle.style.display = 'none';
-        });
-
-        closeChat.addEventListener('click', () => {
-            chatWindow.style.display = 'none';
-            chatToggle.style.display = 'block';
-        });
-
     </script>
-
 </body>
-
 </html>
-```
