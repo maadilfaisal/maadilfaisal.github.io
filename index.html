@@ -1,817 +1,542 @@
+# Complete Professional Portfolio HTML (Integrated Chatbot)
+
+```html
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO -->
-    <title>Aadil Faisal - Computer Science Student & Developer</title>
+  <title>Aadil Faisal | Computer Science Student & Developer</title>
 
-    <meta
-        name="description"
-        content="I am a Computer Science Undergrad at FAST NUCES Multan. Explore my portfolio on my personal website."
-    />
+  <meta name="description" content="Aadil Faisal - FAST NUCES Multan Computer Science student, developer, and tech enthusiast." />
+  <meta name="keywords" content="Aadil Faisal, FAST NUCES, Computer Science, Developer, Portfolio" />
 
-    <meta
-        name="keywords"
-        content="Aadil Faisal, Aadil Baloch, FAST NUCES, Computer Science, Portfolio, Software Developer, Multan"
-    />
+  <link rel="icon" href="assests/img/profile.jpg" type="image/png" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="./assests/img/profile.jpg" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#D174D2",
-                        secondary: "#E0563F",
-                        accent: "#3F567F",
-                        deep: "#412563",
-                    },
-                },
-            },
-        };
-    </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-        rel="stylesheet"
-    />
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-    <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
-        rel="stylesheet"
-    />
+    body{
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(to bottom right,#eff6ff,#f8fafc,#ecfeff);
+      color:#0f172a;
+      overflow-x:hidden;
+    }
 
-    <!-- Styles -->
-    <style>
-        :root {
-            --bg1: #412563;
-            --bg2: #3f567f;
-            --primary: #d174d2;
-            --secondary: #e0563f;
-            --white: #ffffff;
-        }
+    ::-webkit-scrollbar{
+      width:8px;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    ::-webkit-scrollbar-thumb{
+      background:#14b8a6;
+      border-radius:20px;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    .glass{
+      background:rgba(255,255,255,0.7);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(255,255,255,0.5);
+    }
 
-        body {
-            font-family: "Inter", sans-serif;
-            background:
-                radial-gradient(circle at top left, rgba(209, 116, 210, 0.18), transparent 30%),
-                radial-gradient(circle at bottom right, rgba(224, 86, 63, 0.15), transparent 30%),
-                linear-gradient(135deg, #412563 0%, #3f567f 100%);
-            color: white;
-            overflow-x: hidden;
-        }
+    .section-title{
+      position:relative;
+      display:inline-block;
+      padding-bottom:10px;
+    }
 
-        h1,
-        h2,
-        h3,
-        .heading-font {
-            font-family: "Space Grotesk", sans-serif;
-        }
+    .section-title::after{
+      content:'';
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:0;
+      width:70px;
+      height:4px;
+      border-radius:999px;
+      background:#14b8a6;
+    }
 
-        section {
-            position: relative;
-            z-index: 2;
-        }
+    .card-hover{
+      transition:0.3s ease;
+    }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+    .card-hover:hover{
+      transform:translateY(-8px);
+      box-shadow:0 15px 40px rgba(0,0,0,0.08);
+    }
 
-        ::-webkit-scrollbar-track {
-            background: #412563;
-        }
+    .social-icon{
+      transition:0.3s ease;
+    }
 
-        ::-webkit-scrollbar-thumb {
-            background: #d174d2;
-            border-radius: 20px;
-        }
+    .social-icon:hover{
+      transform:translateY(-5px) scale(1.1);
+      color:#0f766e;
+    }
 
-        /* Navbar */
-        nav {
-            backdrop-filter: blur(18px);
-            background: rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
+    #particles-js{
+      position:fixed;
+      inset:0;
+      z-index:-1;
+    }
 
-        /* Glass */
-        .glass {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
-        }
+    #chat-widget-container{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      z-index:9999;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+    }
 
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(
-                90deg,
-                #ffffff,
-                #d174d2,
-                #e0563f
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    #chat-window{
+      width:360px;
+      height:520px;
+      background:white;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 25px 50px rgba(0,0,0,0.18);
+      display:none;
+      flex-direction:column;
+      margin-bottom:16px;
+      border:1px solid #e2e8f0;
+    }
 
-        /* Buttons */
-        .btn-primary {
-            background: linear-gradient(
-                135deg,
-                #d174d2,
-                #e0563f
-            );
-            transition: 0.35s ease;
-        }
+    #chat-messages{
+      flex:1;
+      overflow-y:auto;
+      padding:16px;
+      background:#f8fafc;
+    }
 
-        .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(224, 86, 63, 0.3);
-        }
+    .message{
+      max-width:80%;
+      padding:12px 14px;
+      border-radius:18px;
+      margin-bottom:12px;
+      font-size:14px;
+      line-height:1.5;
+    }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.3s ease;
-        }
+    .user{
+      background:#14b8a6;
+      color:white;
+      margin-left:auto;
+      border-bottom-right-radius:4px;
+    }
 
-        .btn-secondary:hover {
-            border-color: #d174d2;
-            transform: translateY(-4px);
-        }
+    .bot{
+      background:#e2e8f0;
+      color:#0f172a;
+      border-bottom-left-radius:4px;
+    }
 
-        /* Cards */
-        .card-hover {
-            transition: 0.35s ease;
-        }
+    .typing-indicator span{
+      width:6px;
+      height:6px;
+      background:#64748b;
+      border-radius:50%;
+      display:inline-block;
+      animation:bounce 1.2s infinite;
+      margin:0 1px;
+    }
 
-        .card-hover:hover {
-            transform: translateY(-8px);
-            border-color: rgba(209, 116, 210, 0.4);
-        }
+    .typing-indicator span:nth-child(2){
+      animation-delay:0.2s;
+    }
 
-        /* Hero Glow */
-        .hero-glow {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(
-                circle,
-                rgba(209, 116, 210, 0.4),
-                transparent 70%
-            );
-            filter: blur(40px);
-            z-index: -1;
-        }
+    .typing-indicator span:nth-child(3){
+      animation-delay:0.4s;
+    }
 
-        /* Timeline */
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 8px;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-        }
+    @keyframes bounce{
+      0%,80%,100%{transform:scale(0);}
+      40%{transform:scale(1);}
+    }
+  </style>
 
-        .timeline-dot {
-            width: 18px;
-            height: 18px;
-            background: #e0563f;
-            border-radius: 50%;
-            position: absolute;
-            left: 0;
-            top: 8px;
-            box-shadow: 0 0 15px rgba(224, 86, 63, 0.6);
-        }
-
-        /* Chat */
-        #chat-window {
-            display: none;
-            flex-direction: column;
-            width: 360px;
-            height: 520px;
-            max-height: 85vh;
-            border-radius: 22px;
-            overflow: hidden;
-        }
-
-        .chat-user {
-            background: linear-gradient(
-                135deg,
-                #d174d2,
-                #e0563f
-            );
-        }
-
-        .chat-bot {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        /* Animation */
-        .fade-up {
-            animation: fadeUp 0.8s ease;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            #chat-window {
-                width: 95vw;
-            }
-        }
-    </style>
-
-    <!-- JSON LD -->
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "Person",
-            "name": "Aadil Faisal",
-            "url": "https://maadilfaisal.github.io",
-            "sameAs": [
-                "https://www.linkedin.com/in/aadil-f-6b43632b6/",
-                "https://github.com/maadilfaisal",
-                "https://www.instagram.com/a4dil.f",
-                "https://www.facebook.com/aadil.baloch.1068"
-            ],
-            "jobTitle": "Computer Science Undergraduate",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "FAST NUCES Multan"
-            }
-        }
-    </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Aadil Faisal",
+    "url":"https://maadilfaisal.github.io",
+    "jobTitle":"Computer Science Undergraduate",
+    "sameAs":[
+      "https://github.com/maadilfaisal",
+      "https://www.linkedin.com/in/aadil-f-6b43632b6/"
+    ]
+  }
+  </script>
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold">
-                AF<span class="text-primary">.</span>
-            </a>
-
-            <div class="hidden md:flex gap-8 text-sm text-white/80">
-                <a href="#about" class="hover:text-primary transition">About</a>
-                <a href="#projects" class="hover:text-primary transition">Projects</a>
-                <a href="#education" class="hover:text-primary transition">Education</a>
-                <a href="#skills" class="hover:text-primary transition">Skills</a>
-                <a href="#contact" class="hover:text-primary transition">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero -->
-    <section
-        id="home"
-        class="min-h-screen flex items-center justify-center px-6 pt-20"
-    >
-        <div
-            class="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center"
-        >
-            <div class="fade-up">
-                <p class="uppercase tracking-[5px] text-primary mb-4 text-sm">
-                    Computer Science Student
-                </p>
-
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                    Aadil
-                    <span class="gradient-text">Faisal</span>
-                </h1>
-
-                <p class="text-white/70 text-lg leading-relaxed mb-8">
-                    Passionate CS undergrad at FAST NUCES focused on building
-                    elegant software solutions, exploring modern technologies,
-                    and creating impactful digital experiences.
-                </p>
-
-                <div class="flex flex-wrap gap-4">
-                    <a
-                        href="https://github.com/maadilfaisal"
-                        target="_blank"
-                        class="btn-secondary px-6 py-3 rounded-full flex items-center gap-2"
-                    >
-                        <i class="ri-github-fill text-xl"></i>
-                        GitHub
-                    </a>
-
-                    <a
-                        href="https://www.linkedin.com/in/aadil-f-6b43632b6/"
-                        target="_blank"
-                        class="btn-primary px-6 py-3 rounded-full flex items-center gap-2"
-                    >
-                        <i class="ri-linkedin-fill text-xl"></i>
-                        LinkedIn
-                    </a>
-                </div>
-            </div>
-
-            <div class="relative flex justify-center fade-up">
-                <div class="hero-glow"></div>
-
-                <div
-                    class="w-72 h-72 rounded-full p-2 bg-gradient-to-br from-primary via-secondary to-accent"
-                >
-                    <img
-                        src="./assests/img/profile.jpg"
-                        alt="Aadil Faisal"
-                        class="w-full h-full object-cover rounded-full border-4 border-deep"
-                        onerror="this.src='https://placehold.co/500x500/412563/ffffff?text=AF'"
-                    />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold mb-12">
-                About <span class="text-primary">Me</span>
-            </h2>
-
-            <div class="glass rounded-3xl p-8 md:p-12">
-                <p class="text-white/75 text-lg leading-relaxed mb-6">
-                    I am a passionate Computer Science undergraduate deeply
-                    interested in software engineering, problem-solving, and
-                    modern web development.
-                </p>
-
-                <p class="text-white/75 text-lg leading-relaxed mb-6">
-                    My learning journey currently revolves around C++, data
-                    structures, algorithms, and building scalable modern
-                    interfaces with clean architecture and elegant design.
-                </p>
-
-                <p class="text-white/75 text-lg leading-relaxed">
-                    Beyond programming, I enjoy chess, strategy, technology
-                    research, and continuously improving my creative and
-                    analytical skills.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-
-            <h2 class="text-4xl font-bold mb-14">
-                Featured <span class="text-primary">Projects</span>
-            </h2>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <!-- Project -->
-                <div class="glass rounded-3xl overflow-hidden card-hover">
-                    <div class="h-52 bg-black/20 flex items-center justify-center">
-                        <i class="ri-code-box-line text-7xl text-primary"></i>
-                    </div>
-
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4">
-                            Core-X Engine
-                        </h3>
-
-                        <p class="text-white/70 mb-6">
-                            High-performance algorithmic engine written in C++
-                            focused on efficient data processing and optimization.
-                        </p>
-
-                        <div class="flex gap-3 flex-wrap">
-                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
-                                C++
-                            </span>
-
-                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
-                                Algorithms
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project -->
-                <div class="glass rounded-3xl overflow-hidden card-hover">
-                    <div class="h-52 bg-black/20 flex items-center justify-center">
-                        <i class="ri-robot-2-line text-7xl text-secondary"></i>
-                    </div>
-
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4">
-                            LFR Robotics
-                        </h3>
-
-                        <p class="text-white/70 mb-6">
-                            Arduino-based autonomous line following robot with
-                            sensor optimization and motion control logic.
-                        </p>
-
-                        <div class="flex gap-3 flex-wrap">
-                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
-                                Arduino
-                            </span>
-
-                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
-                                Robotics
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project -->
-                <div class="glass rounded-3xl overflow-hidden card-hover">
-                    <div class="h-52 bg-black/20 flex items-center justify-center">
-                        <i class="ri-cloud-line text-7xl text-primary"></i>
-                    </div>
-
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4">
-                            Cloud Scheduler
-                        </h3>
-
-                        <p class="text-white/70 mb-6">
-                            Research-based scheduling architecture for optimized
-                            cloud resource and process management systems.
-                        </p>
-
-                        <div class="flex gap-3 flex-wrap">
-                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
-                                OS
-                            </span>
-
-                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
-                                Research
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto">
-
-            <h2 class="text-4xl font-bold mb-16">
-                Education <span class="text-primary">Timeline</span>
-            </h2>
-
-            <div class="timeline relative pl-12 space-y-12">
-
-                <!-- Item -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-
-                    <div class="glass rounded-3xl p-8">
-                        <div
-                            class="flex flex-col md:flex-row md:justify-between md:items-center mb-4"
-                        >
-                            <h3 class="text-2xl font-bold">
-                                BS Computer Science
-                            </h3>
-
-                            <span
-                                class="bg-white/10 px-4 py-2 rounded-full text-sm"
-                            >
-                                2025 - 2029
-                            </span>
-                        </div>
-
-                        <p class="text-primary font-medium mb-3">
-                            FAST NUCES Multan
-                        </p>
-
-                        <p class="text-white/70">
-                            Focusing on software engineering, algorithms,
-                            programming, and system design.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-
-                    <div class="glass rounded-3xl p-8">
-                        <div
-                            class="flex flex-col md:flex-row md:justify-between md:items-center mb-4"
-                        >
-                            <h3 class="text-2xl font-bold">
-                                Intermediate (ICS)
-                            </h3>
-
-                            <span
-                                class="bg-white/10 px-4 py-2 rounded-full text-sm"
-                            >
-                                2023 - 2025
-                            </span>
-                        </div>
-
-                        <p class="text-primary font-medium">
-                            Akhuwat College University Kasur
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Item -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-
-                    <div class="glass rounded-3xl p-8">
-                        <div
-                            class="flex flex-col md:flex-row md:justify-between md:items-center mb-4"
-                        >
-                            <h3 class="text-2xl font-bold">
-                                Matriculation
-                            </h3>
-
-                            <span
-                                class="bg-white/10 px-4 py-2 rounded-full text-sm"
-                            >
-                                2014 - 2023
-                            </span>
-                        </div>
-
-                        <p class="text-primary font-medium">
-                            Jinnah Public High School Mana Ahmadani
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="py-24 px-6">
-        <div class="max-w-6xl mx-auto">
-
-            <h2 class="text-4xl font-bold mb-14">
-                Technical <span class="text-primary">Skills</span>
-            </h2>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                <div class="glass rounded-3xl p-8 text-center card-hover">
-                    <i class="ri-code-s-slash-line text-5xl text-primary mb-6"></i>
-
-                    <h3 class="text-2xl font-bold mb-4">Languages</h3>
-
-                    <p class="text-white/70">
-                        C, C++, Python
-                    </p>
-                </div>
-
-                <div class="glass rounded-3xl p-8 text-center card-hover">
-                    <i class="ri-terminal-window-line text-5xl text-secondary mb-6"></i>
-
-                    <h3 class="text-2xl font-bold mb-4">Tools</h3>
-
-                    <p class="text-white/70">
-                        Git, GitHub, Linux
-                    </p>
-                </div>
-
-                <div class="glass rounded-3xl p-8 text-center card-hover">
-                    <i class="ri-layout-4-line text-5xl text-primary mb-6"></i>
-
-                    <h3 class="text-2xl font-bold mb-4">Web</h3>
-
-                    <p class="text-white/70">
-                        HTML, CSS, Tailwind
-                    </p>
-                </div>
-
-                <div class="glass rounded-3xl p-8 text-center card-hover">
-                    <i class="ri-focus-2-line text-5xl text-secondary mb-6"></i>
-
-                    <h3 class="text-2xl font-bold mb-4">Strategy</h3>
-
-                    <p class="text-white/70">
-                        Chess & Problem Solving
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto text-center">
-
-            <h2 class="text-4xl font-bold mb-8">
-                Get In <span class="text-primary">Touch</span>
-            </h2>
-
-            <p class="text-white/70 max-w-2xl mx-auto mb-14 text-lg">
-                Feel free to connect with me for collaborations,
-                development opportunities, or tech discussions.
-            </p>
-
-            <div class="flex flex-wrap justify-center gap-6">
-
-                <a
-                    href="https://github.com/maadilfaisal"
-                    target="_blank"
-                    class="glass px-8 py-5 rounded-2xl flex items-center gap-3 card-hover"
-                >
-                    <i class="ri-github-fill text-2xl"></i>
-                    GitHub
-                </a>
-
-                <a
-                    href="https://www.linkedin.com/in/aadil-f-6b43632b6/"
-                    target="_blank"
-                    class="glass px-8 py-5 rounded-2xl flex items-center gap-3 card-hover"
-                >
-                    <i class="ri-linkedin-fill text-2xl"></i>
-                    LinkedIn
-                </a>
-
-                <a
-                    href="mailto:aadilfaisal1068@gmail.com"
-                    class="glass px-8 py-5 rounded-2xl flex items-center gap-3 card-hover"
-                >
-                    <i class="ri-mail-line text-2xl"></i>
-                    Email
-                </a>
-
-            </div>
-
-            <div class="mt-20 border-t border-white/10 pt-8">
-                <p class="text-white/50 text-sm">
-                    © 2026 Aadil Faisal — Designed with precision.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chat Widget -->
-    <div class="fixed bottom-6 right-6 z-50">
-
-        <div
-            id="chat-window"
-            class="glass mb-5"
-        >
-            <!-- Header -->
-            <div
-                class="p-5 border-b border-white/10 flex items-center justify-between"
-            >
-                <div class="flex items-center gap-3">
-                    <div
-                        class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center"
-                    >
-                        <i class="ri-robot-2-fill text-2xl"></i>
-                    </div>
-
-                    <div>
-                        <h3 class="font-bold">A.I Assistant</h3>
-                        <p class="text-xs text-white/50">
-                            Online
-                        </p>
-                    </div>
-                </div>
-
-                <button id="close-chat">
-                    <i class="ri-close-line text-2xl"></i>
-                </button>
-            </div>
-
-            <!-- Messages -->
-            <div
-                id="messages"
-                class="flex-1 overflow-y-auto p-5 space-y-4 h-full"
-            >
-                <div
-                    class="chat-bot p-4 rounded-2xl w-fit max-w-[85%]"
-                >
-                    Hello 👋<br /><br />
-                    I'm Aadil's virtual assistant.
-                    Ask anything about his portfolio or projects.
-                </div>
-            </div>
-
-            <!-- Input -->
-            <div
-                class="p-4 border-t border-white/10 flex gap-3"
-            >
-                <input
-                    id="chat-input"
-                    type="text"
-                    placeholder="Type a message..."
-                    class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none"
-                />
-
-                <button
-                    id="send-btn"
-                    class="btn-primary px-5 rounded-xl"
-                >
-                    <i class="ri-send-plane-fill text-xl"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Toggle -->
-        <button
-            id="chat-toggle"
-            class="w-16 h-16 rounded-full btn-primary flex items-center justify-center text-3xl shadow-2xl"
-        >
-            <i class="ri-message-3-fill"></i>
-        </button>
+<div id="particles-js"></div>
+
+<section class="min-h-screen flex items-center justify-center px-6 py-20">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+    <div>
+      <p class="text-teal-600 font-semibold mb-4 tracking-wide uppercase">FAST NUCES Multan</p>
+
+      <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+        Aadil <span class="text-teal-600">Faisal</span>
+      </h1>
+
+      <p class="text-slate-600 text-lg leading-relaxed mb-8 max-w-xl">
+        Computer Science undergraduate passionate about software development, clean UI design, problem solving, and modern web technologies.
+      </p>
+
+      <div class="flex gap-4 flex-wrap mb-10">
+        <a href="#contact" class="bg-teal-600 hover:bg-teal-700 text-white px-7 py-3 rounded-xl font-semibold transition">
+          Contact Me
+        </a>
+
+        <a href="https://github.com/maadilfaisal" target="_blank" class="border border-slate-300 hover:border-teal-500 hover:text-teal-600 px-7 py-3 rounded-xl font-semibold transition">
+          GitHub
+        </a>
+      </div>
+
+      <div class="flex items-center gap-6 text-3xl text-teal-500">
+        <a href="https://github.com/maadilfaisal" target="_blank" class="social-icon">
+          <i class="ri-github-fill"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/aadil-f-6b43632b6/" target="_blank" class="social-icon">
+          <i class="ri-linkedin-box-fill"></i>
+        </a>
+
+        <a href="https://www.instagram.com/a4dil.f" target="_blank" class="social-icon">
+          <i class="ri-instagram-line"></i>
+        </a>
+      </div>
     </div>
 
-    <!-- JS -->
-    <script>
-        const chatToggle = document.getElementById("chat-toggle");
-        const chatWindow = document.getElementById("chat-window");
-        const closeChat = document.getElementById("close-chat");
-        const sendBtn = document.getElementById("send-btn");
-        const input = document.getElementById("chat-input");
-        const messages = document.getElementById("messages");
+    <div class="flex justify-center">
+      <div class="glass rounded-[32px] p-6 shadow-2xl">
+        <img
+          src="./assests/img/profile.jpg"
+          alt="Aadil Faisal"
+          class="w-[320px] h-[320px] object-cover rounded-[28px]"
+          onerror="this.src='https://placehold.co/320x320/14b8a6/ffffff?text=Aadil'"
+        >
+      </div>
+    </div>
 
-        chatToggle.addEventListener("click", () => {
-            chatWindow.style.display = "flex";
-        });
+  </div>
+</section>
 
-        closeChat.addEventListener("click", () => {
-            chatWindow.style.display = "none";
-        });
+<section id="about" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto text-center">
 
-        function addMessage(text, type) {
-            const div = document.createElement("div");
+    <h2 class="section-title text-4xl font-bold mb-14">About Me</h2>
 
-            div.className =
-                type === "user"
-                    ? "chat-user p-4 rounded-2xl ml-auto w-fit max-w-[85%]"
-                    : "chat-bot p-4 rounded-2xl w-fit max-w-[85%]";
+    <div class="glass rounded-3xl p-10 text-left shadow-xl">
+      <p class="text-slate-600 leading-8 text-lg">
+        I am a Computer Science student at FAST NUCES Multan with a strong interest in software engineering, modern web development, and scalable systems.
+        <br><br>
+        I enjoy learning new technologies, building clean user interfaces, and solving logical problems through programming. My current focus is improving my skills in C++, Python, Git, Linux, and frontend development.
+        <br><br>
+        Beyond programming, I enjoy chess and strategic thinking which help strengthen my analytical mindset.
+      </p>
+    </div>
 
-            div.innerHTML = text;
+  </div>
+</section>
 
-            messages.appendChild(div);
+<section id="education" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto text-center">
 
-            messages.scrollTop = messages.scrollHeight;
-        }
+    <h2 class="section-title text-4xl font-bold mb-16">Education</h2>
 
-        sendBtn.addEventListener("click", () => {
-            const text = input.value.trim();
+    <div class="grid gap-8">
 
-            if (!text) return;
+      <div class="glass rounded-3xl p-8 flex flex-col md:flex-row items-center gap-6 card-hover shadow-lg">
+        <img src="./assests/img/fast.png" class="w-28 h-28 rounded-2xl object-cover" alt="FAST">
 
-            addMessage(text, "user");
+        <div class="text-left">
+          <h3 class="text-2xl font-bold">Bachelor's in Computer Science</h3>
+          <p class="text-teal-600 font-medium mt-1">FAST NUCES Multan</p>
+          <p class="text-slate-500 mt-2">2025 - 2029</p>
+        </div>
+      </div>
 
-            input.value = "";
+      <div class="glass rounded-3xl p-8 flex flex-col md:flex-row items-center gap-6 card-hover shadow-lg">
+        <img src="./assests/img/ack.jpg" class="w-28 h-28 rounded-2xl object-cover" alt="ACK">
 
-            setTimeout(() => {
-                addMessage(
-                    "This is currently a demo AI assistant UI for the portfolio 🚀",
-                    "bot"
-                );
-            }, 700);
-        });
+        <div class="text-left">
+          <h3 class="text-2xl font-bold">Intermediate in Computer Science</h3>
+          <p class="text-teal-600 font-medium mt-1">Akhuwat College University Kasur</p>
+          <p class="text-slate-500 mt-2">2023 - 2025</p>
+        </div>
+      </div>
 
-        input.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
-                sendBtn.click();
-            }
-        });
-    </script>
+      <div class="glass rounded-3xl p-8 flex flex-col md:flex-row items-center gap-6 card-hover shadow-lg">
+        <img src="./assests/img/school.jpg" class="w-28 h-28 rounded-2xl object-cover" alt="School">
+
+        <div class="text-left">
+          <h3 class="text-2xl font-bold">Matriculation</h3>
+          <p class="text-teal-600 font-medium mt-1">Jinnah Public High School Mana Ahmadani</p>
+          <p class="text-slate-500 mt-2">2014 - 2023</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+
+    <h2 class="section-title text-4xl font-bold mb-16">Skills</h2>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="glass rounded-3xl p-8 card-hover shadow-lg">
+        <i class="ri-code-s-slash-line text-5xl text-teal-500"></i>
+        <h3 class="text-2xl font-bold mt-5 mb-4">Languages</h3>
+        <p class="text-slate-600">C, C++, Python</p>
+      </div>
+
+      <div class="glass rounded-3xl p-8 card-hover shadow-lg">
+        <i class="ri-tools-fill text-5xl text-teal-500"></i>
+        <h3 class="text-2xl font-bold mt-5 mb-4">Tools</h3>
+        <p class="text-slate-600">Git, GitHub, Linux</p>
+      </div>
+
+      <div class="glass rounded-3xl p-8 card-hover shadow-lg">
+        <i class="ri-gamepad-fill text-5xl text-teal-500"></i>
+        <h3 class="text-2xl font-bold mt-5 mb-4">Hobbies</h3>
+        <p class="text-slate-600">Chess & Strategy Games</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto text-center">
+
+    <h2 class="section-title text-4xl font-bold mb-16">Contact</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+
+      <a href="https://mail.google.com/mail/?view=cm&to=aadilfaisal1068@gmail.com" target="_blank" class="glass rounded-3xl p-8 card-hover shadow-lg">
+        <i class="ri-mail-send-fill text-5xl text-teal-500"></i>
+        <h3 class="font-bold text-xl mt-4">Email</h3>
+      </a>
+
+      <a href="https://wa.me/923006786550" target="_blank" class="glass rounded-3xl p-8 card-hover shadow-lg">
+        <i class="ri-whatsapp-fill text-5xl text-teal-500"></i>
+        <h3 class="font-bold text-xl mt-4">WhatsApp</h3>
+      </a>
+
+      <a href="https://github.com/maadilfaisal" target="_blank" class="glass rounded-3xl p-8 card-hover shadow-lg">
+        <i class="ri-github-fill text-5xl text-teal-500"></i>
+        <h3 class="font-bold text-xl mt-4">GitHub</h3>
+      </a>
+
+    </div>
+
+    <p class="mt-16 text-slate-400 text-sm">
+      © 2026 Aadil Faisal. All rights reserved.
+    </p>
+
+  </div>
+</section>
+
+<div id="chat-widget-container">
+
+  <div id="chat-window">
+
+    <div class="bg-teal-600 text-white p-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <i class="ri-robot-2-fill text-xl"></i>
+        <h3 class="font-semibold">Aadil AI Assistant</h3>
+      </div>
+
+      <button id="close-chat">
+        <i class="ri-close-line text-2xl"></i>
+      </button>
+    </div>
+
+    <div id="chat-messages">
+      <div class="message bot">
+        Hi 👋 Ask me anything about Aadil's skills, education, or portfolio.
+      </div>
+    </div>
+
+    <div class="p-4 border-t flex gap-2 bg-white">
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="Type a message..."
+        class="flex-1 border border-slate-300 rounded-full px-4 py-3 outline-none focus:border-teal-500"
+      >
+
+      <button id="send-message" class="w-12 h-12 rounded-full bg-teal-600 hover:bg-teal-700 text-white flex items-center justify-center">
+        <i class="ri-send-plane-fill"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <button id="chat-toggle" class="w-16 h-16 rounded-full bg-teal-600 hover:bg-teal-700 text-white shadow-2xl flex items-center justify-center">
+    <i class="ri-chat-smile-2-fill text-3xl"></i>
+  </button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<script>
+
+particlesJS('particles-js', {
+  particles: {
+    number: {
+      value: 70,
+      density: {
+        enable: true,
+        value_area: 800
+      }
+    },
+    color: {
+      value: '#14b8a6'
+    },
+    shape: {
+      type: 'circle'
+    },
+    opacity: {
+      value: 0.3
+    },
+    size: {
+      value: 3,
+      random: true
+    },
+    line_linked: {
+      enable: true,
+      distance: 140,
+      color: '#99f6e4',
+      opacity: 0.3,
+      width: 1
+    },
+    move: {
+      enable: true,
+      speed: 1.5
+    }
+  },
+  retina_detect: true
+});
+
+const chatToggle = document.getElementById('chat-toggle');
+const chatWindow = document.getElementById('chat-window');
+const closeChat = document.getElementById('close-chat');
+const chatInput = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-message');
+const messagesContainer = document.getElementById('chat-messages');
+
+chatToggle.addEventListener('click', () => {
+  chatWindow.style.display = 'flex';
+  chatToggle.style.display = 'none';
+});
+
+closeChat.addEventListener('click', () => {
+  chatWindow.style.display = 'none';
+  chatToggle.style.display = 'flex';
+});
+
+function addMessage(text, sender) {
+  const div = document.createElement('div');
+  div.className = `message ${sender}`;
+  div.textContent = text;
+  messagesContainer.appendChild(div);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function addTypingIndicator() {
+  const div = document.createElement('div');
+  div.className = 'message bot typing-indicator';
+  div.id = 'typing';
+  div.innerHTML = '<span></span><span></span><span></span>';
+  messagesContainer.appendChild(div);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+function removeTypingIndicator() {
+  const typing = document.getElementById('typing');
+  if (typing) typing.remove();
+}
+
+async function callGemini(userMessage) {
+
+  const url = '/api/chat';
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: userMessage })
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      return '⚠️ ' + data.error;
+    }
+
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response from AI.';
+
+  } catch (error) {
+    console.error(error);
+    return '⚠️ Failed to connect to AI service.';
+  }
+}
+
+async function handleSend() {
+
+  const text = chatInput.value.trim();
+
+  if (!text) return;
+
+  addMessage(text, 'user');
+
+  chatInput.value = '';
+
+  addTypingIndicator();
+
+  const reply = await callGemini(text);
+
+  removeTypingIndicator();
+
+  addMessage(reply, 'bot');
+}
+
+sendBtn.addEventListener('click', handleSend);
+
+chatInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    handleSend();
+  }
+});
+
+</script>
 
 </body>
 </html>
+```
