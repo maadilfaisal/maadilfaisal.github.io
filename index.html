@@ -1,1021 +1,817 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Website Title -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
     <title>Aadil Faisal - Computer Science Student & Developer</title>
-    <!-- SEO Meta Description (PRESERVED) -->
-    <meta name="description" content="I am a Computer Science Undergrad at FAST NUCES Multan. Explore my portfolio on my personal website.">
-    <meta name="keywords" content="Aadil Faisal, Aadil Baloch, FAST NUCES, Computer Science, Portfolio, Software Developer, Multan">
+
+    <meta
+        name="description"
+        content="I am a Computer Science Undergrad at FAST NUCES Multan. Explore my portfolio on my personal website."
+    />
+
+    <meta
+        name="keywords"
+        content="Aadil Faisal, Aadil Baloch, FAST NUCES, Computer Science, Portfolio, Software Developer, Multan"
+    />
+
     <!-- Favicon -->
-    <link rel="icon" href="assests/img/profile.jpg" type="image/png">
-    
-    <!-- Tailwind CSS -->
+    <link rel="icon" href="./assests/img/profile.jpg" type="image/png" />
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#0f172a',
-                        glassBg: 'rgba(30, 41, 59, 0.7)',
-                        glassBorder: 'rgba(255, 255, 255, 0.1)'
-                    }
-                }
-            }
-        }
+                        primary: "#D174D2",
+                        secondary: "#E0563F",
+                        accent: "#3F567F",
+                        deep: "#412563",
+                    },
+                },
+            },
+        };
     </script>
-    
-    <!-- Remixicon for Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
 
-    <!-- Custom Styles -->
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet"
+    />
+
+    <!-- Styles -->
     <style>
+        :root {
+            --bg1: #412563;
+            --bg2: #3f567f;
+            --primary: #d174d2;
+            --secondary: #e0563f;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a; /* Deep Slate Background */
-            color: #e2e8f0;
+            font-family: "Inter", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(209, 116, 210, 0.18), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(224, 86, 63, 0.15), transparent 30%),
+                linear-gradient(135deg, #412563 0%, #3f567f 100%);
+            color: white;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .heading-font {
-            font-family: 'Space Grotesk', sans-serif;
+        h1,
+        h2,
+        h3,
+        .heading-font {
+            font-family: "Space Grotesk", sans-serif;
         }
 
-        /* Glassmorphism Utilities */
-        .glass-card {
-            background: var(--glassBg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glassBorder);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        section {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #412563;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d174d2;
+            border-radius: 20px;
+        }
+
+        /* Navbar */
+        nav {
+            backdrop-filter: blur(18px);
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Glass */
+        .glass {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
         }
 
         /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(to right, #22d3ee, #818cf8);
+        .gradient-text {
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #d174d2,
+                #e0563f
+            );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
-
-        /* Particles */
-        #particles-js {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
-        }
-        
-        section { position: relative; z-index: 1; }
-
-        /* Preloader */
-        #preloader {
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        .preloader-hidden { opacity: 0; visibility: hidden; }
-        .welcome-container span {
-            display: inline-block; opacity: 0; transform: translateY(30px) scale(0.9);
-            animation: revealLetter 0.6s forwards;
-            font-family: 'Space Grotesk', sans-serif;
-            color: #22d3ee;
-        }
-        .welcome-container span:nth-child(1) { animation-delay: 0.1s; }
-        .welcome-container span:nth-child(2) { animation-delay: 0.2s; }
-        .welcome-container span:nth-child(3) { animation-delay: 0.3s; }
-        .welcome-container span:nth-child(4) { animation-delay: 0.4s; }
-        .welcome-container span:nth-child(5) { animation-delay: 0.5s; }
-        .welcome-container span:nth-child(6) { animation-delay: 0.6s; }
-        .welcome-container span:nth-child(7) { animation-delay: 0.7s; }
-        @keyframes revealLetter { to { opacity: 1; transform: translateY(0) scale(1); text-shadow: 0 0 15px rgba(34,211,238,0.5); } }
-
-        /* Hover Transitions */
-        .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 30px -10px rgba(34, 211, 238, 0.3); }
-
-        /* Chat Widget Pro Styles */
-        #chat-widget-container {
-            position: fixed; bottom: 24px; right: 24px; z-index: 9999;
-            display: flex; flex-direction: column; align-items: flex-end;
-        }
-        
-        #chat-window {
-            display: none; flex-direction: column; width: 360px; height: 550px; max-height: 85vh;
-            border-radius: 20px; overflow: hidden;
-            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1); margin-bottom: 20px;
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(
+                135deg,
+                #d174d2,
+                #e0563f
+            );
+            transition: 0.35s ease;
         }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-
-        #chat-messages { flex-grow: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        
-        .message { max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.95rem; line-height: 1.5; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .message.user { background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
-        .message.bot { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255,255,255,0.1); color: #e2e8f0; align-self: flex-start; border-bottom-left-radius: 4px; }
-        
-        .typing-dot { animation: typing 1.4s infinite ease-in-out both; height: 6px; width: 6px; border-radius: 50%; background-color: #94a3b8; display: inline-block; margin: 0 2px; }
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes typing { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-
-        /* Timeline */
-        .timeline-dot { position: absolute; left: -33px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: #22d3ee; border: 4px solid #0f172a; }
-        .timeline-line { position: absolute; left: -26px; top: 16px; bottom: -32px; width: 2px; background: rgba(34, 211, 238, 0.2); }
-    </style>
-    
-    <!-- SEO JSON-LD (PRESERVED) -->
-    <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Person",
-      "name": "Aadil Faisal",
-      "url": "https://maadilfaisal.github.io",
-      "sameAs": [
-        "https://www.linkedin.com/in/aadil-f-6b43632b6/",
-        "https://github.com/maadilfaisal",
-        "https://www.instagram.com/a4dil.f",
-        "https://www.facebook.com/aadil.baloch.1068"
-      ],
-      "jobTitle": "Computer Science Undergraduate",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "FAST NUCES Multan"
-      },
-      "alumniOf": [
-        {
-          "@type": "EducationalOrganization",
-          "name": "Akhuwat College University Kasur"
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(224, 86, 63, 0.3);
         }
-      ]
-    }
-    </script>
-</head>
-<body class="loading">
-    <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-slate-900 w-full p-4">
-        <div class="welcome-container text-5xl md:text-7xl font-bold tracking-widest">
-            <span>A</span><span>A</span><span>D</span><span>I</span><span>L</span>
-        </div>
-    </div>
-    
-    <div id="particles-js"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-card border-b-0">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-xl font-bold text-white heading-font">AF<span class="text-cyan-400">.</span></a>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-slate-300">
-                <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
-                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
-                <a href="#education" class="hover:text-cyan-400 transition-colors">Education</a>
-                <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
-                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Home Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20">
-        <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
-            <div class="relative w-48 h-48 md:w-64 md:h-64 rounded-full p-2 bg-gradient-to-tr from-cyan-400 to-indigo-500 shadow-[0_0_40px_rgba(34,211,238,0.3)] shrink-0">
-                <img src="./assests/img/profile.jpg" alt="Aadil Faisal" class="w-full h-full rounded-full object-cover border-4 border-slate-900" onerror="this.src='https://placehold.co/400/1e293b/22d3ee?text=AF';">
-            </div>
-            
-            <div>
-                <p class="text-cyan-400 font-medium mb-2 tracking-wide uppercase text-sm">Hello World, I am</p>
-                <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">Aadil Faisal</h1>
-                <h2 class="text-xl md:text-3xl font-semibold mb-6 text-slate-400">CS Undergrad @ <span class="text-gradient">FAST NUCES</span></h2>
-                
-                <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="https://github.com/maadilfaisal" target="_blank" class="glass-card hover-lift px-6 py-3 rounded-full flex items-center gap-2 text-white">
-                        <i class="ri-github-fill text-xl"></i> GitHub
-                    </a>
-                    <a href="https://www.linkedin.com/in/aadil-f-6b43632b6/" target="_blank" class="bg-gradient-to-r from-cyan-500 to-indigo-500 hover:opacity-90 transition-opacity px-6 py-3 rounded-full flex items-center gap-2 text-white font-medium shadow-lg shadow-cyan-500/20">
-                        <i class="ri-linkedin-fill text-xl"></i> LinkedIn
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-24">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white">About <span class="text-cyan-400">Me</span></h2>
-            <div class="glass-card p-8 md:p-12 rounded-3xl reveal">
-                <p class="text-slate-300 leading-relaxed text-lg mb-6">
-                    As a passionate Computer Science undergraduate, I am deeply fascinated by the power of code to solve real-world problems. My journey is fueled by a constant curiosity and a drive to build efficient, scalable, and elegant software solutions.
-                </p>
-                <p class="text-slate-300 leading-relaxed text-lg mb-6">
-                    Currently honing my foundational skills in <strong>C++</strong> and exploring the vast landscape of modern web technologies. I believe in the importance of clean code, continuous learning, and methodical problem-solving.
-                </p>
-                <div class="flex items-center gap-4 text-cyan-400 font-medium mt-8 border-t border-slate-700/50 pt-6">
-                    <i class="ri-chess-knight-line text-2xl"></i>
-                    <span>When I'm not coding, you'll find me strategizing over a game of Chess.</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW: Projects Section (Makes portfolio vast) -->
-    <section id="projects" class="py-24 bg-slate-900/50">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white">Featured <span class="text-cyan-400">Projects</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="glass-card rounded-2xl overflow-hidden hover-lift reveal">
-                    <div class="h-48 bg-slate-800 flex items-center justify-center border-b border-slate-700">
-                        <i class="ri-terminal-box-line text-6xl text-slate-600"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">Core-X Engine</h3>
-                        <p class="text-slate-400 text-sm mb-4">A high-performance algorithm engine built purely in C++ to handle complex data structure operations.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">C++</span>
-                            <span class="px-3 py-1 text-xs rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Algorithms</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Add more project cards here to expand the portfolio -->
-                <div class="glass-card rounded-2xl overflow-hidden hover-lift reveal" style="transition-delay: 100ms;">
-                    <div class="h-48 bg-slate-800 flex items-center justify-center border-b border-slate-700">
-                        <i class="ri-robot-2-line text-6xl text-slate-600"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2">LFR Robotics</h3>
-                        <p class="text-slate-400 text-sm mb-4">Hardware and logic implementation for an autonomous Line Following Robot using Arduino.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 text-xs rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Arduino</span>
-                            <span class="px-3 py-1 text-xs rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">C</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section (Redesigned as Timeline) -->
-    <section id="education" class="py-24">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-white">Education <span class="text-cyan-400">Timeline</span></h2>
-            
-            <div class="ml-8 md:ml-0 md:pl-8 border-l-2 border-slate-800 space-y-12">
-                <!-- FAST -->
-                <div class="relative pl-8 md:pl-10 reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card p-6 md:p-8 rounded-2xl">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-xl font-bold text-white">BS Computer Science</h3>
-                            <span class="text-cyan-400 text-sm font-medium px-3 py-1 bg-cyan-400/10 rounded-full mt-2 md:mt-0">2025 - 2029</span>
-                        </div>
-                        <p class="text-indigo-300 font-medium mb-2">FAST NUCES, Multan</p>
-                        <p class="text-slate-400 text-sm">Focusing on core computer science principles, advanced data structures, and software engineering methodologies.</p>
-                    </div>
-                </div>
-
-                <!-- College -->
-                <div class="relative pl-8 md:pl-10 reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card p-6 md:p-8 rounded-2xl">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-xl font-bold text-white">Intermediate (ICS)</h3>
-                            <span class="text-cyan-400 text-sm font-medium px-3 py-1 bg-cyan-400/10 rounded-full mt-2 md:mt-0">2023 - 2025</span>
-                        </div>
-                        <p class="text-indigo-300 font-medium">Akhuwat College University Kasur</p>
-                    </div>
-                </div>
-
-                <!-- School -->
-                <div class="relative pl-8 md:pl-10 reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="glass-card p-6 md:p-8 rounded-2xl">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
-                            <h3 class="text-xl font-bold text-white">Matriculation (Science)</h3>
-                            <span class="text-cyan-400 text-sm font-medium px-3 py-1 bg-cyan-400/10 rounded-full mt-2 md:mt-0">2014 - 2023</span>
-                        </div>
-                        <p class="text-indigo-300 font-medium">Jinnah Public High School Mana Ahmadani</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 bg-slate-900/50">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white">Technical <span class="text-cyan-400">Arsenal</span></h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Languages -->
-                <div class="glass-card p-8 rounded-2xl hover-lift reveal">
-                    <div class="w-14 h-14 mx-auto bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6 border border-cyan-500/20">
-                        <i class="ri-code-s-slash-line text-3xl text-cyan-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-6">Languages</h3>
-                    <div class="flex flex-wrap justify-center gap-3">
-                        <span class="px-4 py-2 bg-slate-800 rounded-lg text-sm text-slate-300 border border-slate-700">C++</span>
-                        <span class="px-4 py-2 bg-slate-800 rounded-lg text-sm text-slate-300 border border-slate-700">C</span>
-                        <spanThis is a complete, professional redesign of your portfolio. To make it "vast" and highly engaging, I have introduced a modern **Dark Glassmorphism** aesthetic with a high-end Slate, Indigo, and Sky Blue color palette—a favorite among top-tier software engineers and professional designers. 
-
-I kept your SEO, JSON-LD, and meta tags completely intact while vastly expanding the content structure (adding a sleek navigation bar and a Featured Projects section) and completely revamping the AI Chat interface into a futuristic, floating glass panel.
-
-Here is your upgraded portfolio code:
-
-```html
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Website Title -->
-    <title>Aadil Faisal - Computer Science Student & Developer</title>
-    <!-- SEO Meta Description -->
-    <meta name="description" content="I am a Computer Science Undergrad at FAST NUCES Multan. Explore my portfolio on my personal website.">
-    <meta name="keywords" content="Aadil Faisal, Aadil Baloch, FAST NUCES, Computer Science, Portfolio, Software Developer, Multan">
-    <!-- Favicon -->
-    <link rel="icon" href="assests/img/profile.jpg" type="image/png">
-    
-    <!-- Tailwind CSS -->
-    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#0B1121',
-                        glassBg: 'rgba(30, 41, 59, 0.4)',
-                        glassBorder: 'rgba(255, 255, 255, 0.1)',
-                        accentPrimary: '#38BDF8', // Sky Blue
-                        accentSecondary: '#818CF8' // Indigo
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                        poppins: ['Poppins', 'sans-serif'],
-                        nunito: ['Nunito', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Remixicon & FontAwesome -->
-    <link href="[https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css](https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css)" rel="stylesheet" />
-    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
-
-    <!-- Google Fonts -->
-    <link href="[https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@800&display=swap](https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Nunito:wght@800&display=swap)" rel="stylesheet">
-
-    <!-- Custom Styles -->
-    <style>
-        body {
-            background-color: #0B1121;
-            color: #E2E8F0;
-            overflow-x: hidden;
-            -ms-overflow-style: none;  
-            scrollbar-width: none;  
-        }
-        body::-webkit-scrollbar { display: none; }
-        body.loading { overflow: hidden; }
-
-        /* Glassmorphism Utilities */
-        .glass-panel {
-            background: var(--glassBg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
         }
 
-        .glass-card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+        .btn-secondary:hover {
+            border-color: #d174d2;
+            transform: translateY(-4px);
         }
 
-        .glass-card:hover {
+        /* Cards */
+        .card-hover {
+            transition: 0.35s ease;
+        }
+
+        .card-hover:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border-color: rgba(56, 189, 248, 0.3);
+            border-color: rgba(209, 116, 210, 0.4);
         }
 
-        /* Animated Gradient Text */
-        .text-gradient {
-            background: linear-gradient(to right, #38BDF8, #818CF8, #C084FC);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% auto;
-            animation: shine 4s linear infinite;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        /* Particles */
-        #particles-js {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        section { position: relative; z-index: 10; }
-
-        /* Preloader */
-        #preloader {
-            transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
-        }
-        #preloader.preloader-hidden { opacity: 0; visibility: hidden; }
-
-        .welcome-container {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2.5rem, 10vw, 6rem);
-            display: flex;
-            gap: 10px;
-        }
-        .welcome-container span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(30px) scale(0.9);
-            animation: revealLetter 0.6s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .welcome-container span:nth-child(1) { animation-delay: 0.1s; }
-        .welcome-container span:nth-child(2) { animation-delay: 0.2s; }
-        .welcome-container span:nth-child(3) { animation-delay: 0.3s; }
-        .welcome-container span:nth-child(4) { animation-delay: 0.4s; }
-        .welcome-container span:nth-child(5) { animation-delay: 0.5s; }
-        .welcome-container span:nth-child(6) { animation-delay: 0.6s; }
-        .welcome-container span:nth-child(7) { animation-delay: 0.7s; }
-
-        @keyframes revealLetter {
-            to { opacity: 1; transform: translateY(0) scale(1); color: #38BDF8; text-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
-        }
-
-        /* Social Icons Glow */
-        .social-icon:hover {
-            transform: translateY(-5px) scale(1.15);
-            color: #38BDF8;
-            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.6));
-        }
-
-        /* Chat Widget Pro UI */
-        #chat-widget-container {
-            position: fixed; bottom: 24px; right: 24px; z-index: 10000;
-            display: flex; flex-direction: column; align-items: flex-end;
-        }
-        
-        #chat-window {
-            display: none; flex-direction: column;
-            width: 380px; height: 550px; max-height: 85vh;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.1);
-            overflow: hidden;
-            animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            margin-bottom: 20px;
-        }
-
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.95) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        #chat-messages {
-            flex-grow: 1; padding: 20px; overflow-y: auto;
-            display: flex; flex-direction: column; gap: 12px;
-        }
-        #chat-messages::-webkit-scrollbar { width: 6px; }
-        #chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
-
-        .chat-bubble {
-            max-width: 85%; padding: 12px 16px; border-radius: 16px; font-size: 0.95rem; line-height: 1.5;
-            position: relative; font-family: 'Inter', sans-serif;
-        }
-
-        .chat-bubble.bot {
-            background: rgba(30, 41, 59, 0.9);
-            color: #F8FAFC; align-self: flex-start;
-            border-bottom-left-radius: 4px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .chat-bubble.user {
-            background: linear-gradient(135deg, #38BDF8, #818CF8);
-            color: white; align-self: flex-end;
-            border-bottom-right-radius: 4px;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-        }
-
-        .chat-header-bg {
-            background: linear-gradient(90deg, rgba(15,23,42,1) 0%, rgba(30,41,59,1) 100%);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* Glowing Pulse for Chat Button */
-        .pulse-ring {
-            position: absolute; width: 100%; height: 100%;
-            border-radius: 50%; border: 2px solid #38BDF8;
-            animation: pulse-animation 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        /* Hero Glow */
+        .hero-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(
+                circle,
+                rgba(209, 116, 210, 0.4),
+                transparent 70%
+            );
+            filter: blur(40px);
             z-index: -1;
         }
 
-        @keyframes pulse-animation {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.6); opacity: 0; }
+        /* Timeline */
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-dot {
+            width: 18px;
+            height: 18px;
+            background: #e0563f;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 8px;
+            box-shadow: 0 0 15px rgba(224, 86, 63, 0.6);
+        }
+
+        /* Chat */
+        #chat-window {
+            display: none;
+            flex-direction: column;
+            width: 360px;
+            height: 520px;
+            max-height: 85vh;
+            border-radius: 22px;
+            overflow: hidden;
+        }
+
+        .chat-user {
+            background: linear-gradient(
+                135deg,
+                #d174d2,
+                #e0563f
+            );
+        }
+
+        .chat-bot {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Animation */
+        .fade-up {
+            animation: fadeUp 0.8s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            #chat-window {
+                width: 95vw;
+            }
         }
     </style>
-    
+
+    <!-- JSON LD -->
     <script type="application/ld+json">
-    {
-      "@context": "[http://schema.org](http://schema.org)",
-      "@type": "Person",
-      "name": "Aadil Faisal",
-      "url": "[https://maadilfaisal.github.io](https://maadilfaisal.github.io)",
-      "sameAs": [
-        "[https://www.linkedin.com/in/aadil-f-6b43632b6/](https://www.linkedin.com/in/aadil-f-6b43632b6/)",
-        "[https://github.com/maadilfaisal](https://github.com/maadilfaisal)",
-        "[https://www.instagram.com/a4dil.f](https://www.instagram.com/a4dil.f)",
-        "[https://www.facebook.com/aadil.baloch.1068](https://www.facebook.com/aadil.baloch.1068)"
-      ],
-      "jobTitle": "Computer Science Undergraduate",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "FAST NUCES Multan"
-      },
-      "alumniOf": [
         {
-          "@type": "EducationalOrganization",
-          "name": "Akhuwat College University Kasur"
+            "@context": "http://schema.org",
+            "@type": "Person",
+            "name": "Aadil Faisal",
+            "url": "https://maadilfaisal.github.io",
+            "sameAs": [
+                "https://www.linkedin.com/in/aadil-f-6b43632b6/",
+                "https://github.com/maadilfaisal",
+                "https://www.instagram.com/a4dil.f",
+                "https://www.facebook.com/aadil.baloch.1068"
+            ],
+            "jobTitle": "Computer Science Undergraduate",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "FAST NUCES Multan"
+            }
         }
-      ]
-    }
     </script>
 </head>
-<body class="loading font-inter">
-    
-    <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-darkBg w-full p-4">
-        <div class="welcome-container text-slate-700">
-            <span>A</span><span>A</span><span>D</span><span>I</span><span>L</span>
-        </div>
-    </div>
-    
-    <div id="particles-js"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-panel py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
-        <a href="#home" class="text-xl font-bold font-nunito tracking-wide text-white"><span class="text-accentPrimary">A</span>F.</a>
-        <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-            <a href="#about" class="hover:text-accentPrimary transition-colors">About</a>
-            <a href="#projects" class="hover:text-accentPrimary transition-colors">Projects</a>
-            <a href="#education" class="hover:text-accentPrimary transition-colors">Education</a>
-            <a href="#skills" class="hover:text-accentPrimary transition-colors">Skills</a>
-            <a href="#contact" class="hover:text-accentPrimary transition-colors">Contact</a>
+<body>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold">
+                AF<span class="text-primary">.</span>
+            </a>
+
+            <div class="hidden md:flex gap-8 text-sm text-white/80">
+                <a href="#about" class="hover:text-primary transition">About</a>
+                <a href="#projects" class="hover:text-primary transition">Projects</a>
+                <a href="#education" class="hover:text-primary transition">Education</a>
+                <a href="#skills" class="hover:text-primary transition">Skills</a>
+                <a href="#contact" class="hover:text-primary transition">Contact</a>
+            </div>
         </div>
-        <a href="#contact" class="hidden md:inline-block bg-white/10 hover:bg-white/20 border border-white/10 text-white px-5 py-2 rounded-full transition-all text-sm font-semibold backdrop-blur-sm">Let's Talk</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden pt-20">
-        <div class="max-w-4xl mx-auto px-6 relative z-10">
-            <div class="relative inline-block mb-8">
-                <div class="absolute inset-0 bg-gradient-to-r from-accentPrimary to-accentSecondary rounded-full blur-xl opacity-40 animate-pulse"></div>
-                <img src="./assests/img/profile.jpg" 
-                alt="Aadil Faisal Profile Picture" 
-                class="relative w-48 h-48 md:w-56 md:h-56 rounded-full mx-auto border-[4px] border-slate-800 shadow-2xl object-cover" 
-                onerror="this.onerror=null;this.src='[https://placehold.co/250x250/1e293b/38bdf8?text=AF](https://placehold.co/250x250/1e293b/38bdf8?text=AF)';">
+    <!-- Hero -->
+    <section
+        id="home"
+        class="min-h-screen flex items-center justify-center px-6 pt-20"
+    >
+        <div
+            class="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center"
+        >
+            <div class="fade-up">
+                <p class="uppercase tracking-[5px] text-primary mb-4 text-sm">
+                    Computer Science Student
+                </p>
+
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    Aadil
+                    <span class="gradient-text">Faisal</span>
+                </h1>
+
+                <p class="text-white/70 text-lg leading-relaxed mb-8">
+                    Passionate CS undergrad at FAST NUCES focused on building
+                    elegant software solutions, exploring modern technologies,
+                    and creating impactful digital experiences.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <a
+                        href="https://github.com/maadilfaisal"
+                        target="_blank"
+                        class="btn-secondary px-6 py-3 rounded-full flex items-center gap-2"
+                    >
+                        <i class="ri-github-fill text-xl"></i>
+                        GitHub
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/in/aadil-f-6b43632b6/"
+                        target="_blank"
+                        class="btn-primary px-6 py-3 rounded-full flex items-center gap-2"
+                    >
+                        <i class="ri-linkedin-fill text-xl"></i>
+                        LinkedIn
+                    </a>
+                </div>
             </div>
-            
-            <h1 class="text-5xl md:text-7xl font-bold mb-4 font-nunito tracking-tight text-white">
-                Hi, I'm <span class="text-gradient">Aadil Faisal</span>
-            </h1>
-            <p class="text-lg md:text-2xl text-slate-400 font-medium mb-8 max-w-2xl mx-auto leading-relaxed">
-                Software Developer & CS Undergrad at FAST NUCES. Building elegant solutions to complex problems.
+
+            <div class="relative flex justify-center fade-up">
+                <div class="hero-glow"></div>
+
+                <div
+                    class="w-72 h-72 rounded-full p-2 bg-gradient-to-br from-primary via-secondary to-accent"
+                >
+                    <img
+                        src="./assests/img/profile.jpg"
+                        alt="Aadil Faisal"
+                        class="w-full h-full object-cover rounded-full border-4 border-deep"
+                        onerror="this.src='https://placehold.co/500x500/412563/ffffff?text=AF'"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold mb-12">
+                About <span class="text-primary">Me</span>
+            </h2>
+
+            <div class="glass rounded-3xl p-8 md:p-12">
+                <p class="text-white/75 text-lg leading-relaxed mb-6">
+                    I am a passionate Computer Science undergraduate deeply
+                    interested in software engineering, problem-solving, and
+                    modern web development.
+                </p>
+
+                <p class="text-white/75 text-lg leading-relaxed mb-6">
+                    My learning journey currently revolves around C++, data
+                    structures, algorithms, and building scalable modern
+                    interfaces with clean architecture and elegant design.
+                </p>
+
+                <p class="text-white/75 text-lg leading-relaxed">
+                    Beyond programming, I enjoy chess, strategy, technology
+                    research, and continuously improving my creative and
+                    analytical skills.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+
+            <h2 class="text-4xl font-bold mb-14">
+                Featured <span class="text-primary">Projects</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project -->
+                <div class="glass rounded-3xl overflow-hidden card-hover">
+                    <div class="h-52 bg-black/20 flex items-center justify-center">
+                        <i class="ri-code-box-line text-7xl text-primary"></i>
+                    </div>
+
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4">
+                            Core-X Engine
+                        </h3>
+
+                        <p class="text-white/70 mb-6">
+                            High-performance algorithmic engine written in C++
+                            focused on efficient data processing and optimization.
+                        </p>
+
+                        <div class="flex gap-3 flex-wrap">
+                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
+                                C++
+                            </span>
+
+                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
+                                Algorithms
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project -->
+                <div class="glass rounded-3xl overflow-hidden card-hover">
+                    <div class="h-52 bg-black/20 flex items-center justify-center">
+                        <i class="ri-robot-2-line text-7xl text-secondary"></i>
+                    </div>
+
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4">
+                            LFR Robotics
+                        </h3>
+
+                        <p class="text-white/70 mb-6">
+                            Arduino-based autonomous line following robot with
+                            sensor optimization and motion control logic.
+                        </p>
+
+                        <div class="flex gap-3 flex-wrap">
+                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
+                                Arduino
+                            </span>
+
+                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
+                                Robotics
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project -->
+                <div class="glass rounded-3xl overflow-hidden card-hover">
+                    <div class="h-52 bg-black/20 flex items-center justify-center">
+                        <i class="ri-cloud-line text-7xl text-primary"></i>
+                    </div>
+
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4">
+                            Cloud Scheduler
+                        </h3>
+
+                        <p class="text-white/70 mb-6">
+                            Research-based scheduling architecture for optimized
+                            cloud resource and process management systems.
+                        </p>
+
+                        <div class="flex gap-3 flex-wrap">
+                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
+                                OS
+                            </span>
+
+                            <span class="px-4 py-2 rounded-full bg-white/10 text-sm">
+                                Research
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+
+            <h2 class="text-4xl font-bold mb-16">
+                Education <span class="text-primary">Timeline</span>
+            </h2>
+
+            <div class="timeline relative pl-12 space-y-12">
+
+                <!-- Item -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+
+                    <div class="glass rounded-3xl p-8">
+                        <div
+                            class="flex flex-col md:flex-row md:justify-between md:items-center mb-4"
+                        >
+                            <h3 class="text-2xl font-bold">
+                                BS Computer Science
+                            </h3>
+
+                            <span
+                                class="bg-white/10 px-4 py-2 rounded-full text-sm"
+                            >
+                                2025 - 2029
+                            </span>
+                        </div>
+
+                        <p class="text-primary font-medium mb-3">
+                            FAST NUCES Multan
+                        </p>
+
+                        <p class="text-white/70">
+                            Focusing on software engineering, algorithms,
+                            programming, and system design.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+
+                    <div class="glass rounded-3xl p-8">
+                        <div
+                            class="flex flex-col md:flex-row md:justify-between md:items-center mb-4"
+                        >
+                            <h3 class="text-2xl font-bold">
+                                Intermediate (ICS)
+                            </h3>
+
+                            <span
+                                class="bg-white/10 px-4 py-2 rounded-full text-sm"
+                            >
+                                2023 - 2025
+                            </span>
+                        </div>
+
+                        <p class="text-primary font-medium">
+                            Akhuwat College University Kasur
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item -->
+                <div class="relative">
+                    <div class="timeline-dot"></div>
+
+                    <div class="glass rounded-3xl p-8">
+                        <div
+                            class="flex flex-col md:flex-row md:justify-between md:items-center mb-4"
+                        >
+                            <h3 class="text-2xl font-bold">
+                                Matriculation
+                            </h3>
+
+                            <span
+                                class="bg-white/10 px-4 py-2 rounded-full text-sm"
+                            >
+                                2014 - 2023
+                            </span>
+                        </div>
+
+                        <p class="text-primary font-medium">
+                            Jinnah Public High School Mana Ahmadani
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+
+            <h2 class="text-4xl font-bold mb-14">
+                Technical <span class="text-primary">Skills</span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <div class="glass rounded-3xl p-8 text-center card-hover">
+                    <i class="ri-code-s-slash-line text-5xl text-primary mb-6"></i>
+
+                    <h3 class="text-2xl font-bold mb-4">Languages</h3>
+
+                    <p class="text-white/70">
+                        C, C++, Python
+                    </p>
+                </div>
+
+                <div class="glass rounded-3xl p-8 text-center card-hover">
+                    <i class="ri-terminal-window-line text-5xl text-secondary mb-6"></i>
+
+                    <h3 class="text-2xl font-bold mb-4">Tools</h3>
+
+                    <p class="text-white/70">
+                        Git, GitHub, Linux
+                    </p>
+                </div>
+
+                <div class="glass rounded-3xl p-8 text-center card-hover">
+                    <i class="ri-layout-4-line text-5xl text-primary mb-6"></i>
+
+                    <h3 class="text-2xl font-bold mb-4">Web</h3>
+
+                    <p class="text-white/70">
+                        HTML, CSS, Tailwind
+                    </p>
+                </div>
+
+                <div class="glass rounded-3xl p-8 text-center card-hover">
+                    <i class="ri-focus-2-line text-5xl text-secondary mb-6"></i>
+
+                    <h3 class="text-2xl font-bold mb-4">Strategy</h3>
+
+                    <p class="text-white/70">
+                        Chess & Problem Solving
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+
+            <h2 class="text-4xl font-bold mb-8">
+                Get In <span class="text-primary">Touch</span>
+            </h2>
+
+            <p class="text-white/70 max-w-2xl mx-auto mb-14 text-lg">
+                Feel free to connect with me for collaborations,
+                development opportunities, or tech discussions.
             </p>
 
-            <div id="socials-container" class="flex justify-center space-x-6">
-                <a href="[https://www.linkedin.com/in/aadil-f-6b43632b6/](https://www.linkedin.com/in/aadil-f-6b43632b6/)" target="_blank" class="text-slate-400 text-3xl transition-all duration-300 social-icon"><i class="ri-linkedin-fill"></i></a>
-                <a href="[https://github.com/maadilfaisal](https://github.com/maadilfaisal)" target="_blank" class="text-slate-400 text-3xl transition-all duration-300 social-icon"><i class="ri-github-fill"></i></a>
-                <a href="[https://www.instagram.com/a4dil.f/](https://www.instagram.com/a4dil.f/)" target="_blank" class="text-slate-400 text-3xl transition-all duration-300 social-icon"><i class="ri-instagram-line"></i></a>
-            </div>
-        </div>
-    </section>
+            <div class="flex flex-wrap justify-center gap-6">
 
-    <!-- About Section -->
-    <section id="about" class="py-24 relative">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="flex items-center gap-4 mb-12">
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent to-slate-700"></div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide section-title">About Me</h2>
-                <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-slate-700"></div>
-            </div>
-            
-            <div class="glass-card p-8 md:p-12 rounded-3xl flex flex-col md:flex-row gap-8 items-center relative z-10 about-description">
-                <div class="text-slate-300 leading-relaxed text-lg font-light space-y-6">
-                    <p>
-                        As a passionate Computer Science undergraduate, I am deeply fascinated by the power of code to solve real-world problems. My journey is fueled by a constant curiosity and a drive to build efficient, scalable, and elegant software solutions.
-                    </p>
-                    <p>
-                        I am currently honing my foundational skills in C++ and exploring the vast landscape of advanced web technologies. My goal is to leverage my technical abilities to contribute to innovative projects and collaborate with like-minded individuals. I believe in the importance of clean code, continuous learning, and methodical problem-solving.
-                    </p>
-                    <p>
-                        When I'm not coding, you can find me analyzing strategy in a game of chess or exploring the creative realms of photography and color grading. I'm excited to continue growing as a developer and to see where this path takes me next.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW: Featured Projects Section -->
-    <section id="projects" class="py-24 relative">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="flex items-center gap-4 mb-16">
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent to-slate-700"></div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide section-title">Featured Projects</h2>
-                <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-slate-700"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="glass-card rounded-2xl overflow-hidden flex flex-col group project-card">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10"></div>
-                        <i class="ri-chess-line text-7xl text-slate-600 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-accentPrimary transition-colors">Core-X Engine</h3>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow">A robust, high-performance chess engine developed entirely in C++. Implements advanced evaluation functions and algorithmic move search.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs font-semibold bg-slate-800 text-accentPrimary px-3 py-1 rounded-full">C++</span>
-                            <span class="text-xs font-semibold bg-slate-800 text-accentPrimary px-3 py-1 rounded-full">Algorithms</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="glass-card rounded-2xl overflow-hidden flex flex-col group project-card">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10"></div>
-                        <i class="ri-robot-2-line text-7xl text-slate-600 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-accentPrimary transition-colors">Line Following Robot</h3>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow">A hardware project utilizing Arduino Uno and L298N motor drivers for precise line tracking and autonomous movement routing.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs font-semibold bg-slate-800 text-accentSecondary px-3 py-1 rounded-full">Arduino</span>
-                            <span class="text-xs font-semibold bg-slate-800 text-accentSecondary px-3 py-1 rounded-full">Hardware</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="glass-card rounded-2xl overflow-hidden flex flex-col group project-card">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10"></div>
-                        <i class="ri-cloud-windy-line text-7xl text-slate-600 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-accentPrimary transition-colors">Cloud OS Scheduler</h3>
-                        <p class="text-slate-400 text-sm mb-6 flex-grow">Research-driven project focusing on AI-driven process scheduling methodologies within vast cloud computing environments.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs font-semibold bg-slate-800 text-purple-400 px-3 py-1 rounded-full">OS Design</span>
-                            <span class="text-xs font-semibold bg-slate-800 text-purple-400 px-3 py-1 rounded-full">Research</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="py-24">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="flex items-center gap-4 mb-16">
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent to-slate-700"></div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide section-title">Education</h2>
-                <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-slate-700"></div>
-            </div>
-
-            <div class="space-y-6">
-                <!-- BS CS -->
-                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center gap-6 education-card relative overflow-hidden group">
-                    <div class="absolute w-2 h-full bg-accentPrimary left-0 top-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <img src="./assests/img/fast.png" alt="FAST Logo" class="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-slate-700" onerror="this.onerror=null;this.src='[https://placehold.co/100x100/1e293b/38bdf8?text=FAST](https://placehold.co/100x100/1e293b/38bdf8?text=FAST)';">
-                    <div class="text-center md:text-left w-full">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                            <h3 class="text-xl md:text-2xl font-bold text-white">BS Computer Science</h3>
-                            <span class="text-accentPrimary font-semibold text-sm bg-accentPrimary/10 px-3 py-1 rounded-full mt-2 md:mt-0">2025 - 2029</span>
-                        </div>
-                        <p class="text-md text-slate-400">FAST NUCES, Multan</p>
-                    </div>
-                </div>
-
-                <!-- Intermediate -->
-                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center gap-6 education-card relative overflow-hidden group">
-                    <div class="absolute w-2 h-full bg-accentSecondary left-0 top-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <img src="./assests/img/ack.jpg" alt="ACK Logo" class="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-slate-700" onerror="this.onerror=null;this.src='[https://placehold.co/100x100/1e293b/818cf8?text=ACK](https://placehold.co/100x100/1e293b/818cf8?text=ACK)';">
-                    <div class="text-center md:text-left w-full">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                            <h3 class="text-xl md:text-2xl font-bold text-white">Intermediate (ICS)</h3>
-                            <span class="text-accentSecondary font-semibold text-sm bg-accentSecondary/10 px-3 py-1 rounded-full mt-2 md:mt-0">2023 - 2025</span>
-                        </div>
-                        <p class="text-md text-slate-400">Akhuwat College University Kasur</p>
-                    </div>
-                </div>
-
-                <!-- Matric -->
-                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center gap-6 education-card relative overflow-hidden group">
-                    <div class="absolute w-2 h-full bg-purple-400 left-0 top-0 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <img src="./assests/img/school.jpg" alt="School Logo" class="w-20 h-20 md:w-28 md:h-28 rounded-full border-2 border-slate-700" onerror="this.onerror=null;this.src='[https://placehold.co/100x100/1e293b/c084fc?text=SCH](https://placehold.co/100x100/1e293b/c084fc?text=SCH)';">
-                    <div class="text-center md:text-left w-full">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-                            <h3 class="text-xl md:text-2xl font-bold text-white">Matriculation</h3>
-                            <span class="text-purple-400 font-semibold text-sm bg-purple-400/10 px-3 py-1 rounded-full mt-2 md:mt-0">2014 - 2023</span>
-                        </div>
-                        <p class="text-md text-slate-400">Jinnah Public High School Mana Ahmadani</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills & Tools Section -->
-    <section id="skills" class="py-24">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="flex items-center gap-4 mb-16">
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent to-slate-700"></div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide section-title">ArsenaI & Expertise</h2>
-                <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-slate-700"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div id="languages-card" class="glass-card p-8 rounded-2xl text-center cursor-pointer skills-card group">
-                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-6 group-hover:bg-accentPrimary/20 transition-colors">
-                        <i class="ri-code-s-slash-line text-3xl text-accentPrimary"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Languages</h3>
-                    <p class="text-slate-400 text-sm">C, C++, Python</p>
-                </div>
-
-                <div id="tools-card" class="glass-card p-8 rounded-2xl text-center cursor-pointer skills-card group">
-                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-6 group-hover:bg-accentSecondary/20 transition-colors">
-                        <i class="ri-terminal-box-line text-3xl text-accentSecondary"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Tools & OS</h3>
-                    <p class="text-slate-400 text-sm">Git, GitHub, Linux Shell</p>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl text-center cursor-pointer skills-card group">
-                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-6 group-hover:bg-purple-400/20 transition-colors">
-                        <i class="ri-palette-line text-3xl text-purple-400"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Creative</h3>
-                    <p class="text-slate-400 text-sm">Lightroom, Color Grading</p>
-                </div>
-
-                <a href="[https://www.chess.com/member/aadilbaloch0](https://www.chess.com/member/aadilbaloch0)" target="_blank" class="glass-card p-8 rounded-2xl text-center block skills-card group">
-                    <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-6 group-hover:bg-emerald-400/20 transition-colors">
-                        <i class="ri-focus-3-line text-3xl text-emerald-400"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Tactics</h3>
-                    <p class="text-slate-400 text-sm">Chess Strategy</p>
+                <a
+                    href="https://github.com/maadilfaisal"
+                    target="_blank"
+                    class="glass px-8 py-5 rounded-2xl flex items-center gap-3 card-hover"
+                >
+                    <i class="ri-github-fill text-2xl"></i>
+                    GitHub
                 </a>
+
+                <a
+                    href="https://www.linkedin.com/in/aadil-f-6b43632b6/"
+                    target="_blank"
+                    class="glass px-8 py-5 rounded-2xl flex items-center gap-3 card-hover"
+                >
+                    <i class="ri-linkedin-fill text-2xl"></i>
+                    LinkedIn
+                </a>
+
+                <a
+                    href="mailto:aadilfaisal1068@gmail.com"
+                    class="glass px-8 py-5 rounded-2xl flex items-center gap-3 card-hover"
+                >
+                    <i class="ri-mail-line text-2xl"></i>
+                    Email
+                </a>
+
+            </div>
+
+            <div class="mt-20 border-t border-white/10 pt-8">
+                <p class="text-white/50 text-sm">
+                    © 2026 Aadil Faisal — Designed with precision.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 pb-12">
-        <div class="container mx-auto px-6 max-w-5xl">
-            <div class="flex items-center gap-4 mb-16">
-                <div class="h-[1px] flex-grow bg-gradient-to-r from-transparent to-slate-700"></div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-wide section-title">Get In Touch</h2>
-                <div class="h-[1px] flex-grow bg-gradient-to-l from-transparent to-slate-700"></div>
-            </div>
+    <!-- Chat Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto">
-                <a href="[https://mail.google.com/mail/?view=cm&to=aadilfaisal1068@gmail.com](https://mail.google.com/mail/?view=cm&to=aadilfaisal1068@gmail.com)" class="glass-card p-6 rounded-2xl flex flex-col items-center group contact-card" target="_blank">
-                    <i class="ri-mail-send-line text-4xl text-slate-400 group-hover:text-accentPrimary mb-3 transition-colors"></i>
-                    <h3 class="text-sm md:text-base font-medium text-slate-300">Email</h3>
-                </a>
-                <a href="[https://wa.me/923006786550](https://wa.me/923006786550)" target="_blank" class="glass-card p-6 rounded-2xl flex flex-col items-center group contact-card">
-                    <i class="ri-whatsapp-line text-4xl text-slate-400 group-hover:text-emerald-400 mb-3 transition-colors"></i>
-                    <h3 class="text-sm md:text-base font-medium text-slate-300">WhatsApp</h3>
-                </a>
-                <a href="[https://www.linkedin.com/in/aadil-f-6b43632b6/](https://www.linkedin.com/in/aadil-f-6b43632b6/)" target="_blank" class="glass-card p-6 rounded-2xl flex flex-col items-center group contact-card">
-                    <i class="ri-linkedin-fill text-4xl text-slate-400 group-hover:text-blue-500 mb-3 transition-colors"></i>
-                    <h3 class="text-sm md:text-base font-medium text-slate-300">LinkedIn</h3>
-                </a>
-                <a href="[https://github.com/maadilfaisal](https://github.com/maadilfaisal)" target="_blank" class="glass-card p-6 rounded-2xl flex flex-col items-center group contact-card">
-                    <i class="ri-github-fill text-4xl text-slate-400 group-hover:text-white mb-3 transition-colors"></i>
-                    <h3 class="text-sm md:text-base font-medium text-slate-300">GitHub</h3>
-                </a>
-            </div>
-            
-            <div class="mt-32 text-center pt-8 border-t border-slate-800/50">
-                <p class="text-sm text-slate-500 font-mono tracking-wider">&copy; 2026 AADIL FAISAL. DESIGNED WITH PRECISION.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Humorous Modal -->
-    <div id="humor-modal" class="fixed inset-0 bg-darkBg/90 backdrop-blur-sm z-[1000] hidden items-center justify-center p-4 transition-opacity">
-        <div class="glass-card p-8 md:p-10 rounded-3xl max-w-md mx-auto text-center border-t-4 border-t-accentPrimary">
-            <i class="ri-lightbulb-flash-line text-5xl text-accentPrimary mb-4 block"></i>
-            <p id="humor-text" class="text-white text-lg mb-8 leading-relaxed font-light"></p>
-            <button id="close-humor-modal" class="bg-gradient-to-r from-accentPrimary to-accentSecondary text-white font-semibold py-3 px-8 rounded-full hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all transform hover:-translate-y-1">Got it!</button>
-        </div>
-    </div>
-
-    <!-- Redesigned AI Chat Widget -->
-    <div id="chat-widget-container">
-        <div id="chat-window">
-            <div class="chat-header-bg p-4 flex justify-between items-center shadow-md border-b border-slate-700/50">
+        <div
+            id="chat-window"
+            class="glass mb-5"
+        >
+            <!-- Header -->
+            <div
+                class="p-5 border-b border-white/10 flex items-center justify-between"
+            >
                 <div class="flex items-center gap-3">
-                    <div class="relative">
-                        <div class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center border border-slate-600 shadow-lg">
-                            <i class="ri-robot-2-fill text-xl text-accentPrimary"></i>
-                        </div>
-                        <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 rounded-full border-2 border-slate-900"></div>
+                    <div
+                        class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center"
+                    >
+                        <i class="ri-robot-2-fill text-2xl"></i>
                     </div>
+
                     <div>
-                        <h3 class="font-bold text-white text-sm">A.I. Assistant</h3>
-                        <p class="text-xs text-slate-400">Online & Ready</p>
+                        <h3 class="font-bold">A.I Assistant</h3>
+                        <p class="text-xs text-white/50">
+                            Online
+                        </p>
                     </div>
                 </div>
-                <button id="close-chat" class="text-slate-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 rounded-full w-8 h-8 flex items-center justify-center"><i class="ri-close-line text-xl"></i></button>
+
+                <button id="close-chat">
+                    <i class="ri-close-line text-2xl"></i>
+                </button>
             </div>
-            
-            <div id="chat-messages">
-                <div class="chat-bubble bot shadow-md">
-                    Initiating sequence... 👋<br><br>Hello! I'm Aadil's virtual assistant. Whether you want to know about his C++ Core-X engine or his skills, ask away!
+
+            <!-- Messages -->
+            <div
+                id="messages"
+                class="flex-1 overflow-y-auto p-5 space-y-4 h-full"
+            >
+                <div
+                    class="chat-bot p-4 rounded-2xl w-fit max-w-[85%]"
+                >
+                    Hello 👋<br /><br />
+                    I'm Aadil's virtual assistant.
+                    Ask anything about his portfolio or projects.
                 </div>
             </div>
-            
-            <div class="p-4 bg-slate-900/80 backdrop-blur-md border-t border-slate-800 flex gap-2">
-                <input type="text" id="chat-input" placeholder="Type a message..." class="flex-grow px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl focus:outline-none focus:border-accentPrimary text-sm text-white placeholder-slate-500 transition-colors shadow-inner">
-                <button id="send-message" class="bg-gradient-to-br from-accentPrimary to-accentSecondary text-white w-12 h-12 rounded-xl hover:shadow-[0_0_15px_rgba(56,189,248,0.4)] transition-all flex items-center justify-center">
-                    <i class="ri-send-plane-fill text-lg"></i>
+
+            <!-- Input -->
+            <div
+                class="p-4 border-t border-white/10 flex gap-3"
+            >
+                <input
+                    id="chat-input"
+                    type="text"
+                    placeholder="Type a message..."
+                    class="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none"
+                />
+
+                <button
+                    id="send-btn"
+                    class="btn-primary px-5 rounded-xl"
+                >
+                    <i class="ri-send-plane-fill text-xl"></i>
                 </button>
             </div>
         </div>
-        
-        <div class="relative mt-4">
-            <div class="pulse-ring"></div>
-            <button id="chat-toggle" class="bg-gradient-to-r from-accentPrimary to-accentSecondary text-white w-16 h-16 rounded-full shadow-[0_10px_25px_rgba(56,189,248,0.4)] hover:shadow-[0_0_30px_rgba(56,189,248,0.6)] transition-all hover:scale-110 flex items-center justify-center pointer-events-auto relative z-10">
-                <i class="ri-sparkling-fill text-3xl"></i>
-            </button>
-        </div>
+
+        <!-- Toggle -->
+        <button
+            id="chat-toggle"
+            class="w-16 h-16 rounded-full btn-primary flex items-center justify-center text-3xl shadow-2xl"
+        >
+            <i class="ri-message-3-fill"></i>
+        </button>
     </div>
 
-    <!-- Scripts -->
-    <script src="[https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js](https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js)"></script>
-    <script src="[https://unpkg.com/scrollreveal](https://unpkg.com/scrollreveal)"></script>
-    
+    <!-- JS -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- Preloader Logic ---
-            const preloader = document.getElementById('preloader');
-            const body = document.body;
-            body.classList.add('loading');
-            window.scrollTo(0, 0);
+        const chatToggle = document.getElementById("chat-toggle");
+        const chatWindow = document.getElementById("chat-window");
+        const closeChat = document.getElementById("close-chat");
+        const sendBtn = document.getElementById("send-btn");
+        const input = document.getElementById("chat-input");
+        const messages = document.getElementById("messages");
 
-            const hidePreloader = () => {
-                if (preloader) {
-                    preloader.classList.add('preloader-hidden');
-                    setTimeout(() => {
-                        body.classList.remove('loading');
-                        if(preloader) preloader.style.display = 'none';
-                    }, 600);
-                }
-            };
-            setTimeout(hidePreloader, 2000);
+        chatToggle.addEventListener("click", () => {
+            chatWindow.style.display = "flex";
+        });
 
-            // --- ScrollReveal Animations ---
-            const sr = ScrollReveal({
-                origin: 'bottom',
-                distance: '40px',
-                duration: 1000,
-                delay: 100,
-                easing: 'cubic-bezier(0.5, 0, 0, 1)',
-                reset: false
-            });
+        closeChat.addEventListener("click", () => {
+            chatWindow.style.display = "none";
+        });
 
-            sr.reveal('#home h1', { origin: 'top', distance: '30px' });
-            sr.reveal('#home p, #socials-container', { delay: 300 });
-            sr.reveal('.section-title', { origin: 'left' });
-            sr.reveal('.about-description');
-            sr.reveal('.project-card', { interval: 150 });
-            sr.reveal('.education-card', { interval: 150, origin: 'right' });
-            sr.reveal('.skills-card', { interval: 100, scale: 0.9 });
-            sr.reveal('.contact-card', { interval: 100 });
+        function addMessage(text, type) {
+            const div = document.createElement("div");
 
-            // --- Particles.js Theme Update (Deep Space Network) ---
-            particlesJS('particles-js', {
-                "particles": {
-                    "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
-                    "color": { "value": ["#38BDF8", "#818CF8", "#C084FC"] },
-                    "shape": { "type": "circle" },
-                    "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                    "size": { "value": 3, "random": true, "anim": { "enable": false } },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#38BDF8", "opacity": 0.1, "width": 1 },
-                    "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
-                },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true  },
-                    "modes": { "grab": { "distance": 200, "line_linked": { "opacity": 0.3 } }, "push": { "particles_nb": 3 } }
-                },
-                "retina_detect": true
-            });
+            div.className =
+                type === "user"
+                    ? "chat-user p-4 rounded-2xl ml-auto w-fit max-w-[85%]"
+                    : "chat-bot p-4 rounded-2xl w-fit max-w-[85%]";
 
-            // --- Humor Modals ---
-            const languagesCard = document.getElementById('languages-card');
-            const toolsCard = document.getElementById('tools-card');
-            const humorModal = document.getElementById('humor-modal');
-            const humorText = document.getElementById('humor-text');
-            const closeHumorModalBtn = document.getElementById('close-humor-modal');
+            div.innerHTML = text;
 
-            const showHumorModal = (message) => {
-                humorText.textContent = message;
-                humorModal.classList.remove('hidden');
-                humorModal.classList.add('flex');
-            };
+            messages.appendChild(div);
 
-            const hideHumorModal = () => {
-                humorModal.classList.add('hidden');
-                humorModal.classList.remove('flex');
-            };
+            messages.scrollTop = messages.scrollHeight;
+        }
 
-            if (languagesCard) languagesCard.addEventListener('click', () => showHumorModal("You clicked 'Languages'! It won't compile C++ here, but it compiles massive respect for your curiosity! 🚀"));
-            if (toolsCard) toolsCard.addEventListener('click', () => showHumorModal("The 'Tools' card! No sudo privileges required to know you're doing great. Keep pushing code! 💻"));
-            if (closeHumorModalBtn) closeHumorModalBtn.addEventListener('click', hideHumorModal);
-            if (humorModal) humorModal.addEventListener('click', (e) => { if (e.target === humorModal) hideHumorModal(); });
+        sendBtn.addEventListener("click", () => {
+            const text = input.value.trim();
 
-            // --- Chat Widget Logic ---
-            const chatToggle = document.getElementById('chat-toggle');
-            const chatWindow = document.getElementById('chat-window');
-            const closeChat = document.getElementById('close-chat');
-            const chatInput = document.getElementById('chat-input');
-            const sendBtn = document.getElementById('send-message');
-            const messagesContainer = document.getElementById('chat-messages');
+            if (!text) return;
 
-            if (chatToggle) {
-                chatToggle.addEventListener('click', () => {
-                    const isChatClosed = chatWindow.style.display === 'none' || chatWindow.style.display === '';
-                    if (isChatClosed) {
-                        chatWindow.style.display = 'flex';
-                        chatToggle.style.transform = 'scale(0)';
-                        setTimeout(() => chatInput.focus(), 50);
-                    }
-                });
+            addMessage(text, "user");
+
+            input.value = "";
+
+            setTimeout(() => {
+                addMessage(
+                    "This is currently a demo AI assistant UI for the portfolio 🚀",
+                    "bot"
+                );
+            }, 700);
+        });
+
+        input.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                sendBtn.click();
             }
-
-            if (closeChat) {
-                closeChat.addEventListener('click', () => {
-                    chatWindow.style.display = 'none';
-                    chatToggle.style.transform = 'scale(1)';
-                });
-            }
-
-            // Chat UI Simulator
-            function addMessage(text, sender) {
-                const div = document.createElement('div');
-                div.className = `chat-bubble ${sender}`;
-                div.innerHTML = text;
-                messagesContainer.appendChild(div);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-
-            sendBtn.addEventListener('click', () => {
-                const text = chatInput.value.trim();
-                if(text) {
-                    addMessage(text, 'user');
-                    chatInput.value = '';
-                    setTimeout(() => {
-                        addMessage("I am a demo interface for now, but I look incredibly sleek while doing it! 🤖", 'bot');
-                    }, 1000);
-                }
-            });
-
-            chatInput.addEventListener('keypress', (e) => {
-                if(e.key === 'Enter') sendBtn.click();
-            });
         });
     </script>
+
 </body>
 </html>
